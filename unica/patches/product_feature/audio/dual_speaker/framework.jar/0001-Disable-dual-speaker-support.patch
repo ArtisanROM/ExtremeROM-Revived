@@ -1,14 +1,11 @@
-From 67eddad34788a39bf74bb6b6f947ce70d3a96ecc Mon Sep 17 00:00:00 2001
+From eba6ae8362e0a1aac58f9438450477c9780ace90 Mon Sep 17 00:00:00 2001
 From: BlackMesa123 <giangrecosalvo9@gmail.com>
 Date: Sun, 2 Jun 2024 13:12:43 +0200
 Subject: [PATCH] Disable dual speaker support
 
 ---
- smali_classes5/com/samsung/android/audio/Rune.smali | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/smali_classes5/com/samsung/android/audio/Rune.smali b/smali_classes5/com/samsung/android/audio/Rune.smali
-index 7ac9ad91..38d78865 100644
+index 1b69e907..16db4236 100644
 --- a/smali_classes5/com/samsung/android/audio/Rune.smali
 +++ b/smali_classes5/com/samsung/android/audio/Rune.smali
 @@ -264,7 +264,7 @@
@@ -18,11 +15,11 @@ index 7ac9ad91..38d78865 100644
 -.field public static final blacklist SEC_AUDIO_SUPPORT_DUAL_SPEAKER:Z = true
 +.field public static final blacklist SEC_AUDIO_SUPPORT_DUAL_SPEAKER:Z = false
  
- .field public static final blacklist SEC_AUDIO_SUPPORT_FOLD_STATE:Z = false
+ .field public static final blacklist SEC_AUDIO_SUPPORT_FACTORY_INTERPOSER:Z = false
  
-@@ -329,7 +329,7 @@
+@@ -333,7 +333,7 @@
  .method static constructor blacklist <clinit>()V
-     .locals 10
+     .locals 8
  
 -    const-string v0, "2"
 +    const-string v0, "1"
