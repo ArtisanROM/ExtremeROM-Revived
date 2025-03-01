@@ -71,7 +71,7 @@ EXTRACT_OS_PARTITIONS()
     echo "- Extracting OS partitions..."
     cd "$FW_DIR/${MODEL}_${REGION}"
 
-    local COMMON_FOLDERS="odm product system vendor"
+    local COMMON_FOLDERS="product system vendor"
     for folder in $COMMON_FOLDERS
     do
         [ ! -d "$folder" ] && SHOULD_EXTRACT=true
@@ -79,13 +79,28 @@ EXTRACT_OS_PARTITIONS()
     done
 
     if $SHOULD_EXTRACT; then
-        if [ ! -f "lpdump" ] || $SHOULD_EXTRACT_SUPER; then
-            echo "Extracting super.img"
-            tar xf "$AP_TAR" "super.img.lz4"
-            lz4 -d -q --rm "super.img.lz4" "super.img.sparse"
-            simg2img "super.img.sparse" "super.img" && rm "super.img.sparse"
-            { lpunpack "super.img" > /dev/null; } 2>&1
-            lpdump "super.img" > "lpdump" && rm "super.img"
+        if tar tf "$AP_TAR" "super.img.lz4" &>/dev/null; then
+            if [ ! -f "lpdump" ] || $SHOULD_EXTRACT_SUPER; then
+                echo "Extracting super.img"
+                tar xf "$AP_TAR" "super.img.lz4"
+                lz4 -d -q --rm "super.img.lz4" "super.img.sparse"
+                simg2img "super.img.sparse" "super.img" && rm "super.img.sparse"
+                { lpunpack "super.img" > /dev/null; } 2>&1
+                lpdump "super.img" > "lpdump" && rm "super.img"
+            fi
+        else
+            local NON_DYNAMIC_PARTITIONS="product system vendor"
+            for partition in $NON_DYNAMIC_PARTITIONS
+            do
+                echo "Extracting $partition.img from TAR"
+                if tar tf "$AP_TAR" "$partition.img.lz4" &>/dev/null; then
+                    tar xf "$AP_TAR" "$partition.img.lz4"
+                else
+                    tar xf "$CSC_TAR" "$partition.img.lz4"
+                fi
+                lz4 -d -q --rm "$partition.img.lz4" "$partition.img.sparse"
+                simg2img "$partition.img.sparse" "$partition.img" && rm "$partition.img.sparse"
+            done
         fi
 
         [ -d "tmp_out" ] && mountpoint -q "tmp_out" && sudo umount "tmp_out"
@@ -111,9 +126,7 @@ EXTRACT_OS_PARTITIONS()
                     mkdir -p "$PARTITION"
                     $PREFIX mount -o ro "$img" "tmp_out"
                     $PREFIX cp -a --preserve=all tmp_out/* "$PARTITION"
-                    for i in $($PREFIX find "$PARTITION"); do
-                        $PREFIX chown -h "$(whoami)":"$(whoami)" "$i"
-                    done
+                    $PREFIX chown -hR "$(whoami)" "$PARTITION"
                     [[ -e "$PARTITION/lost+found" ]] && rm -rf "$PARTITION/lost+found"
                     ;;
                 *)
@@ -190,6 +203,7 @@ EXTRACT_ALL()
 {
     BL_TAR=$(find "$ODIN_DIR/${MODEL}_${REGION}" -name "BL*")
     AP_TAR=$(find "$ODIN_DIR/${MODEL}_${REGION}" -name "AP*")
+    CSC_TAR=$(find "$ODIN_DIR/${MODEL}_${REGION}" -name "CSC*")
 
     mkdir -p "$FW_DIR/${MODEL}_${REGION}"
     EXTRACT_KERNEL_BINARIES
