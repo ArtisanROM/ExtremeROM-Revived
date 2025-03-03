@@ -50,12 +50,16 @@ BUILD_EXT4_IMAGE()
     fi
 
     SPARSE_FLAG=""
-    $SPARSE && SPARSE_FLAG="-s"
-    mkuserimg_mke2fs $SPARSE_FLAG \
+    mkuserimg_mke2fs \
         "$IN_DIR" "$IN_DIR/../$PARTITION.img" ext4 "$MOUNT_POINT" "$IMG_SIZE" \
         -j 0 -T 1230735600 -C "$FS_FILE" -L "$MOUNT_POINT" \
         -i "$INODES" -M 0 -I 256 "$FC_FILE"
-    if ! $SPARSE; then
+    if $SPARSE; then
+        echo "Converting the image to a sparse image..."
+        mv "$IN_DIR/../$PARTITION.img" "$IN_DIR/../$PARTITION.img.raw"
+        img2simg "$IN_DIR/../$PARTITION.img.raw" "$IN_DIR/../$PARTITION.img"
+        rm "$IN_DIR/../$PARTITION.img.raw"
+    else
         e2fsck -f -n "$IN_DIR/../$PARTITION.img"
     fi
 }
