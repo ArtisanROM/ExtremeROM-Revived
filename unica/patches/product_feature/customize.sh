@@ -194,22 +194,22 @@ else
     fi
 fi
 
-if ! $SOURCE_HAS_QHD_DISPLAY; then
-    if $TARGET_HAS_QHD_DISPLAY; then
-        echo "Applying multi resolution patches"
-        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/bin/bootanimation" 0 2000 755 "u:object_r:bootanim_exec:s0"
-        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/bin/surfaceflinger" 0 2000 755 "u:object_r:surfaceflinger_exec:s0"
-        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/lib/libgui.so" 0 0 644 "u:object_r:system_lib_file:s0"
-        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/lib64/libgui.so" 0 0 644 "u:object_r:system_lib_file:s0"
-        APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Enable-dynamic-resolution-control.patch"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Enable-dynamic-resolution-control.patch"
-    fi
-else
-    if ! $TARGET_HAS_QHD_DISPLAY; then
-        # TODO: won't be necessary anyway
-        true
-    fi
-fi
+#if ! $SOURCE_HAS_QHD_DISPLAY; then
+#    if $TARGET_HAS_QHD_DISPLAY; then
+#        echo "Applying multi resolution patches"
+#        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/bin/bootanimation" 0 2000 755 "u:object_r:bootanim_exec:s0"
+#        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/bin/surfaceflinger" 0 2000 755 "u:object_r:surfaceflinger_exec:s0"
+#        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/lib/libgui.so" 0 0 644 "u:object_r:system_lib_file:s0"
+#        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system" "system/lib64/libgui.so" 0 0 644 "u:object_r:system_lib_file:s0"
+#        APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Enable-dynamic-resolution-control.patch"
+#        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Enable-dynamic-resolution-control.patch"
+#    fi
+#else
+#    if ! $TARGET_HAS_QHD_DISPLAY; then
+#        # TODO: won't be necessary anyway
+#        true
+#    fi
+#fi
 
 if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
     echo "Applying HFR_MODE patches"
