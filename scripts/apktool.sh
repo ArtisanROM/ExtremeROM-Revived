@@ -135,7 +135,7 @@ DO_DECOMPILE()
     fi
 
     echo "Decompiling $OUT_DIR"
-    apktool -q d -b $FORCE -o "$APKTOOL_DIR$OUT_DIR" -p "$FRAMEWORK_DIR" -s "$APK_PATH"
+    apktool -q d -b $FORCE -o "$APKTOOL_DIR$OUT_DIR" -p "$FRAMEWORK_DIR" -r -s "$APK_PATH"
 
     for f in "$APKTOOL_DIR$OUT_DIR/"*.dex
     do
@@ -166,8 +166,6 @@ DO_RECOMPILE()
     local APK_PATH
     local APK_NAME
     local DEX_FILENAME
-    local CERT_PREFIX="aosp"
-    $ROM_IS_OFFICIAL && CERT_PREFIX="unica"
 
     [[ "$IN_DIR" != "/"* ]] && IN_DIR="/$IN_DIR"
 
@@ -230,16 +228,9 @@ DO_RECOMPILE()
     apktool -q b -p "$FRAMEWORK_DIR" -srp "$APKTOOL_DIR$IN_DIR"
     [[ -f "$APKTOOL_DIR$IN_DIR/classes.dex" ]] && rm "$APKTOOL_DIR$IN_DIR/"*.dex
 
-    if [[ "$APK_PATH" == *".apk" ]]; then
-        echo "Signing $IN_DIR"
-        signapk "$SRC_DIR/security/${CERT_PREFIX}_platform.x509.pem" "$SRC_DIR/security/${CERT_PREFIX}_platform.pk8" \
-            "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME" "$APKTOOL_DIR$IN_DIR/dist/temp.apk" \
-            && mv -f "$APKTOOL_DIR$IN_DIR/dist/temp.apk" "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME"
-    else
-        echo "Zipaligning $IN_DIR"
-        zipalign -p 4 "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME" "$APKTOOL_DIR$IN_DIR/dist/temp" \
-            && mv -f "$APKTOOL_DIR$IN_DIR/dist/temp" "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME"
-    fi
+    echo "Zipaligning $IN_DIR"
+    zipalign -p 4 "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME" "$APKTOOL_DIR$IN_DIR/dist/temp" \
+        && mv -f "$APKTOOL_DIR$IN_DIR/dist/temp" "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME"
 
     mv -f "$APKTOOL_DIR$IN_DIR/dist/$APK_NAME" "$APK_PATH"
     rm -rf "$APKTOOL_DIR$IN_DIR/build" && rm -rf "$APKTOOL_DIR$IN_DIR/dist"
