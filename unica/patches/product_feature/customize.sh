@@ -101,7 +101,7 @@ if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" ]]; then
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
 
     FTP="
-    system/framework/services.jar/smali_classes3/com/android/server/power/PowerManagerUtil.smali
+    system/framework/services.jar/smali_classes2/com/android/server/power/PowerManagerUtil.smali
     system/framework/ssrm.jar/smali/com/android/server/ssrm/PreMonitor.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/Rune.smali
     "
@@ -216,17 +216,15 @@ if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
 
     DECODE_APK "system/framework/framework.jar"
     DECODE_APK "system/framework/gamemanager.jar"
-    DECODE_APK "system/framework/gamesdk.jar"
     DECODE_APK "system/framework/secinputdev-service.jar"
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
     DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
     DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
 
     FTP="
-    system/framework/framework.jar/smali_classes5/com/samsung/android/hardware/display/RefreshRateConfig.smali
-    system/framework/framework.jar/smali_classes5/com/samsung/android/rune/CoreRune.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali
     system/framework/gamemanager.jar/smali/com/samsung/android/game/GameManagerService.smali
-    system/framework/gamesdk.jar/smali/com/samsung/android/gamesdk/vrr/GameSDKVrrManager.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputDeviceManagerService.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputFeatures.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputFeaturesExtra.smali
@@ -245,7 +243,7 @@ if [[ "$SOURCE_HFR_SUPPORTED_REFRESH_RATE" != "$TARGET_HFR_SUPPORTED_REFRESH_RAT
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
 
     FTP="
-    system/framework/framework.jar/smali_classes5/com/samsung/android/hardware/display/RefreshRateConfig.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/display/SecDisplayUtils.smali
     "
     for f in $FTP; do
@@ -264,7 +262,7 @@ if [[ "$SOURCE_HFR_DEFAULT_REFRESH_RATE" != "$TARGET_HFR_DEFAULT_REFRESH_RATE" ]
     DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
 
     FTP="
-    system/framework/framework.jar/smali_classes5/com/samsung/android/hardware/display/RefreshRateConfig.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/display/SecDisplayUtils.smali
     system/priv-app/SettingsProvider/SettingsProvider.apk/smali/com/android/providers/settings/DatabaseHelper.smali
     "
@@ -279,7 +277,7 @@ if [[ "$SOURCE_MULTI_MIC_MANAGER_VERSION" != "$TARGET_MULTI_MIC_MANAGER_VERSION"
     DECODE_APK "system/framework/framework.jar"
 
     FTP="
-    system/framework/framework.jar/smali_classes5/com/samsung/android/camera/mic/SemMultiMicManager.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/camera/mic/SemMultiMicManager.smali
     "
     for f in $FTP; do
         sed -i "s/$SOURCE_MULTI_MIC_MANAGER_VERSION/$TARGET_MULTI_MIC_MANAGER_VERSION/g" "$APKTOOL_DIR/$f"
