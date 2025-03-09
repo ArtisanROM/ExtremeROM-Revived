@@ -32,27 +32,6 @@ GET_FP_SENSOR_TYPE()
 MODEL=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 1)
 REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 
-if [[ "$SOURCE_PRODUCT_FIRST_API_LEVEL" != "$TARGET_PRODUCT_FIRST_API_LEVEL" ]]; then
-    echo "Applying MAINLINE_API_LEVEL patches"
-
-    DECODE_APK "system/framework/esecomm.jar"
-    DECODE_APK "system/framework/services.jar"
-
-    FTP="
-    system/framework/esecomm.jar/smali/com/sec/esecomm/EsecommAdapter.smali
-    system/framework/services.jar/smali/com/android/server/SystemServer.smali
-    system/framework/services.jar/smali_classes2/com/android/server/enterprise/hdm/HdmVendorController.smali
-    system/framework/services.jar/smali_classes2/com/android/server/knox/dar/ddar/ta/TAProxy.smali
-    system/framework/services.jar/smali_classes3/com/android/server/power/PowerManagerUtil.smali
-    "
-    for f in $FTP; do
-        sed -i \
-            "s/\"MAINLINE_API_LEVEL: $SOURCE_PRODUCT_FIRST_API_LEVEL\"/\"MAINLINE_API_LEVEL: $TARGET_PRODUCT_FIRST_API_LEVEL\"/g" \
-            "$APKTOOL_DIR/$f"
-        sed -i "s/\"$SOURCE_PRODUCT_FIRST_API_LEVEL\"/\"$TARGET_PRODUCT_FIRST_API_LEVEL\"/g" "$APKTOOL_DIR/$f"
-    done
-fi
-
 if $SOURCE_AUDIO_SUPPORT_ACH_RINGTONE; then
     if ! $TARGET_AUDIO_SUPPORT_ACH_RINGTONE; then
         echo "Applying ACH ringtone patches"
