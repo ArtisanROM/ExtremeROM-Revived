@@ -16,7 +16,7 @@ index 4fcfcf8e..9b05bbba 100644
 -    invoke-static {v0}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 -
 -    move-result-object v0
-+    const-string/jumbo v0, "SM-S931BDBKGTO"
++    const-string/jumbo v0, "SM-S938BZBGEUE"
  
      const-string/jumbo v1, "requestPki - model_code = "
  
