@@ -17,6 +17,10 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
         ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
     done
 
+    # Downgrade ENGMODE for 32bit HAL version
+    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib.engmode.samsung.so" 0 0 644 "u:object_r:system_file:s0"
+    ADD_TO_WORK_DIR "dm3qxxx" "system" "lib.engmodejni.samsung.so" 0 0 644 "u:object_r:system_file:s0"
+
     # Set props
     echo "Setting props..."
     SET_PROP "vendor" "ro.vendor.product.cpu.abilist" "arm64-v8a"

@@ -223,6 +223,9 @@
 /system/lib/shared-file-region-aidl-cpp\.so u:object_r:system_lib_file:s0
 /system/lib/spatializer-aidl-cpp\.so u:object_r:system_lib_file:s0
 /system/lib/vintf-codecsolution-V2-cpp\.so u:object_r:system_lib_file:s0
+/system/lib64 u:object_r:system_file:s0
+/system/lib64/lib\.engmode\.samsung\.so u:object_r:system_lib_file:s0
+/system/lib64/lib\.engmodejni\.samsung\.so u:object_r:system_lib_file:s0
 /system/system_ext u:object_r:system_file:s0
 /system/system_ext/apex u:object_r:system_file:s0
 /system/system_ext/apex/com\.android\.vndk\.v33\.apex u:object_r:system_file:s0
