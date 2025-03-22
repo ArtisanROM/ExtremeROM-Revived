@@ -1,0 +1,638 @@
+From c43380e7d401682284269e66553a986abaa63640 Mon Sep 17 00:00:00 2001
+From: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
+Date: Sat, 15 Mar 2025 15:35:19 +0100
+Subject: [PATCH] Add back right cutout support
+
+Co-Authored-By: Salvo Giangreco <giangrecosalvo9@gmail.com>
+Co-Authored-By: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+diff --git a/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.smali b/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.smali
+index 20db9a920d..e89e341a0e 100644
+--- a/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.smali
++++ b/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider.smali
+@@ -7719,13 +7719,19 @@
+ 
+     move-result-object v4
+ 
+-    iget-object v0, v0, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider;->referenceSysUIComponentImpl:Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;
++    iget-object v5, v0, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider;->referenceSysUIComponentImpl:Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;
+ 
+-    invoke-static {v0}, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->-$$Nest$mindicatorGardenAlgorithmSidelingCenterCutout(Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;)Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
++    invoke-static {v5}, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->-$$Nest$mindicatorGardenAlgorithmSidelingCenterCutout(Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;)Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
+ 
+-    move-result-object v0
++    move-result-object v5
++
++    iget-object v6, v0, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl$SwitchingProvider;->referenceSysUIComponentImpl:Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;
++
++    invoke-static {v6}, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->-$$Nest$mindicatorGardenAlgorithmRightCutout(Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;)Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
++    move-result-object v6
+ 
+-    invoke-direct {v1, v2, v3, v4, v0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;-><init>(Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;)V
++    invoke-direct/range {v1 .. v6}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;-><init>(Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;)V
+
+ 
+     return-object v1
+ 
+diff --git a/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl.smali b/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl.smali
+index 7159132d58..493ff3d482 100644
+--- a/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl.smali
++++ b/smali_classes2/com/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl.smali
+@@ -19845,6 +19845,16 @@
+     return-object p0
+ .end method
+ 
++.method public static bridge synthetic -$$Nest$mindicatorGardenAlgorithmRightCutout(Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;)Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++    .locals 0
++
++    invoke-virtual {p0}, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->indicatorGardenAlgorithmRightCutout()Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
++    move-result-object p0
++
++    return-object p0
++.end method
++
+ .method public static bridge synthetic -$$Nest$mindicatorGardenAlgorithmSidelingCenterCutout(Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;)Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
+     .locals 0
+ 
+@@ -29355,6 +29365,28 @@
+     return-object v0
+ .end method
+ 
++.method public final indicatorGardenAlgorithmRightCutout()Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++    .locals 2
++
++    new-instance v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
++    iget-object v1, p0, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->referenceGlobalRootComponentImpl:Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceGlobalRootComponentImpl;
++
++    iget-object v1, v1, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceGlobalRootComponentImpl;->context:Landroid/content/Context;
++
++    iget-object p0, p0, Lcom/android/systemui/dagger/DaggerReferenceGlobalRootComponent$ReferenceSysUIComponentImpl;->indicatorGardenInputPropertiesProvider:Ldagger/internal/Provider;
++
++    invoke-interface {p0}, Ljavax/inject/Provider;->get()Ljava/lang/Object;
++
++    move-result-object p0
++
++    check-cast p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    invoke-direct {v0, v1, p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;-><init>(Landroid/content/Context;Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;)V
++
++    return-object v0
++.end method
++
+ .method public final indicatorGardenAlgorithmSidelingCenterCutout()Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
+     .locals 3
+ 
+diff --git a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithm.smali b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithm.smali
+index 00106ee645..8362d35338 100644
+--- a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithm.smali
++++ b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithm.smali
+@@ -201,7 +201,7 @@
+ .end method
+ 
+ .method public final getLeftContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;)I
+-    .locals 4
++    .locals 2
+ 
+     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getDefaultSidePadding()I
+ 
+@@ -211,6 +211,20 @@
+ 
+     move-result v1
+ 
++    invoke-virtual {p0, p1, v0, v1}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getLeftContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final getLeftContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++    .locals 4
++
++    move v0, p2
++
++    move v1, p3
++
+     invoke-interface {p1}, Lcom/android/systemui/statusbar/phone/IndicatorGarden;->getCenterContainer()Lcom/android/systemui/statusbar/phone/IndicatorGardenContainer;
+ 
+     move-result-object v2
+@@ -297,7 +311,7 @@
+ .end method
+ 
+ .method public final getRightContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;)I
+-    .locals 4
++    .locals 2
+ 
+     invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getDefaultSidePadding()I
+ 
+@@ -307,6 +321,20 @@
+ 
+     move-result v1
+ 
++    invoke-virtual {p0, p1, v0, v1}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getRightContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final getRightContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++    .locals 4
++
++    move v0, p2
++
++    move v1, p3
++
+     invoke-interface {p1}, Lcom/android/systemui/statusbar/phone/IndicatorGarden;->getCenterContainer()Lcom/android/systemui/statusbar/phone/IndicatorGardenContainer;
+ 
+     move-result-object v2
+@@ -372,6 +400,53 @@
+     return p0
+ .end method
+ 
++.method public final getSideCutoutPadding(II)I
++    .locals 2
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getDefaultSidePadding()I
++
++    move-result v0
++
++    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget v1, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->rotation:I
++
++    if-nez v1, :cond_1
++
++    if-lez p1, :cond_0
++
++    iget p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->cutoutSidePaddingD:I
++
++    add-int/2addr p1, p0
++
++    add-int/2addr p2, p0
++
++    invoke-static {p1, p2}, Ljava/lang/Math;->max(II)I
++
++    move-result p0
++
++    invoke-static {p0, v0}, Ljava/lang/Math;->max(II)I
++
++    move-result p0
++
++    goto :goto_0
++
++    :cond_0
++    iget p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->cornerPaddingC:I
++
++    invoke-static {p0, v0}, Ljava/lang/Math;->max(II)I
++
++    move-result p0
++
++    :goto_0
++    return p0
++
++    :cond_1
++    add-int/2addr v0, p2
++
++    return v0
++.end method
++
+ .method public hasCameraTopMargin()Z
+     .locals 0
+ 
+diff --git a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory.smali b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory.smali
+index 60a2f7e161..14bb478b76 100644
+--- a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory.smali
++++ b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory.smali
+@@ -10,11 +10,13 @@
+ 
+ .field public final indicatorGardenAlgorithmNoCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;
+ 
++.field public final indicatorGardenAlgorithmRightCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
+ .field public final indicatorGardenAlgorithmSidelingCenterCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
+ 
+ 
+ # direct methods
+-.method public constructor <init>(Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;)V
++.method public constructor <init>(Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;)V
+     .locals 0
+ 
+     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+@@ -27,5 +29,7 @@
+ 
+     iput-object p4, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmSidelingCenterCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmSidelingCenterCutout;
+ 
++    iput-object p5, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmRightCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
+     return-void
+ .end method
+diff --git a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout.smali b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout.smali
+new file mode 100644
+index 0000000000..fb5fefe300
+--- /dev/null
++++ b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout.smali
+@@ -0,0 +1,313 @@
++.class public final Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++.super Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;
++.source "Mesa & Renox, just like bare rocks"
++
++
++# instance fields
++.field public cutoutLeft:I
++
++.field public final inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++
++# direct methods
++.method public constructor <init>(Landroid/content/Context;Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;)V
++    .locals 0
++
++    invoke-direct {p0, p1, p2}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;-><init>(Landroid/content/Context;Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;)V
++
++    iput-object p2, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    return-void
++.end method
++
++
++# virtual methods
++.method public final calculateCameraTopMargin()I
++    .locals 1
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->hasCameraTopMargin()Z
++
++    move-result v0
++
++    if-eqz v0, :cond_0
++
++    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->cutoutTopMarginB:I
++
++    goto :goto_0
++
++    :cond_0
++    const/4 p0, 0x0
++
++    :goto_0
++    return p0
++.end method
++
++.method public final calculateCenterContainerMaxWidth()I
++    .locals 1
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getDefaultSidePadding()I
++
++    move-result v0
++
++    mul-int/lit8 v0, v0, 0x2
++
++    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->statusBarWidth:I
++
++    sub-int/2addr p0, v0
++
++    int-to-float p0, p0
++
++    const/high16 v0, 0x40400000    # 3.0f
++
++    div-float/2addr p0, v0
++
++    float-to-int p0, p0
++
++    const/4 v0, 0x0
++
++    invoke-static {p0, v0}, Ljava/lang/Math;->max(II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final calculateLeftContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;)I
++    .locals 3
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    const/4 v1, 0x0
++
++    if-eqz v0, :cond_0
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetLeft()I
++
++    move-result v1
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetRight()I
++
++    move-result v0
++
++    goto :goto_0
++
++    :cond_0
++    move v0, v1
++
++    :goto_0
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->calculateLeftPadding()I
++
++    move-result v2
++
++    sub-int/2addr v2, v1
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->calculateRightPadding()I
++
++    move-result v1
++
++    sub-int/2addr v1, v0
++
++    invoke-virtual {p0, p1, v2, v1}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getLeftContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final calculateLeftPadding()I
++    .locals 3
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v1, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    const/4 v2, 0x0
++
++    if-eqz v1, :cond_0
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetLeft()I
++
++    move-result v0
++
++    goto :goto_0
++
++    :cond_0
++    move v0, v2
++
++    :goto_0
++    invoke-virtual {p0, v2, v0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getSideCutoutPadding(II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final calculateRightContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;)I
++    .locals 3
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    const/4 v1, 0x0
++
++    if-eqz v0, :cond_0
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetLeft()I
++
++    move-result v1
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetRight()I
++
++    move-result v0
++
++    goto :goto_0
++
++    :cond_0
++    move v0, v1
++
++    :goto_0
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->calculateLeftPadding()I
++
++    move-result v2
++
++    sub-int/2addr v2, v1
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->calculateRightPadding()I
++
++    move-result v1
++
++    sub-int/2addr v1, v0
++
++    invoke-virtual {p0, p1, v2, v1}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getRightContainerMaxWidth(Lcom/android/systemui/statusbar/phone/IndicatorGarden;II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final calculateRightPadding()I
++    .locals 3
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget v1, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->statusBarWidth:I
++
++    iget v2, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->cutoutLeft:I
++
++    sub-int/2addr v1, v2
++
++    iget-object v2, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    if-eqz v2, :cond_0
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    invoke-static {v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;)V
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getSafeInsetRight()I
++
++    move-result v0
++
++    goto :goto_0
++
++    :cond_0
++    const/4 v0, 0x0
++
++    :goto_0
++    invoke-virtual {p0, v1, v0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getSideCutoutPadding(II)I
++
++    move-result p0
++
++    return p0
++.end method
++
++.method public final hasCameraTopMargin()Z
++    .locals 2
++
++    invoke-virtual {p0}, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->getHasCutoutForIndicator()Z
++
++    move-result v0
++
++    const/4 v1, 0x0
++
++    if-eqz v0, :cond_1
++
++    iget-object p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget p0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->rotation:I
++
++    const/4 v0, 0x1
++
++    if-nez p0, :cond_0
++
++    move p0, v0
++
++    goto :goto_0
++
++    :cond_0
++    move p0, v1
++
++    :goto_0
++    if-eqz p0, :cond_1
++
++    move v1, v0
++
++    :cond_1
++    return v1
++.end method
++
++.method public final initResources()V
++    .locals 1
++
++    iget-object v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->inputProperties:Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;
++
++    iget-object v0, v0, Lcom/android/systemui/statusbar/phone/IndicatorGardenInputProperties;->displayCutout:Landroid/view/DisplayCutout;
++
++    if-eqz v0, :cond_0
++
++    invoke-virtual {v0}, Landroid/view/DisplayCutout;->getBoundingRectTop()Landroid/graphics/Rect;
++
++    move-result-object v0
++
++    iget v0, v0, Landroid/graphics/Rect;->left:I
++
++    iput v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;->cutoutLeft:I
++
++    :cond_0
++    return-void
++.end method
+diff --git a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenPresenter.smali b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenPresenter.smali
+index e88b45c10a..53b910549d 100644
+--- a/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenPresenter.smali
++++ b/smali_classes3/com/android/systemui/statusbar/phone/IndicatorGardenPresenter.smali
+@@ -71,6 +71,19 @@
+     goto :goto_0
+ 
+     :cond_1
++    iget-object p4, p3, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorCutoutUtil:Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;
++
++    iget-object p5, p4, Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;->cutoutType:Lcom/android/systemui/statusbar/phone/CutoutType;
++
++    sget-object p6, Lcom/android/systemui/statusbar/phone/CutoutType;->RIGHT_CUTOUT:Lcom/android/systemui/statusbar/phone/CutoutType;
++
++    if-ne p5, p6, :cond_2
++
++    iget-object p3, p3, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmRightCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
++    goto :goto_0
++
++    :cond_2
+     iget-object p3, p3, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmNoCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;
+ 
+     :goto_0
+@@ -96,7 +109,7 @@
+ 
+     sget-boolean p3, Lcom/android/systemui/BasicRune;->BASIC_FOLDABLE_TYPE_FOLD:Z
+ 
+-    if-eqz p3, :cond_2
++    if-eqz p3, :cond_3
+ 
+     invoke-virtual {p2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+ 
+@@ -110,7 +123,7 @@
+ 
+     iput p2, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenPresenter;->displayDeviceType:I
+ 
+-    :cond_2
++    :cond_3
+     const-string p2, "IndicatorGardenPresenter"
+ 
+     invoke-virtual {p1, p2, p0}, Lcom/android/systemui/dump/DumpManager;->registerNormalDumpable(Ljava/lang/String;Lcom/android/systemui/Dumpable;)V
+@@ -469,13 +482,13 @@
+ 
+     sget-boolean v0, Lcom/android/systemui/BasicRune;->BASIC_FOLDABLE_TYPE_FOLD:Z
+ 
+-    if-eqz v0, :cond_2
++    if-eqz v0, :cond_3
+ 
+     iget v0, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenPresenter;->displayDeviceType:I
+ 
+     iget p2, p2, Landroid/content/res/Configuration;->semDisplayDeviceType:I
+ 
+-    if-eq v0, p2, :cond_2
++    if-eq v0, p2, :cond_3
+ 
+     iput p2, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenPresenter;->displayDeviceType:I
+ 
+@@ -513,12 +526,25 @@
+     goto :goto_0
+ 
+     :cond_1
++    iget-object v0, p2, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorCutoutUtil:Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;
++
++    iget-object v1, v0, Lcom/android/systemui/statusbar/phone/IndicatorCutoutUtil;->cutoutType:Lcom/android/systemui/statusbar/phone/CutoutType;
++
++    sget-object v2, Lcom/android/systemui/statusbar/phone/CutoutType;->RIGHT_CUTOUT:Lcom/android/systemui/statusbar/phone/CutoutType;
++
++    if-ne v1, v2, :cond_2
++
++    iget-object p2, p2, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmRightCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmRightCutout;
++
++    goto :goto_0
++
++    :cond_2
+     iget-object p2, p2, Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmFactory;->indicatorGardenAlgorithmNoCutout:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithmNoCutout;
+ 
+     :goto_0
+     iput-object p2, p0, Lcom/android/systemui/statusbar/phone/IndicatorGardenPresenter;->gardenAlgorithm:Lcom/android/systemui/statusbar/phone/IndicatorGardenAlgorithm;
+ 
+-    :cond_2
++    :cond_3
+     invoke-virtual {p0, p1}, Lcom/android/systemui/statusbar/phone/IndicatorGardenPresenter;->updateGardenWithNewModel(Lcom/android/systemui/statusbar/phone/IndicatorGarden;)V
+ 
+     return-void
+-- 
+2.43.0
+

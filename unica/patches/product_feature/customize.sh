@@ -215,6 +215,7 @@ if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
         sed -i "s/\"$SOURCE_HFR_MODE\"/\"$TARGET_HFR_MODE\"/g" "$APKTOOL_DIR/$f"
     done
 fi
+
 if [[ "$SOURCE_HFR_SUPPORTED_REFRESH_RATE" != "$TARGET_HFR_SUPPORTED_REFRESH_RATE" ]]; then
     echo "Applying HFR_SUPPORTED_REFRESH_RATE patches"
 
@@ -248,6 +249,11 @@ if [[ "$SOURCE_HFR_DEFAULT_REFRESH_RATE" != "$TARGET_HFR_DEFAULT_REFRESH_RATE" ]
     for f in $FTP; do
         sed -i "s/\"$SOURCE_HFR_DEFAULT_REFRESH_RATE\"/\"$TARGET_HFR_DEFAULT_REFRESH_RATE\"/g" "$APKTOOL_DIR/$f"
     done
+fi
+
+if [[ "$TARGET_DISPLAY_CUTOUT_TYPE" == "right" ]]; then
+    echo "Applying right cutout patch"
+    APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "cutout/SystemUI.apk/0001-Add-right-cutout-support.patch"
 fi
 
 if [[ "$SOURCE_MULTI_MIC_MANAGER_VERSION" != "$TARGET_MULTI_MIC_MANAGER_VERSION" ]]; then
