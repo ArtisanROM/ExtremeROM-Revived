@@ -16,6 +16,8 @@ else
 fi
 DELETE_FROM_WORK_DIR "system" "system/saiv"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE_PATH" "system" "system/saiv" 0 0 755 "u:object_r:system_file:s0"
+DELETE_FROM_WORK_DIR "system" "system/saiv/face"
+ADD_TO_WORK_DIR "$SOURCE_FIRMWARE_PATH" "system" "system/saiv/face" 0 0 755 "u:object_r:system_file:s0"
 DELETE_FROM_WORK_DIR "system" "system/saiv/textrecognition"
 ADD_TO_WORK_DIR "$SOURCE_FIRMWARE_PATH" "system" "system/saiv/textrecognition" 0 0 755 "u:object_r:system_file:s0"
 
