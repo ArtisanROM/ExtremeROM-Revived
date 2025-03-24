@@ -3,7 +3,7 @@ TARGET_FIRMWARE_PATH="$FW_DIR/$(echo -n "$TARGET_FIRMWARE" | sed 's./._.g' | rev
 
 # Set build ID
 VALUE="$(GET_PROP "ro.build.display.id" "$WORK_DIR/system/system/build.prop")" 
-SET_PROP "ro.build.display.id" "ExtremeROM Nexus-$TARGET_CODENAME ($VALUE)" "$WORK_DIR/system/system/build.prop"
+SET_PROP "ro.build.display.id" "ExtremeROM Nexus - $TARGET_CODENAME ($VALUE)" "$WORK_DIR/system/system/build.prop"
 
 # Fix portrait mode
 if [[ -f "$TARGET_FIRMWARE_PATH/vendor/lib64/libDualCamBokehCapture.camera.samsung.so" ]]; then
