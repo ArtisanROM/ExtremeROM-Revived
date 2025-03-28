@@ -1,9 +1,13 @@
+local NO_APEX=false
+
 if [[ "$SOURCE_VNDK_VERSION" != "$TARGET_VNDK_VERSION" ]]; then
     if $TARGET_HAS_SYSTEM_EXT; then
         SYS_EXT_DIR="$WORK_DIR/system_ext"
     else
         SYS_EXT_DIR="$WORK_DIR/system/system/system_ext"
     fi
+
+    [ ! -d "$SYS_EXT_DIR/apex" ] && NO_APEX=true
 
     if [ ! -f "$SYS_EXT_DIR/apex/com.android.vndk.v$TARGET_VNDK_VERSION.apex" ]; then
         DELETE_FROM_WORK_DIR "system_ext" "apex/com.android.vndk.v$SOURCE_VNDK_VERSION.apex"
@@ -18,7 +22,15 @@ if [[ "$SOURCE_VNDK_VERSION" != "$TARGET_VNDK_VERSION" ]]; then
                 ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/dm3qxxx" "system_ext" "apex/com.android.vndk.v33.apex" 0 0 644 "u:object_r:system_file:s0"
                 ;;
         esac
-        sed -i "s/version>$SOURCE_VNDK_VERSION/version>$TARGET_VNDK_VERSION/g" "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+        if $NO_APEX; then
+            sed -i '$d' "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+            echo "    <vendor-ndk>" >> "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+            echo "        <version>$TARGET_VNDK_VERSION</version>" >> "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+            echo "    </vendor-ndk>" >> "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+            echo "</manifest>" >> "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+        else
+            sed -i "s/version>$SOURCE_VNDK_VERSION/version>$TARGET_VNDK_VERSION/g" "$SYS_EXT_DIR/etc/vintf/manifest.xml"
+        fi
     else
         echo "VNDK v$TARGET_VNDK_VERSION apex is already in place. Ignoring"
     fi
