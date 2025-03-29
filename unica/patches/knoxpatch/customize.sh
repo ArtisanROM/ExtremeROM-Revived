@@ -22,8 +22,8 @@ DELETE_FROM_WORK_DIR "system" "system/etc/public.libraries-wsm.samsung.txt"
 DELETE_FROM_WORK_DIR "system" "system/lib64/libhal.wsm.samsung.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.security.wsm.service-V1-ndk.so"
 
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/priv-app/KnoxGuard"
-REMOVE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/privapp-permissions-com.samsung.android.kgclient.xml"
+DELETE_FROM_WORK_DIR "$WORK_DIR/system/system/priv-app/KnoxGuard"
+DELETE_FROM_WORK_DIR "$WORK_DIR/system/system/etc/permissions/privapp-permissions-com.samsung.android.kgclient.xml"
 
 if [ -f "$WORK_DIR/system/system/priv-app/KmxService/KmxService.apk" ]; then
     APPLY_PATCH "system/priv-app/KmxService/KmxService.apk" "kmx/KmxService.apk/0001-Nuke-ROT-IntegrityStatus-check.patch"
