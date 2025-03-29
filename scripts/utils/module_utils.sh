@@ -457,9 +457,9 @@ GET_GALAXY_STORE_DOWNLOAD_URL()
     local OUT
 
     # Galaxy S23 Ultra EUR_OPENX, EUX CSC
-    DEVICES+=("deviceId=SM-S918B&mcc=262&mnc=01&csc=EUX")
-    # Galaxy S23 Ultra CHN_OPENX, CHC CSC
-    DEVICES+=("deviceId=SM-S9180&mcc=460&mnc=00&csc=CHC")
+    DEVICES+=("deviceId=SM-S928B&mcc=262&mnc=01&csc=EUX")
+    # Galaxy S25 Ultra CHN_OPENX, CHC CSC
+    DEVICES+=("deviceId=SM-S9380&mcc=460&mnc=00&csc=CHC")
 
     OS="sdkVer="
     OS+="$(GET_PROP "system" "ro.build.version.sdk")"
