@@ -2,18 +2,6 @@ SOURCE_FIRMWARE_PATH="$FW_DIR/$(echo -n "$SOURCE_FIRMWARE" | sed 's./._.g' | rev
 TARGET_FIRMWARE_PATH="$FW_DIR/$(echo -n "$TARGET_FIRMWARE" | sed 's./._.g' | rev | cut -d "_" -f2- | rev)"
 
 echo "Replacing saiv blobs with stock"
-if [ -d "$TARGET_FIRMWARE_PATH/system/system/etc/saiv" ]; then
-    BLOBS_LIST="
-    system/etc/saiv/image_understanding/db/aic_classifier/aic_classifier_cnn.info
-    system/etc/saiv/image_understanding/db/aic_detector/aic_detector_cnn.info
-    "
-    for blob in $BLOBS_LIST
-    do
-        ADD_TO_WORK_DIR "$TARGET_FIRMWARE_PATH" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
-    done
-else
-    DELETE_FROM_WORK_DIR "system" "system/etc/saiv"
-fi
 DELETE_FROM_WORK_DIR "system" "system/saiv"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE_PATH" "system" "system/saiv" 0 0 755 "u:object_r:system_file:s0"
 DELETE_FROM_WORK_DIR "system" "system/saiv/face"
