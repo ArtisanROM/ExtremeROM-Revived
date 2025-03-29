@@ -19,8 +19,6 @@ APPLY_PATCH()
 # ]
 
 DELETE_FROM_WORK_DIR "system" "system/etc/public.libraries-wsm.samsung.txt"
-DELETE_FROM_WORK_DIR "system" "system/lib/libhal.wsm.samsung.so"
-DELETE_FROM_WORK_DIR "system" "system/lib/vendor.samsung.hardware.security.wsm.service-V1-ndk.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/libhal.wsm.samsung.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.security.wsm.service-V1-ndk.so"
 
