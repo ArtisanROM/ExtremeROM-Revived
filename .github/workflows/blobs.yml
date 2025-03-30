@@ -17,8 +17,6 @@ jobs:
             path: "prebuilts/samsung/pa3qzcx"
           - module: "Galaxy A73 5G (a73xqxx)"
             path: "prebuilts/samsung/a73xqxx"
-          - module: "Galaxy S23 Ultra (dm3qxxx)"
-            path: "prebuilts/samsung/dm3qxxx"
           - module: "Galaxy S22 (r0qxxx)"
             path: "prebuilts/samsung/r0qxxx"
 
