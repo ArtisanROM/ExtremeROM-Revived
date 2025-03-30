@@ -69,7 +69,7 @@
 /system/lib/com\.android\.media\.audio-aconfig-cc\.so u:object_r:system_lib_file:s0
 /system/lib/com\.android\.media\.audioclient-aconfig-cc\.so u:object_r:system_lib_file:s0
 /system/lib/com\.android\.media\.audioserver-aconfig-cc\.so u:object_r:system_lib_file:s0
-/system/lib/effect-aidl-cpp\.so u:objec t_r:system_lib_file:s0
+/system/lib/effect-aidl-cpp\.so u:object_r:system_lib_file:s0
 /system/lib/framework-permission-aidl-cpp\.so u:object_r:system_lib_file:s0
 /system/lib/graphicbuffersource-aidl-ndk\.so u:object_r:system_lib_file:s0
 /system/lib/lib-platform-compat-native-api\.so u:object_r:system_lib_file:s0
