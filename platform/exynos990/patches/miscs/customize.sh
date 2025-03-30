@@ -8,6 +8,7 @@ echo "Setting casefold props"
 SET_PROP "vendor" "external_storage.projid.enabled" "1"
 SET_PROP "vendor" "external_storage.casefold.enabled" "1"
 SET_PROP "vendor" "external_storage.sdcardfs.enabled" "0"
+SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
 
 echo "Disabling encryption"
 # Encryption
