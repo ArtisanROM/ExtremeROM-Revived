@@ -147,7 +147,6 @@ media
 preload
 priv-app
 sipdb/Xt9
-sipdb/SwiftKey
 sipdb/SwiftKey/ar
 sipdb/SwiftKey/as
 sipdb/SwiftKey/az
