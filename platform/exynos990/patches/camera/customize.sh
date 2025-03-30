@@ -55,6 +55,9 @@ do
     ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
+# Workaround
+echo "/system/lib64/libc\+\+\_shared.so u:object_r:system_lib_file:s0" >> "$WORK_DIR/configs/file_context-system"
+
 BLOBS_LIST="
 system/lib64/libeden_wrapper_system.so
 system/lib64/libhigh_dynamic_range.arcsoft.so
