@@ -63,6 +63,7 @@ GEN_CONFIG_FILE()
         echo "SOURCE_VNDK_VERSION=\"${SOURCE_VNDK_VERSION:?}\""
         echo "TARGET_NAME=\"${TARGET_NAME:?}\""
         echo "TARGET_CODENAME=\"${TARGET_CODENAME:?}\""
+        echo "TARGET_PLATFORM=\"${TARGET_PLATFORM:?}\""
         if [ "${#TARGET_ASSERT_MODEL[@]}" -ge 1 ]; then
             echo "TARGET_ASSERT_MODEL=\"$( IFS=:; printf '%s' "${TARGET_ASSERT_MODEL[*]}" )\""
         else
