@@ -52,6 +52,7 @@
 /system/lib64/android\.hardware\.graphics\.extension\.composer3-V1-ndk\.so u:object_r:system_lib_file:s0
 /system/lib64/libandroid_runtime\.so u:object_r:system_lib_file:s0
 /system/lib64/libandroid_runtime_lazy\.so u:object_r:system_lib_file:s0
+/system/lib64/libc\+\+_shared\.so u:object_r:system_lib_file:s0
 /system/lib64/libeden_nn_on_system\.so u:object_r:system_lib_file:s0
 /system/lib64/libeden_rt_stub\.edensdk\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib64/libnfc-sec\.so u:object_r:system_lib_file:s0
@@ -75,12 +76,18 @@
 /system/lib64/libstagefright_hdcp\.so u:object_r:system_lib_file:s0
 /system/lib64/libSurfaceFlingerProp\.so u:object_r:system_lib_file:s0
 /system/lib64/libteecl_aidl\.so u:object_r:system_lib_file:s0
+/system/lib64/libtensorflowLite\.camera\.samsung\.so u:object_r:system_lib_file:s0
+/system/lib64/libtensorflowlite_c\.camera\.samsung\.so u:object_r:system_lib_file:s0
+/system/lib64/libtensorflowlite_inference_api\.camera\.samsung\.so u:object_r:system_lib_file:s0
+/system/lib64/libtensorflowlite_jni_voicecommand\.camera\.samsung\.so u:object_r:system_lib_file:s0
+/system/lib64/libtensorflowLite2_11_0_dynamic_camera\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_blockchain_comm\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_blockchain_direct_comm\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_blockchain_keystore\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_payment_comm\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_payment_direct_comm\.so u:object_r:system_lib_file:s0
 /system/lib64/libtlc_payment_spay\.so u:object_r:system_lib_file:s0
+/system/lib64/libsaiv_HprFace_cmh_support_jni\.camera\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib64/vendor\.samsung_slsi\.hardware\.ExynosHWCServiceTW@1\.0\.so u:object_r:system_lib_file:s0
 /system/lib64/vendor\.samsung_slsi\.hardware\.eden_runtime@1\.0\.so u:object_r:system_lib_file:s0
 /system/lib64/vendor\.samsung\.hardware\.tlc\.blockchain@1\.0\.so u:object_r:system_lib_file:s0
