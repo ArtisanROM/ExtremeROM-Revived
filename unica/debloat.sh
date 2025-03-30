@@ -68,9 +68,6 @@ priv-app/SearchSelector
 "
 
 SYSTEM_DEBLOAT+="
-system/app/DRParser
-system/app/HMT
-system/app/FactoryAirCommandManager
 system/app/FBAppManager_NS
 system/app/PlayAutoInstallConfig
 system/app/SamsungPassAutofill_v1
@@ -99,7 +96,6 @@ system/etc/init/samsung_pass_authenticator_service.rc
 system/etc/permissions/privapp-permissions-com.microsoft.skydrive.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.authfw.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.dkey.xml
-system/etc/permissions/privapp-permissions-com.samsung.android.providers.factory.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.samsungpass.xml
 system/etc/permissions/privapp-permissions-com.samsung.android.spayfw.xml
 system/etc/permissions/privapp-permissions-com.sec.android.diagmonagent.xml
@@ -123,14 +119,11 @@ system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
 system/priv-app/SamsungBilling
 system/priv-app/BCService
-system/priv-app/DeviceKeystring
 system/priv-app/DiagMonAgent94
 system/priv-app/DigitalKey
 system/priv-app/FBInstaller_NS
 system/priv-app/FBServices
-system/priv-app/FactoryTestProvider
 system/priv-app/FotaAgent
-system/priv-app/ModemServiceMode
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5
 system/priv-app/PaymentFramework
