@@ -4,6 +4,9 @@ TARGET_FIRMWARE_PATH="$FW_DIR/$(echo -n "$TARGET_FIRMWARE" | sed 's./._.g' | rev
 VALUE="$(GET_PROP "$WORK_DIR/system/system/build.prop" "ro.build.display.id")"
 SET_PROP "system" "ro.build.display.id" "ExtremeROM $ROM_CODENAME $ROM_VERSION - $TARGET_CODENAME ($VALUE)"
 
+# Disable FRP
+SET_PROP "vendor" "ro.frp.pst" ""
+
 # Fix portrait mode
 if [[ -f "$TARGET_FIRMWARE_PATH/vendor/lib64/libDualCamBokehCapture.camera.samsung.so" ]]; then
     if grep -q "ro.build.flavor" "$TARGET_FIRMWARE_PATH/vendor/lib64/libDualCamBokehCapture.camera.samsung.so"; then
