@@ -1,3 +1,6 @@
+echo "Disabling A/B"
+SET_PROP "product" "ro.product.ab_ota_partitions" --delete
+
 echo "Fix MIDAS model detection"
 sed -i "s/ro.product.device/ro.product.vendor.device/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
 
