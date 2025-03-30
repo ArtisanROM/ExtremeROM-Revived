@@ -2,8 +2,6 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     echo "Target device with 32-Bit HALs detected! Patching..."
 
     ADD_TO_WORK_DIR "dm3qxxx" "system" "system/lib" 0 0 644 "u:object_r:system_file:s0"
-    # Workaround
-    echo "/system/lib/libc\+\+\.so u:object_r:system_lib_file:s0" >> "$WORK_DIR/configs/file_context-system"
 
     BLOBS_LIST="
     system/apex/com.android.i18n.apex
