@@ -66,6 +66,7 @@ SEC_FLOATING_FEATURE_CAMERA_CONFIG_SDK_FEATURE_INFO=version2,super_night,preview
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_UW_DISTORTION_CORRECTION=0,119,2,18010101,4608,3456,0,0,0,0
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_VENDOR_LIB_INFO=beauty.samsung.v4,human_tracking.arcsoft.v2_1,face_landmark.arcsoft.v2_1,facial_attribute.samsung.v1,smart_scan.samsung.v2,selfie_correction.samsung.v1,swuwdc.arcsoft.v1,hifills.mpi.v1,scene_detection.samsung.v1,event_detection.samsung.v2,single_bokeh.samsung.v2,dual_bokeh.samsung.v1,human_segmentation.samsung.v2,super_night.mpi.v2,mfhdr.mpi.v1,llhdr.mpi.v1,food.samsung.v1,localtm.samsung.v1_1,image_codec.samsung.v1,star_effect.samsung.v1
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_WIDE_DISTORTION_CORRECTION=0,0,0,0,0,0,0,0,0,0
+SEC_FLOATING_FEATURE_CAMERA_CONFIG_MOTIONPHOTO_CAPTURE_MODE=[[3,1]]
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_30FPS_ALL_PORTRAITVIDEO=
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_4K_PORTRAITVIDEO=
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_AIFRC=

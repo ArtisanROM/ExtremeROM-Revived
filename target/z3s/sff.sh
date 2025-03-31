@@ -42,7 +42,7 @@ SEC_FLOATING_FEATURE_LCD_CONFIG_HFR_DEFAULT_REFRESH_RATE=120
 SEC_FLOATING_FEATURE_LCD_CONFIG_HFR_MODE=1
 SEC_FLOATING_FEATURE_LCD_CONFIG_HFR_SUPPORTED_REFRESH_RATE=60,96,48,120
 SEC_FLOATING_FEATURE_LCD_SUPPORT_EXTRA_BRIGHTNESS=
-SEC_FLOATING_FEATURE_LOCKSCREEN_CONFIG_PUNCHHOLE_VI=face,pos:0.862:0.0286,size:0.2084:0.0571,type:b2
+SEC_FLOATING_FEATURE_LOCKSCREEN_CONFIG_PUNCHHOLE_VI=face,pos:0.5:0.0204,size:0.0833:0.0375,type:circle
 
 # Device
 SEC_FLOATING_FEATURE_SETTINGS_CONFIG_ELECTRIC_RATED_VALUE=DC 10 V; 4.5 A
@@ -63,6 +63,8 @@ SEC_FLOATING_FEATURE_CAMERA_CONFIG_SDK_FEATURE_INFO=version2,super_night,preview
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_UW_DISTORTION_CORRECTION=0,109,2,19010101,0,0,0,0,48,0
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_VENDOR_LIB_INFO=beauty.samsung.v4,food.samsung.v1,mfhdr.arcsoft.v4,image_enhance.arcsoft.v1,llhdr.arcsoft.v4,dual_bokeh.samsung.v1_1,super_night.mpi.v2,super_resolution.arcsoft.v2_1,super_resolution_raw.arcsoft.v1,scene_detection.samsung.v1,face_landmark.arcsoft.v2_1,facial_attribute.samsung.v1,smart_scan.samsung.v2,single_bokeh.samsung.v2,high_res.arcsoft.v1,sshdr.arcsoft.v1,selfie_correction.samsung.v1,event_detection.samsung.v2,swuwdc.arcsoft.v1,uw_super_resolution.arcsoft.v1,facial_restoration.arcsoft.v1,human_tracking_hand.arcsoft.v4,fr_tracking.arcsoft.v1,localtm.samsung.v1_1,star_effect.samsung.v1,image_codec.samsung.v1
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_WIDE_DISTORTION_CORRECTION=0,0,0,0,0,0,0,0,0,0
+SEC_FLOATING_FEATURE_CAMERA_CONFIG_HIGH_RESOLUTION_MAX_CAPTURE=1000
+SEC_FLOATING_FEATURE_CAMERA_CONFIG_MOTIONPHOTO_CAPTURE_MODE=[[3,1]]
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_30FPS_ALL_PORTRAITVIDEO=
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_4K_PORTRAITVIDEO=
 SEC_FLOATING_FEATURE_CAMERA_SUPPORT_AIFRC=
