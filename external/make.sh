@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# shellcheck disable=SC1007,SC2164,SC2181,SC2291
+# shellcheck disable=SC1007,SC2164,SC2291
 
 # [
 # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/envsetup.sh#18
