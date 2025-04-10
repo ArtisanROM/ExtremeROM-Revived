@@ -11,12 +11,16 @@ if [ "$TARGET_ESE_CHIP_VENDOR" = "SLSI" ]; then
     system/lib64/libnfc-nci_flags.so
     system/lib64/libnfc-sec.so
     system/lib64/libstatslog_nfc.so
-    system/priv-app/NfcNci/lib/arm64/libnfc_sec_jni.so
     "
     for blob in $BLOBS_LIST
     do
         ADD_TO_WORK_DIR "e2sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
     done
+
+    # Create libnfc_sec_jni symlink
+    ln -sf "/system/lib64/libnfc_sec_jni.so" "$WORK_DIR/system/system/priv-app/NfcNci/lib/arm64/libnfc_sec_jni.so"
+    SET_METADATA "system" "system/priv-app/NfcNci/lib/arm64/libnfc_sec_jni.so" 0 0 644 "u:object_r:system_file:s0"
+
 else
     echo "NXP NFC found. Ignoring."
 fi
