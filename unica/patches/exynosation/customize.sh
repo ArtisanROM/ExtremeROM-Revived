@@ -222,6 +222,10 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     ADD_TO_WORK_DIR "e2sxxx" "system_ext" "etc/selinux" 0 0 644 "u:object_r:system_file:s0"
     ADD_TO_WORK_DIR "e2sxxx" "odm" "etc/selinux" 0 0 644 "u:object_r:system_file:s0"
 
+    # Create TEEgrisTUIService symlink
+    ln -sf "/system/lib64/libtui_service_jni.so" "$WORK_DIR/system/system/app/TEEgrisTuiService/TEEgrisTuiService/lib/arm64/libtui_service_jni.so"
+    SET_METADATA "system" "system/app/TEEgrisTuiService/TEEgrisTuiService/lib/arm64/libtui_service_jni.so" 0 0 644 "u:object_r:system_file:s0"
+
     # Remove Qualcomm Props
     SET_PROP "system" "rild.libpath" --delete
     SET_PROP "system" "ril.subscription.types" --delete
