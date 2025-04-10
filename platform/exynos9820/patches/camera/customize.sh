@@ -34,6 +34,9 @@ do
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
+# Patch libstagefright.so to remove HDR10+ check
+HEX_PATCH "$WORK_DIR/system/system/lib64/libstagefright.so" "010140f9cf390594a0500034" "010140f91f2003d51f2003d5"
+
 # Add prebuilt libs from other devices
 BLOBS_LIST="
 system/lib64/libtensorflowLite.camera.samsung.so
