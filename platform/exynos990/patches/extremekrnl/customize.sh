@@ -1,5 +1,5 @@
 # [
-KERNELSU_ZIP="https://github.com/ExtremeXT/990_upstream_v2/releases/download/v0.5/ExtremeKRNL-Nexus-${TARGET_CODENAME}.zip"
+EXTREMEKRNL_REPO="https://github.com/ExtremeXT/990_upstream_v2/releases/download/latest"
 KERNELSU_MANAGER_APK="https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v1.0.5/KernelSU_Next_v1.0.5_12430-release.apk"
 
 REPLACE_KERNEL_BINARIES()
@@ -7,14 +7,30 @@ REPLACE_KERNEL_BINARIES()
     [ -d "$TMP_DIR" ] && rm -rf "$TMP_DIR"
     mkdir -p "$TMP_DIR"
 
-    echo "Downloading $(basename "$KERNELSU_ZIP")"
-    curl -L -s -o "$TMP_DIR/krnl.zip" "$KERNELSU_ZIP"
+    ZIP_LINK="$EXTREMEKRNL_REPO/ExtremeKRNL-Nexus-${TARGET_CODENAME}.zip"
+    echo "Downloading $(basename "$ZIP_LINK")"
+    curl -L -s -o "$TMP_DIR/krnl.zip" "$ZIP_LINK"
 
     echo "Extracting kernel binaries"
     rm -f "$WORK_DIR/kernel/"*.img
     unzip -q -j "$TMP_DIR/krnl.zip" \
         "files/boot.img" "files/dtbo.img" \
         -d "$WORK_DIR/kernel"
+
+    if [[ "$TARGET_CODENAME" != "r8s" && "$TARGET_CODENAME" != "z3s" ]]; then
+        ZIP_LINK="$EXTREMEKRNL_REPO/ExtremeKRNL-Nexus-${TARGET_CODENAME}lte.zip"
+        echo "Downloading $(basename "$ZIP_LINK")"
+        curl -L -s -o "$TMP_DIR/krnl_lte.zip" "$ZIP_LINK"
+
+        echo "Extracting kernel binaries"
+        mkdir "$WORK_DIR/kernel/temp"
+        unzip -q -j "$TMP_DIR/krnl_lte.zip" \
+            "files/boot.img" "files/dtbo.img" \
+            -d "$WORK_DIR/kernel/temp"
+        mv "$WORK_DIR/kernel/temp/boot.img" "$WORK_DIR/kernel/boot_lte.img"
+        mv "$WORK_DIR/kernel/temp/dtbo.img" "$WORK_DIR/kernel/dtbo_lte.img"
+        rm -rf "$WORK_DIR/kernel/temp"
+    fi
 
     rm -rf "$TMP_DIR"
 }
