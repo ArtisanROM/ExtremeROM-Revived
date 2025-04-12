@@ -10,6 +10,12 @@ vendor/etc/init 0 2000 755
 vendor/etc/init/init.vendor.rilcommon.rc 0 0 644
 vendor/etc/init/vendor.samsung.hardware.biometrics.face@3.0-service.rc 0 0 644
 vendor/etc/init/vendor.samsung.hardware.vibrator-default.rc 0 0 644
+vendor/etc/manifest 0 2000 755
+vendor/etc/vintf/manifest 0 2000 755
+vendor/etc/vintf/manifest/vendor.samsung.hardware.radio.exclude.slsi.xml 0 0 644
+vendor/etc/vintf/manifest/vendor.samsung.hardware.radio_manifest_2_30.xml 0 0 644
+vendor/etc/vintf/manifest/vendor.samsung.hardware.sehradio_manifest_2_30.xml 0 0 644
+vendor/etc/vintf/manifest/vendor.samsung.hardware.vibrator-default.xml 0 0 644
 vendor/etc/mtu-conf.xml 0 0 644
 vendor/etc/pdpcnt-conf.xml 0 0 644
 vendor/lib64 0 2000 755
