@@ -16,4 +16,9 @@ do
     DELETE_FROM_WORK_DIR "vendor" "$blob"
 done
 
-ADD_TO_WORK_DIR "p3sxxx" "vendor" "." 0 2000 755 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "p3sxxx" "vendor" "."
+
+# B6Q Light HAL
+if [[ "$TARGET_CODENAME" != "r8s" ]]; then
+    ADD_TO_WORK_DIR "b6qxxx" "vendor" "."
+fi

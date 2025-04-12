@@ -1,0 +1,7 @@
+/ 0 2000 755
+vendor/bin 0 2000 751
+vendor/bin/hw 0 2000 751
+vendor/bin/hw/vendor.samsung.hardware.light-service 0 2000 0755
+vendor/lib64 0 2000 755
+vendor/lib64/android.hardware.light-V2-ndk.so 0 0 0644
+vendor/lib64/vendor.samsung.hardware.light-V2-ndk.so 0 0 0644
