@@ -45,7 +45,7 @@ EXTRACT_KERNEL_BINARIES()
     local PDR
     PDR="$(pwd)"
 
-    local FILES="boot.img.lz4 dtbo.img.lz4 init_boot.img.lz4 vendor_boot.img.lz4"
+    local FILES="boot.img.lz4 dtb.img.lz4 dtbo.img.lz4 init_boot.img.lz4 vendor_boot.img.lz4"
 
     echo "- Extracting kernel binaries..."
     cd "$FW_DIR/${MODEL}_${REGION}"

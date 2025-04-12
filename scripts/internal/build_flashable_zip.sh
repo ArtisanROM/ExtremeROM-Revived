@@ -251,6 +251,7 @@ GENERATE_UPDATER_SCRIPT()
     local SCRIPT_FILE="$TMP_DIR/META-INF/com/google/android/updater-script"
     local PARTITION_COUNT=0
     local HAS_BOOT=false
+    local HAS_DTB=false
     local HAS_DTBO=false
     local HAS_INIT_BOOT=false
     local HAS_VENDOR_BOOT=false
@@ -268,6 +269,7 @@ GENERATE_UPDATER_SCRIPT()
     local HAS_POST_INSTALL=false
 
     [ -f "$TMP_DIR/boot.img" ] && HAS_BOOT=true
+    [ -f "$TMP_DIR/dtb.img" ] && HAS_DTB=true
     [ -f "$TMP_DIR/dtbo.img" ] && HAS_DTBO=true
     [ -f "$TMP_DIR/init_boot.img" ] && HAS_INIT_BOOT=true
     [ -f "$TMP_DIR/vendor_boot.img" ] && HAS_VENDOR_BOOT=true
@@ -465,6 +467,12 @@ GENERATE_UPDATER_SCRIPT()
             echo -e "\n# --- End patching dynamic partitions ---\n"
         else
             echo -e "\n"
+        fi
+        if $HAS_DTB; then
+            echo    'ui_print("Full Patching dtb.img img...");'
+            echo -n 'package_extract_file("dtb.img", "'
+            echo -n "$TARGET_BOOT_DEVICE_PATH"
+            echo    '/dtb");'
         fi
         if $HAS_DTBO; then
             echo    'ui_print("Full Patching dtbo.img img...");'

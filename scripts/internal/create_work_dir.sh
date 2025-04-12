@@ -126,7 +126,7 @@ COPY_TARGET_KERNEL()
 
     mkdir -p "$WORK_DIR/kernel"
 
-    local COMMON_KERNEL_BINS="boot.img dtbo.img init_boot.img vendor_boot.img"
+    local COMMON_KERNEL_BINS="boot.img dtb.img dtbo.img init_boot.img vendor_boot.img"
     for i in $COMMON_KERNEL_BINS; do
         [ ! -f "$FW_DIR/${MODEL}_${REGION}/$i" ] && continue
         cp -a --preserve=all "$FW_DIR/${MODEL}_${REGION}/$i" "$WORK_DIR/kernel/$i"

@@ -14,7 +14,7 @@ REPLACE_KERNEL_BINARIES()
     echo "Extracting kernel binaries"
     rm -f "$WORK_DIR/kernel/"*.img
     unzip -q -j "$TMP_DIR/krnl.zip" \
-        "files/boot.img" "files/dtbo.img" \
+        "files/boot.img" "files/dtbo.img" "files/dtb.img" \
         -d "$WORK_DIR/kernel"
 
     rm -rf "$TMP_DIR"
