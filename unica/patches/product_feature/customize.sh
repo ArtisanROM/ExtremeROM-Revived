@@ -174,16 +174,11 @@ else
 fi
 
 if $SOURCE_HAS_QHD_DISPLAY; then
-    ! if $TARGET_HAS_QHD_DISPLAY; then
+    if ! $TARGET_HAS_QHD_DISPLAY; then
         echo "Applying multi resolution patches"
-        ADD_TO_WORK_DIR "$SRC_DIR/prebuilts/e1sxxx" "system" "."
+        ADD_TO_WORK_DIR "e1sxxx" "system" "."
         #APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Enable-dynamic-resolution-control.patch"
         #APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Enable-dynamic-resolution-control.patch"
-    fi
-else
-    if ! $TARGET_HAS_QHD_DISPLAY; then
-        # TODO: won't be necessary anyway
-        true    
     fi
 fi
 
@@ -259,7 +254,7 @@ if [[ "$SOURCE_MULTI_MIC_MANAGER_VERSION" != "$TARGET_MULTI_MIC_MANAGER_VERSION"
     DECODE_APK "system/framework/framework.jar"
 
     FTP="
-    system/framework/framework.jar/smali_classes6/com/samsung/android/camera/mic/SemMultiMicManager.smali
+    system/framework/framework.jar/smali_classes5/com/samsung/android/camera/mic/SemMultiMicManager.smali
     "
     for f in $FTP; do
         sed -i "s/$SOURCE_MULTI_MIC_MANAGER_VERSION/$TARGET_MULTI_MIC_MANAGER_VERSION/g" "$APKTOOL_DIR/$f"
