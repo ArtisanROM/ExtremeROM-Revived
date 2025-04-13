@@ -7,6 +7,10 @@ SET_PROP "system" "ro.build.display.id" "ExtremeROM $ROM_CODENAME $ROM_VERSION -
 # Disable FRP
 SET_PROP "vendor" "ro.frp.pst" ""
 
+# Set Edge Lighting model
+MODEL=$(echo "$TARGET_FIRMWARE" | sed -E 's/^([^/]+)\/.*/\1/')
+SET_PROP "system" "ro.factory.model" "$MODEL"
+
 # Fix portrait mode
 if [[ -f "$TARGET_FIRMWARE_PATH/vendor/lib64/libDualCamBokehCapture.camera.samsung.so" ]]; then
     if grep -q "ro.build.flavor" "$TARGET_FIRMWARE_PATH/vendor/lib64/libDualCamBokehCapture.camera.samsung.so"; then
