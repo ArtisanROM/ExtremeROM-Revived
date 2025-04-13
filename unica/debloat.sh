@@ -114,7 +114,6 @@ system/preload/Facebook_stub_preload
 system/priv-app/AuthFramework
 system/priv-app/AREmojiEditor
 system/priv-app/AREmoji
-system/priv-app/SamsungSmartSuggestions
 system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
 system/priv-app/SamsungBilling
