@@ -138,6 +138,7 @@
 /system/lib/libhidlmemory\.so u:object_r:system_lib_file:s0
 /system/lib/libimageconverter\.so u:object_r:system_lib_file:s0
 /system/lib/libion\.so u:object_r:system_lib_file:s0
+/system/lib/libinput\.so u:object_r:system_lib_file:s0
 /system/lib/libknox_remotedesktopclient\.knox\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib/liblog\.so u:object_r:system_lib_file:s0
 /system/lib/liblzma\.so u:object_r:system_lib_file:s0
@@ -165,6 +166,7 @@
 /system/lib/libmediasndk\.so u:object_r:system_lib_file:s0
 /system/lib/libmediautils\.so u:object_r:system_lib_file:s0
 /system/lib/libmediautils_delayed\.so u:object_r:system_lib_file:s0
+/system/lib/libmemunreachable\.so u:object_r:system_lib_file:s0
 /system/lib/libnativebridge_lazy\.so u:object_r:system_lib_file:s0
 /system/lib/libnativeloader_lazy\.so u:object_r:system_lib_file:s0
 /system/lib/libnativewindow\.so u:object_r:system_lib_file:s0
@@ -174,6 +176,9 @@
 /system/lib/libprocessgroup\.so u:object_r:system_lib_file:s0
 /system/lib/libprocinfo\.so u:object_r:system_lib_file:s0
 /system/lib/libprotobuf-cpp-lite\.so u:object_r:system_lib_file:s0
+/system/lib/libpcre2\.so u:object_r:system_lib_file:s0
+/system/lib/libpackagelistparser\.so u:object_r:system_lib_file:s0
+/system/lib/libPlatformProperties\.so u:object_r:system_lib_file:s0
 /system/lib/libremotedisplay\.so u:object_r:system_lib_file:s0
 /system/lib/libruntimeproperty\.so u:object_r:system_lib_file:s0
 /system/lib/libsavscmn\.so u:object_r:system_lib_file:s0
@@ -185,6 +190,9 @@
 /system/lib/libsecrecorder_jni\.so u:object_r:system_lib_file:s0
 /system/lib/libsefinfoutils\.so u:object_r:system_lib_file:s0
 /system/lib/libsextractorcmn\.so u:object_r:system_lib_file:s0
+/system/lib/libselinux\.so u:object_r:system_lib_file:s0
+/system/lib/libselinux_ext\.so u:object_r:system_lib_file:s0
+/system/lib/libsfextcp\.so u:object_r:system_lib_file:s0
 /system/lib/libsfplugin_ccodec\.so u:object_r:system_lib_file:s0
 /system/lib/libsfplugin_ccodec_utils\.so u:object_r:system_lib_file:s0
 /system/lib/libshmemcompat\.so u:object_r:system_lib_file:s0
@@ -208,12 +216,15 @@
 /system/lib/libstats_media_metrics\.so u:object_r:system_lib_file:s0
 /system/lib/libsync\.so u:object_r:system_lib_file:s0
 /system/lib/libtimestamphelper\.so u:object_r:system_lib_file:s0
+/system/lib/libtinyxml2\.so u:object_r:system_lib_file:s0
 /system/lib/libui\.so u:object_r:system_lib_file:s0
 /system/lib/libunwindstack\.so u:object_r:system_lib_file:s0
 /system/lib/libutils\.so u:object_r:system_lib_file:s0
 /system/lib/libutilscallstack\.so u:object_r:system_lib_file:s0
 /system/lib/libvndksupport\.so u:object_r:system_lib_file:s0
 /system/lib/libvulkan\.so u:object_r:system_lib_file:s0
+/system/lib/libvintf\.so u:object_r:system_lib_file:s0
+/system/lib/libvintf_jni\.so u:object_r:system_lib_file:s0
 /system/lib/libz\.so u:object_r:system_lib_file:s0
 /system/lib/libziparchive\.so u:object_r:system_lib_file:s0
 /system/lib/mediametricsservice-aidl-cpp\.so u:object_r:system_lib_file:s0
