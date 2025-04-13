@@ -1,5 +1,0 @@
-echo "Enabling Adaptive Refresh Rate"
-SET_PROP "vendor" "ro.surface_flinger.use_content_detection_for_refresh_rate" "true"
-SET_PROP "vendor" "ro.surface_flinger.set_idle_timer_ms" "250"
-SET_PROP "vendor" "ro.surface_flinger.set_touch_timer_ms" "300"
-SET_PROP "vendor" "ro.surface_flinger.set_display_power_timer_ms" "200"
