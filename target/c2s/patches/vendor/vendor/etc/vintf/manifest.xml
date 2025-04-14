@@ -235,12 +235,12 @@
     <hal format="hidl" override="true">
         <name>android.hardware.secure_element</name>
         <transport>hwbinder</transport>
-        <version>1.2</version>
+        <version>1.1</version>
         <interface>
             <name>ISecureElement</name>
             <instance>eSE1</instance>
         </interface>
-        <fqname>@1.2::ISecureElement/eSE1</fqname>
+        <fqname>@1.1::ISecureElement/eSE1</fqname>
     </hal>
     <hal format="hidl">
         <name>android.hardware.soundtrigger</name>
