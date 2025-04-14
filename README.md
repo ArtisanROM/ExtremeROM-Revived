@@ -24,7 +24,7 @@ Its build system allows to automatically download/extract the firmware, apply th
 Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
 
 # Features
-- Based on the latest stable Galaxy S23 firmware
+- Based on the latest stable Galaxy S25 firmware
 - Galaxy AI support
 - High end animations
 - Native/live blur support
@@ -32,7 +32,6 @@ Any form of contribution, suggestions, bug report or feature request for the pro
 - Adaptive color tone support
 - Adaptive refresh rate support
 - Extra brightness support
-- Picture remaster support
 - Object, shadow and reflection eraser support
 - Image clipper support
 - Smart Suggestions widget
@@ -40,12 +39,10 @@ Any form of contribution, suggestions, bug report or feature request for the pro
 - Samsung DeX support
 - Camera privacy toggle support
 - Debloated from useless system services/additional apps
-- Integrated OTA updates app
-- Play Integrity Fix included
 - [BluetoothLibraryPatcher](https://github.com/3arthur6/BluetoothLibraryPatcher) included
 - [FrameworkPatch](https://github.com/chiteroman/FrameworkPatch) implemented in system frameworks
 - [KnoxPatch](https://github.com/salvogiangri/KnoxPatch) implemented in system frameworks
-- China Device Care app included
+- Chinese Device Care app included(Smart Manager)
 - [Patched GoodLock](https://github.com/corsicanu/goodlock_dump) app included
 - Unlimited backup storage on Google Photos
 - Extra mods (Live blur toggle, FOD animation style, secure screenshot toggle, app downgrade toggle, Dual Messenger on all apps)
