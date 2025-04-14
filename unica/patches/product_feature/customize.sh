@@ -95,13 +95,13 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
     DECODE_APK "system/framework/framework.jar"
     DECODE_APK "system/framework/services.jar"
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes2/android/hardware/fingerprint/FingerprintManager.smali
+    system/framework/framework.jar/smali_classes2/android/hardware/fingerprint/HidlFingerprintSensorConfig.smali
     system/framework/framework.jar/smali_classes5/com/samsung/android/bio/fingerprint/SemFingerprintManager.smali
     system/framework/framework.jar/smali_classes5/com/samsung/android/bio/fingerprint/SemFingerprintManager\$Characteristics.smali
-    system/framework/framework.jar/smali_classes5/com/samsung/android/rune/CoreRune.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/rune/InputRune.smali
     system/framework/services.jar/smali/com/android/server/biometrics/sensors/fingerprint/FingerprintUtils.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/biometrics/fingerprint/FingerprintSettingsUtils.smali
     "
@@ -111,24 +111,11 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
 
     # TODO: handle ultrasonic devices
     if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "optical" ]]; then
-        ADD_TO_WORK_DIR "gts9xxx" "system" "." 0 0 755 "u:object_r:system_file:s0"
-        ADD_TO_WORK_DIR "r11sxxx" "system" "system/priv-app/BiometricSetting/BiometricSetting.apk" 0 0 644 "u:object_r:system_file:s0"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "fingerprint/SecSettings.apk/0001-Enable-isOpticalSensor.patch"
-        APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "fingerprint/SystemUI.apk/0001-Add-optical-FOD-support.patch"
+        ADD_TO_WORK_DIR "a56xxx" "system" "."
+        DELETE_FROM_WORK_DIR "system" "system/priv-app/BiometricSetting/oat"
     elif [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "side" ]]; then
-        ADD_TO_WORK_DIR "b5qxxx" "system" "system/priv-app/BiometricSetting/BiometricSetting.apk" 0 0 644 "u:object_r:system_file:s0"
-        APPLY_PATCH "system/framework/services.jar" "fingerprint/services.jar/0001-Disable-SECURITY_FINGERPRINT_IN_DISPLAY.patch"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "fingerprint/SecSettings.apk/0001-Enable-isSideSensor.patch"
-        APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "fingerprint/SystemUI.apk/0001-Add-side-fingerprint-sensor-support.patch"
-    fi
-
-    if [[ "$TARGET_FP_SENSOR_CONFIG" == *"navi=1"* ]]; then
-        APPLY_PATCH "system/framework/services.jar" \
-            "fingerprint/services.jar/0001-Enable-FP_FEATURE_GESTURE_MODE.patch"
-    fi
-    if [[ "$TARGET_FP_SENSOR_CONFIG" == *"no_delay_in_screen_off"* ]]; then
-        APPLY_PATCH "system/priv-app/BiometricSetting/BiometricSetting.apk" \
-            "fingerprint/BiometricSetting.apk/0001-Enable-FP_FEATURE_NO_DELAY_IN_SCREEN_OFF.patch"
+        ADD_TO_WORK_DIR "a26xxx" "system" "."
+        DELETE_FROM_WORK_DIR "system" "system/priv-app/BiometricSetting/oat"
     fi
 fi
 
