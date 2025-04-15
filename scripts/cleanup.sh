@@ -16,97 +16,66 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-set -eu
+# [
+source "$SRC_DIR/scripts/utils/log_utils.sh"
 
-ALL=false
-ODIN=false
-FW=false
-APKTOOL=false
-WORK=false
-KERNEL_TMP=false
-TOOLS=false
+PRINT_USAGE()
+{
+    echo "Usage: cleanup <type> (<type>...)" >&2
+    echo " - all ($OUT_DIR)" >&2
+    echo " - kernel ($KERNEL_TMP_DIR)" >&2
+    echo " - odin ($ODIN_DIR)" >&2
+    echo " - fw ($FW_DIR)" >&2
+    echo " - apktool ($APKTOOL_DIR)" >&2
+    echo " - work_dir ($WORK_DIR)" >&2
+    echo " - tools ($(dirname "$TOOLS_DIR"))" >&2
+}
+# ]
 
 if [ "$#" == 0 ]; then
-    echo "Usage: cleanup <type>"
+    PRINT_USAGE
     exit 1
-else
-    while [ "$#" != 0 ]; do
-        case "$1" in
-            "all")
-                ALL=true
-                break
-                ;;
-            "odin")
-                ODIN=true
-                ;;
-            "fw")
-                FW=true
-                ;;
-            "apktool")
-                APKTOOL=true
-                ;;
-            "work_dir")
-                WORK=true
-                ;;
-	    "kernel_tmp_dir")
-		KERNEL_TMP=true
-		;;
-            "tools")
-                TOOLS=true
-                ;;
-            *)
-                echo "\"$1\" is not valid type."
-                echo "Available options (multiple can be accepted):"
-                echo "all"
-                echo "odin"
-                echo "fw"
-                echo "apktool"
-                echo "work_dir"
-		echo "kernel_tmp_dir"
-                echo "tools"
-                exit 1
+fi
+
+while [ "$#" != 0 ]; do
+    case "$1" in
+        "all")
+            LOG "- Cleaning everything..."
+            rm -rf "$OUT_DIR"
+            break
             ;;
-        esac
-
-        shift
-    done
-fi
-
-if $ALL; then
-    echo "- Cleaning everything..."
-    rm -rf "$OUT_DIR"
-    exit 0
-fi
-
-if $ODIN; then
-    echo "- Cleaning Odin firmwares dir..."
-    rm -rf "$ODIN_DIR"
-fi
-
-if $FW; then
-    echo "- Cleaning extracted firmwares dir..."
-    rm -rf "$FW_DIR"
-fi
-
-if $APKTOOL; then
-    echo "- Cleaning decompiled apks/jars dir..."
-    rm -rf "$APKTOOL_DIR"
-fi
-
-if $WORK; then
-    echo "- Cleaning ROM work dir..."
-    rm -rf "$WORK_DIR"
-fi
-
-if $KERNEL_TMP; then
-    echo "- Cleaning Kernel dir(s)..."
-    rm -rf "$KERNEL_TMP_DIR"*
-fi
-
-if $TOOLS; then
-    echo "- Cleaning dependencies dir..."
-    rm -rf "$(dirname "$TOOLS_DIR")"
-    git submodule foreach --recursive "git clean -f -d -x" &> /dev/null
-fi
+        "kernel")
+            LOG "- Cleaning kernel dir(s)..."
+            rm -rf "$KERNEL_TMP_DIR"*
+            ;;
+        "odin")
+            LOG "- Cleaning Odin firmwares dir..."
+            rm -rf "$ODIN_DIR"
+            ;;
+        "fw")
+            LOG "- Cleaning extracted firmwares dir..."
+            rm -rf "$FW_DIR"
+            ;;
+        "apktool")
+            LOG "- Cleaning decompiled apks/jars dir..."
+            rm -rf "$APKTOOL_DIR"
+            ;;
+        "work_dir")
+            LOG "- Cleaning ROM work dir..."
+            rm -rf "$WORK_DIR"
+            ;;
+        "tools")
+            LOG "- Cleaning dependencies dir..."
+            rm -rf "$(dirname "$TOOLS_DIR")"
+            git submodule foreach --recursive "git clean -f -d -x" &> /dev/null
+            ;;
+        *)
+            LOGE "\"$1\" is not valid."
+            PRINT_USAGE
+            exit 1
+        ;;
+    esac
+    shift
+done
 
 exit 0
