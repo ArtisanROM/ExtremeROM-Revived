@@ -16,6 +16,8 @@
 #
 
 # [
+source "$SRC_DIR/scripts/utils/log_utils.sh"
+
 _CHECK_NON_EMPTY_PARAM()
 {
     if [ ! "$2" ]; then
@@ -37,30 +39,6 @@ _CHECK_NON_EMPTY_PARAM()
     fi
 
     return 0
-}
-
-_ECHO_STDERR()
-{
-    local TYPE="${1:?}"
-    local MESSAGE="${2:?}"
-
-    if [[ "$TYPE" == "W"* ]]; then
-        echo -n -e '\033[0;33m' >&2
-    elif [[ "$TYPE" == "E"* ]]; then
-        echo -n -e '\033[0;31m' >&2
-    fi
-
-    local STACK_SIZE="${#FUNCNAME[@]}"
-    if [[ "$STACK_SIZE" -gt "1" ]]; then
-        echo -n "(" >&2
-        if [[ "$STACK_SIZE" -gt "2" ]]; then
-            echo -n "${BASH_SOURCE[2]//$SRC_DIR\//}:${BASH_LINENO[1]}:" >&2
-        fi
-        echo -n "${FUNCNAME[1]}) " >&2
-    fi
-
-    echo -n "$MESSAGE" >&2
-    echo -e '\033[0m' >&2
 }
 
 _GET_PROP_FILES_PATH()
@@ -231,12 +209,12 @@ ADD_TO_WORK_DIR()
     fi
 
     if [ ! -d "$SOURCE" ]; then
-        _ECHO_STDERR ERR "Folder not found: ${SOURCE//$SRC_DIR\//}"
+        LOGE "Folder not found: ${SOURCE//$SRC_DIR\//}"
         return 1
     fi
 
     if ! _IS_VALID_PARTITION_NAME "$PARTITION"; then
-        _ECHO_STDERR ERR "\"$PARTITION\" is not a valid partition name"
+        LOGE "\"$PARTITION\" is not a valid partition name"
         return 1
     fi
 
@@ -280,7 +258,7 @@ ADD_TO_WORK_DIR()
             mkdir -p "$(dirname "$TARGET_FILE")"
             cat "$SOURCE_FILE.0"* > "$TARGET_FILE"
         else
-            _ECHO_STDERR ERR "File not found: ${SOURCE_FILE//$SRC_DIR\//}"
+            LOGE "File not found: ${SOURCE_FILE//$SRC_DIR\//}"
             return 1
         fi
     else
@@ -302,7 +280,7 @@ ADD_TO_WORK_DIR()
         elif grep -q -F "$ENTRY " "$SOURCE/fs_config-$PARTITION" 2> /dev/null; then
             grep -F "$ENTRY " "$SOURCE/fs_config-$PARTITION" >> "$WORK_DIR/configs/fs_config-$PARTITION"
         else
-            _ECHO_STDERR WARN "No fs_config entry found for \"$ENTRY\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
+            LOGW "No fs_config entry found for \"$ENTRY\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
 
             USER=0
             GROUP=0
@@ -322,7 +300,7 @@ ADD_TO_WORK_DIR()
         elif grep -q -F "/$(_HANDLE_SPECIAL_CHARS "$ENTRY") " "$SOURCE/file_context-$PARTITION" 2> /dev/null; then
             grep -F "/$(_HANDLE_SPECIAL_CHARS "$ENTRY") " "$SOURCE/file_context-$PARTITION" >> "$WORK_DIR/configs/file_context-$PARTITION"
         else
-            _ECHO_STDERR WARN "No file_context entry found for \"$ENTRY\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
+            LOGW "No file_context entry found for \"$ENTRY\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
 
             LABEL="$(_GET_SELINUX_LABEL "$PARTITION" "/$ENTRY")"
 
@@ -345,7 +323,7 @@ ADD_TO_WORK_DIR()
                 if grep -q -F "$f " "$SOURCE/fs_config-$PARTITION" 2> /dev/null; then
                     grep -F "$f " "$SOURCE/fs_config-$PARTITION" >> "$WORK_DIR/configs/fs_config-$PARTITION"
                 else
-                    _ECHO_STDERR WARN "No fs_config entry found for \"$f\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
+                    LOGW "No fs_config entry found for \"$f\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
 
                     USER=0
                     GROUP=0
@@ -363,7 +341,7 @@ ADD_TO_WORK_DIR()
                 if grep -q -F "/$(_HANDLE_SPECIAL_CHARS "$f") " "$SOURCE/file_context-$PARTITION" 2> /dev/null; then
                     grep -F "/$(_HANDLE_SPECIAL_CHARS "$f") " "$SOURCE/file_context-$PARTITION" >> "$WORK_DIR/configs/file_context-$PARTITION"
                 else
-                    _ECHO_STDERR WARN "No file_context entry found for \"$f\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
+                    LOGW "No file_context entry found for \"$f\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
 
                     LABEL="$(_GET_SELINUX_LABEL "$PARTITION" "/$f")"
 
@@ -383,7 +361,7 @@ ADD_TO_WORK_DIR()
                 if grep -q -F "$TMP " "$SOURCE/fs_config-$PARTITION" 2> /dev/null; then
                     grep -F "$TMP " "$SOURCE/fs_config-$PARTITION" >> "$WORK_DIR/configs/fs_config-$PARTITION"
                 else
-                    _ECHO_STDERR WARN "No fs_config entry found for \"$TMP\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
+                    LOGW "No fs_config entry found for \"$TMP\" in \"${SOURCE//$SRC_DIR\//}\". Using default values"
 
                     USER=0
                     GROUP=0
@@ -398,7 +376,7 @@ ADD_TO_WORK_DIR()
                 if grep -q -F "/$(_HANDLE_SPECIAL_CHARS "$TMP") " "$SOURCE/file_context-$PARTITION" 2> /dev/null; then
                     grep -F "/$(_HANDLE_SPECIAL_CHARS "$TMP") " "$SOURCE/file_context-$PARTITION" >> "$WORK_DIR/configs/file_context-$PARTITION"
                 else
-                    _ECHO_STDERR WARN "No file_context entry found for \"$TMP\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
+                    LOGW "No file_context entry found for \"$TMP\" in \"${SOURCE//$SRC_DIR\//}\". Using default value"
 
                     LABEL="$(_GET_SELINUX_LABEL "$PARTITION" "/$TMP")"
 
@@ -468,7 +446,7 @@ DELETE_FROM_WORK_DIR()
     FILE_PATH+="/$FILE"
 
     if [ ! -e "$FILE_PATH" ] && [ ! -L "$FILE_PATH" ]; then
-        _ECHO_STDERR WARN "File not found: ${FILE_PATH//$WORK_DIR/}"
+        LOGW "File not found: ${FILE_PATH//$WORK_DIR/}"
         return 0
     fi
 
@@ -548,7 +526,7 @@ GET_GALAXY_STORE_DOWNLOAD_URL()
         fi
     done
 
-    _ECHO_STDERR ERR "No download URI found for app \"$PACKAGE\""
+    LOGE "No download URI found for app \"$PACKAGE\""
     return 1
 }
 
@@ -562,7 +540,7 @@ GET_FLOATING_FEATURE_CONFIG()
     local FILE="$WORK_DIR/system/system/etc/floating_feature.xml"
 
     if [ ! -f "$FILE" ]; then
-        _ECHO_STDERR ERR "File not found: ${FILE//$WORK_DIR/}"
+        LOGE "File not found: ${FILE//$WORK_DIR/}"
         return 1
     fi
 
@@ -604,7 +582,7 @@ HEX_PATCH()
     local TO="$3"
 
     if [ ! -f "$FILE" ]; then
-        _ECHO_STDERR ERR "File not found: ${FILE//$WORK_DIR/}"
+        LOGE "File not found: ${FILE//$WORK_DIR/}"
         return 1
     fi
 
@@ -612,12 +590,12 @@ HEX_PATCH()
     TO="$(tr "[:upper:]" "[:lower:]" <<< "$TO")"
 
     if xxd -p "$FILE" | tr -d "\n" | tr -d " " | grep -q "$TO"; then
-        _ECHO_STDERR WARN "\"$TO\" already applied in ${FILE//$WORK_DIR/}"
+        LOGW "\"$TO\" already applied in ${FILE//$WORK_DIR/}"
         return 0
     fi
 
     if ! xxd -p "$FILE" | tr -d "\n" | tr -d " " | grep -q "$FROM"; then
-        _ECHO_STDERR ERR "No \"$FROM\" match in ${FILE//$WORK_DIR/}"
+        LOGE "No \"$FROM\" match in ${FILE//$WORK_DIR/}"
         return 1
     fi
 
@@ -641,7 +619,7 @@ SET_FLOATING_FEATURE_CONFIG()
     local FILE="$WORK_DIR/system/system/etc/floating_feature.xml"
 
     if [ ! -f "$FILE" ]; then
-        _ECHO_STDERR ERR "File not found: ${FILE//$WORK_DIR/}"
+        LOGE "File not found: ${FILE//$WORK_DIR/}"
         return 1
     fi
 
@@ -685,7 +663,7 @@ SET_METADATA()
     local LABEL="$6"
 
     if ! _IS_VALID_PARTITION_NAME "$PARTITION"; then
-        _ECHO_STDERR ERR "\"$PARTITION\" is not a valid partition name"
+        LOGE "\"$PARTITION\" is not a valid partition name"
         return 1
     fi
 
@@ -722,7 +700,7 @@ SET_PROP()
     local VALUE="$3"
 
     if ! _IS_VALID_PARTITION_NAME "$PARTITION"; then
-        _ECHO_STDERR ERR "\"$PARTITION\" is not a valid partition name"
+        LOGE "\"$PARTITION\" is not a valid partition name"
         return 1
     fi
 
@@ -779,7 +757,7 @@ SET_PROP()
         esac
 
         if [ ! -f "$FILE" ]; then
-            _ECHO_STDERR WARN "File not found: ${FILE//$WORK_DIR/}"
+            LOGW "File not found: ${FILE//$WORK_DIR/}"
             return 0
         fi
 
@@ -806,7 +784,7 @@ SET_PROP_IF_DIFF()
     local EXPECTED="$3"
 
     if ! _IS_VALID_PARTITION_NAME "$PARTITION"; then
-        _ECHO_STDERR ERR "\"$PARTITION\" is not a valid partition name"
+        LOGE "\"$PARTITION\" is not a valid partition name"
         return 1
     fi
 
