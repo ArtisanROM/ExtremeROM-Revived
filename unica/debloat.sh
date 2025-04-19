@@ -122,7 +122,6 @@ system/priv-app/DiagMonAgent94
 system/priv-app/DigitalKey
 system/priv-app/FBInstaller_NS
 system/priv-app/FBServices
-system/priv-app/PhotoRemasterService
 system/priv-app/FotaAgent
 system/priv-app/OneDrive_Samsung_v3
 system/priv-app/OMCAgent5
@@ -131,14 +130,6 @@ system/priv-app/SOAgent75
 system/priv-app/SamsungCarKeyFw
 system/priv-app/SamsungPass
 system/priv-app/SPPPushClient
-"
-
-# Gallery AI Semantic Search
-SYSTEM_DEBLOAT+="
-system/etc/default-permissions/default-permissions-com.samsung.mediasearch.xml
-system/etc/mediasearch
-system/etc/permissions/privapp-permissions-com.samsung.mediasearch.xml
-system/priv-app/MediaSearch
 "
 
 PRISM_DEBLOAT+="
