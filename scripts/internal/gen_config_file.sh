@@ -45,6 +45,7 @@ GEN_CONFIG_FILE()
         echo "SOURCE_PRODUCT_FIRST_API_LEVEL=\"${SOURCE_PRODUCT_FIRST_API_LEVEL:?}\""
         echo "SOURCE_VNDK_VERSION=\"${SOURCE_VNDK_VERSION:?}\""
         echo "TARGET_NAME=\"${TARGET_NAME:?}\""
+        echo "SOURCE_CODENAME=\"${SOURCE_CODENAME:?}\""
         echo "TARGET_CODENAME=\"${TARGET_CODENAME:?}\""
         echo "TARGET_PLATFORM=\"${TARGET_PLATFORM:?}\""
         if [ "${#TARGET_ASSERT_MODEL[@]}" -ge 1 ]; then

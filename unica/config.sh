@@ -24,6 +24,7 @@ ROM_CODENAME="Nexus"
 case "$TARGET_SINGLE_SYSTEM_IMAGE" in
     "essi")
         # Galaxy S25 Ultra (One UI 7)
+        SOURCE_CODENAME="pa3q"
         SOURCE_FIRMWARE="SM-S938B/EUX/356597450035295"
         SOURCE_EXTRA_FIRMWARES=()
         SOURCE_API_LEVEL=35
