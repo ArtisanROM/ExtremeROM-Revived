@@ -31,5 +31,5 @@ sed -i "s/(allow snap_hidl hal_snap_service (service_manager (find)))/(allow sna
 # Fix JSQZ node permission
 echo "/dev/jsqz                 0660   mediacodec     camera" >> $WORK_DIR/vendor/ueventd.rc
 
-# B6Q Light HAL
-ADD_TO_WORK_DIR "b6qxxx" "vendor" "."
+# S21 Light HAL
+ADD_TO_WORK_DIR "p3sxxx" "vendor" "."

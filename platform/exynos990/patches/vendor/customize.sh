@@ -18,7 +18,7 @@ done
 
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "."
 
-# B6Q Light HAL
+# S21 Light HAL
 if [[ "$TARGET_CODENAME" != "r8s" ]]; then
-    ADD_TO_WORK_DIR "b6qxxx" "vendor" "."
+    ADD_TO_WORK_DIR "p3sxxx" "vendor" "."
 fi
