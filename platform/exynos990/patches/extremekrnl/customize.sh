@@ -17,7 +17,7 @@ REPLACE_KERNEL_BINARIES()
         "files/boot.img" "files/dtbo.img" \
         -d "$WORK_DIR/kernel"
 
-    if [[ "$TARGET_CODENAME" != "r8s" && "$TARGET_CODENAME" != "z3s" ]]; then
+    if [[ "$TARGET_CODENAME" != "r8s" && "$TARGET_CODENAME" != "z3s" && "$TARGET_INSTALL_METHOD" != "odin" ]]; then
         ZIP_LINK="$EXTREMEKRNL_REPO/ExtremeKRNL-Nexus-${TARGET_CODENAME}lte.zip"
         echo "Downloading $(basename "$ZIP_LINK")"
         curl -L -s -o "$TMP_DIR/krnl_lte.zip" "$ZIP_LINK"
