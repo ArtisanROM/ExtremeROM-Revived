@@ -8,5 +8,5 @@ sed -i "s/$SOURCE_CODENAME/dummy/g" "$WORK_DIR/vendor/etc/midas/midas_config.jso
 sed -i "s/p3s/$SOURCE_CODENAME/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
 
 # Add S21 Photo Remaster Service
-DELETE_FROM_WORK_DIR "system" "system/priv-app/PhotoRemasterService"
-ADD_TO_WORK_DIR "p3sxxx" "system" "system/priv-app/PhotoRemasterService"
+DELETE_FROM_WORK_DIR "system" "system/priv-app/PhotoRemasterService/oat"
+ADD_TO_WORK_DIR "p3sxxx" "system" "system/priv-app/PhotoRemasterService/PhotoRemasterService.apk"
