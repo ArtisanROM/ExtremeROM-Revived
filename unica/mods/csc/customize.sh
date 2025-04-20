@@ -1,6 +1,9 @@
 CSCFEATURES="
 <CscFeature_VoiceCall_ConfigRecording>RecordingAllowed</CscFeature_VoiceCall_ConfigRecording>
 <CscFeature_Setting_SupportRealTimeNetworkSpeed>TRUE</CscFeature_Setting_SupportRealTimeNetworkSpeed>
+<CscFeature_Common_DisableBixby>FALSE</CscFeature_Common_DisableBixby>
+<CscFeature_Setting_EnableHwVersionDisplay>TRUE</CscFeature_Setting_EnableHwVersionDisplay>
+<CscFeature_Setting_SupportMenuSmartTutor>FALSE</CscFeature_Setting_SupportMenuSmartTutor>
 "
 
 echo "Adding CSCFeatures..."
