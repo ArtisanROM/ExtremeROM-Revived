@@ -16,6 +16,7 @@ find "$WORK_DIR/optics" -type f -name "cscfeature.xml" | while read -r file; do
         sed -i "/<\/FeatureSet>/i\\
     $escaped_feature
     " "$file"
+        $TOOLS_DIR/cscdecoder --encode --in-place $file
     done <<< "$CSCFEATURES"
 done
 
@@ -26,7 +27,7 @@ DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
 
 FTP="
 system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/eternal/provider/items/NotificationsItem.smali
-system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/notification/ConfigureNotificationMoreSettings$1.smali
+system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/notification/ConfigureNotificationMoreSettings\$1.smali
 system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/notification/StatusBarNetworkSpeedController.smali
 system_ext/priv-app/SystemUI/SystemUI.apk/smali/com/android/systemui/Rune.smali
 system_ext/priv-app/SystemUI/SystemUI.apk/smali/com/android/systemui/QpRune.smali
