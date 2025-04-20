@@ -144,6 +144,7 @@ IMG2SDAT=true
 SAMFIRM=true
 SIGNAPK=true
 SMALI=true
+OMCDECODER=true
 
 ANDROID_TOOLS_EXEC=(
     "adb" "append2simg" "avbtool" "e2fsdroid"
@@ -178,6 +179,10 @@ SMALI_EXEC=(
     "android-smali.jar" "baksmali" "smali" "smali-baksmali.jar"
 )
 CHECK_TOOLS "${SMALI_EXEC[@]}" && SMALI=false
+OMCDECODER_EXEC=(
+    "cscdecoder"
+)
+CHECK_TOOLS "${OMCDECODER_EXEC[@]}" && OMCDECODER=false
 
 if $ANDROID_TOOLS; then
     ANDROID_TOOLS_CMDS=(
@@ -256,6 +261,14 @@ if $SMALI; then
     )
 
     BUILD "baksmali/smali" "$SRC_DIR/external/smali" "${SMALI_CMDS[@]}"
+fi
+if $OMCDECODER; then
+    OMCDECODER_CMDS=(
+        "clang++ -lz -I./include decoder.cpp -o cscdecoder"
+        "cp -a \"cscdecoder\" \"$TOOLS_DIR\""
+    )
+
+    BUILD "omcdecoder" "$SRC_DIR/external/omcdecoder" "${OMCDECODER_CMDS[@]}"
 fi
 
 exit 0
