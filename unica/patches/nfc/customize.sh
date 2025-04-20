@@ -1,4 +1,4 @@
-if [ "$TARGET_ESE_CHIP_VENDOR" = "SLSI" ]; then
+if [ "$TARGET_NFC_CHIP_VENDOR" = "SLSI" ]; then
     echo "Replacing NFC blobs with SLSI"
 
     DELETE_FROM_WORK_DIR "system" "system/lib64/libnfc_nxpsn_jni.so"
