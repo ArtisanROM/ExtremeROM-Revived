@@ -10,7 +10,7 @@ bin/hw/vendor.samsung.hardware.biometrics.face@2.0-service
 etc/init/vendor.samsung.hardware.biometrics.face@2.0-service.rc
 bin/hermesd
 etc/init/hermesd.rc
-lib64/liboemcrypto.so
+lib/liboemcrypto.so
 "
 for blob in $BLOBS_LIST
 do
