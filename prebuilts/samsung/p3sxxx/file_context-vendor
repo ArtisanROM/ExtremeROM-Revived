@@ -33,6 +33,11 @@
 /vendor/etc/vintf/manifest/vendor\.samsung\.hardware\.vibrator-default\.xml u:object_r:vendor_configs_file:s0
 /vendor/etc/mtu-conf\.xml u:object_r:vendor_configs_file:s0
 /vendor/etc/pdpcnt-conf\.xml u:object_r:vendor_configs_file:s0
+/vendor/etc/VslMesDetector u:object_r:vendor_configs_file:s0
+/vendor/etc/VslMesDetector/MesDetectorBlur\.tflite u:object_r:vendor_configs_file:s0
+/vendor/etc/VslMesDetector/MesDetectorLowlight\.tflite u:object_r:vendor_configs_file:s0
+/vendor/etc/VslMesDetector/MesDetectorNoise\.tflite u:object_r:vendor_configs_file:s0
+/vendor/etc/VslMesDetector/moire_detection\.tflite u:object_r:vendor_configs_file:s0
 /vendor/lib64 u:object_r:vendor_file:s0
 /vendor/lib64/android\.hardware\.light-V1-ndk_platform\.so u:object_r:vendor_file:s0
 /vendor/lib64/libril_sem\.so u:object_r:vendor_file:s0

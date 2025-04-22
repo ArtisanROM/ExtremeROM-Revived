@@ -1,7 +1,8 @@
 # Add S21 Ultra MIDAS
-
 DELETE_FROM_WORK_DIR "vendor" "etc/midas"
+DELETE_FROM_WORK_DIR "vendor" "etc/VslMesDetector"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/midas"
+ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/VslMesDetector"
 
 # Fix MIDAS model detection
 sed -i "s/$SOURCE_CODENAME/dummy/g" "$WORK_DIR/vendor/etc/midas/midas_config.json"
