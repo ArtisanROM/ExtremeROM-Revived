@@ -48,3 +48,11 @@
 /vendor/lib64/vendor\.samsung\.hardware\.biometrics\.face@3\.0\.so u:object_r:vendor_file:s0
 /vendor/lib64/vendor\.samsung\.hardware\.light-V1-ndk_platform\.so u:object_r:vendor_file:s0
 /vendor/lib64/vendor\.samsung\.hardware\.vibrator-V3-ndk_platform\.so u:object_r:vendor_file:s0
+/vendor/saiv u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0 u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db/SWISPNet-timestamp u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db/denoise_model_832x1072x4_0818\.pb u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db/denoise_model_e1275_832X1072X4_v9_1_SD_v1_full\.pb u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db/denoise_model_e734_832x1072x4_PRECONV\.pb u:object_r:vendor_file:s0
+/vendor/saiv/swisp_1\.0/db/denoise_model_e765_832x1072x4_PRECONV\.pb u:object_r:vendor_file:s0

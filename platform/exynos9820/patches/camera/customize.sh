@@ -68,9 +68,9 @@ do
     ADD_TO_WORK_DIR "p3sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
-# S20 SWISP models
+# S21 SWISP models
 DELETE_FROM_WORK_DIR "vendor" "saiv/swisp_1.0"
-ADD_TO_WORK_DIR "x1sxxx" "vendor" "saiv/swisp_1.0"
+ADD_TO_WORK_DIR "p3sxxx" "vendor" "saiv/swisp_1.0"
 
 BLOBS_LIST="
 system/lib64/libSwIsp_core.camera.samsung.so
@@ -78,7 +78,7 @@ system/lib64/libSwIsp_wrapper_v1.camera.samsung.so
 "
 for blob in $BLOBS_LIST
 do
-    ADD_TO_WORK_DIR "x1sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
+    ADD_TO_WORK_DIR "p3sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
 # Polarr SDK

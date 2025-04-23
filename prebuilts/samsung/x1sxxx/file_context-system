@@ -1,4 +1,0 @@
-/system u:object_r:system_file:s0
-/system/lib64 u:object_r:system_lib_file:s0
-/system/lib64/libSwIsp_core\.camera\.samsung\.so u:object_r:system_lib_file:s0
-/system/lib64/libSwIsp_wrapper_v1\.camera\.samsung\.so u:object_r:system_lib_file:s0
