@@ -68,7 +68,6 @@ system/lib64/libgui.so 0 0 644 capabilities=0x0
 system/lib64/libhdcp2.so 0 0 644 capabilities=0x0
 system/lib64/libhdcp_client_aidl.so 0 0 644 capabilities=0x0
 system/lib64/libhidl_comm_mpos_tui_client.so 0 0 644 capabilities=0x0
-system/lib64/libhwui.so 0 0 644 capabilities=0x0
 system/lib64/libremotedesktopservice.so 0 0 644 capabilities=0x0
 system/lib64/libremotedisplay.so 0 0 644 capabilities=0x0
 system/lib64/libremotedisplay_wfd.so 0 0 644 capabilities=0x0

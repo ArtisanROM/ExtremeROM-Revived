@@ -175,7 +175,6 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     system/lib64/libhdcp2.so
     system/lib64/libhdcp_client_aidl.so
     system/lib64/libhidl_comm_mpos_tui_client.so
-    system/lib64/libhwui.so
     system/lib64/libremotedesktopservice.so
     system/lib64/libremotedisplay.so
     system/lib64/libremotedisplay_wfd.so
