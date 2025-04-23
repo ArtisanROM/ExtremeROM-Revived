@@ -71,15 +71,12 @@ SYSTEM_DEBLOAT+="
 system/app/FBAppManager_NS
 system/app/PlayAutoInstallConfig
 system/app/SamsungPassAutofill_v1
-system/app/StickerCenter
 system/app/Fast
 system/app/Rampart
 system/app/KidsHome_Installer
-system/app/SamsungTTS
 system/app/SamsungTTSVoice_ar_AE_m00_ICLM
 system/app/SamsungTTSVoice_de_DE_f00
 system/app/SamsungTTSVoice_en_GB_f00
-system/app/SamsungTTSVoice_en_US_l03_ICLM
 system/app/SamsungTTSVoice_es_ES_f00
 system/app/SamsungTTSVoice_es_MX_f00_ICLM
 system/app/SamsungTTSVoice_es_US_f00
