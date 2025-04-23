@@ -1,0 +1,15 @@
+/system u:object_r:system_file:s0
+/system/media u:object_r:system_file:s0
+/system/media/audio u:object_r:system_file:s0
+/system/media/audio/notifications u:object_r:system_file:s0
+/system/media/audio/notifications/SoundTheme u:object_r:system_file:s0
+/system/media/audio/notifications/SoundTheme/Galaxy u:object_r:system_file:s0
+/system/media/audio/notifications/SoundTheme/Galaxy/ACH_ExtremeROMNoti\.ogg u:object_r:system_file:s0
+/system/media/audio/ringtones u:object_r:system_file:s0
+/system/media/audio/ringtones/SoundTheme u:object_r:system_file:s0
+/system/media/audio/ringtones/SoundTheme/Galaxy u:object_r:system_file:s0
+/system/media/audio/ringtones/SoundTheme/Galaxy/ACH_ExtremeROM\.ogg u:object_r:system_file:s0
+/system/media/audio/ui u:object_r:system_file:s0
+/system/media/audio/ui/Media_preview_Over_the_horizon\.ogg u:object_r:system_file:s0
+/system/media/audio/ui/PowerOn\.ogg u:object_r:system_file:s0
+/system/media/audio/ui/PowerOff\.ogg u:object_r:system_file:s0

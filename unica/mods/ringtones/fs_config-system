@@ -1,0 +1,15 @@
+system 0 0 755 capabilities=0x0
+system/media 0 0 755 capabilities=0x0
+system/media/audio 0 0 755 capabilities=0x0
+system/media/audio/notifications 0 0 755 capabilities=0x0
+system/media/audio/notifications/SoundTheme 0 0 755 capabilities=0x0
+system/media/audio/notifications/SoundTheme/Galaxy 0 0 755 capabilities=0x0
+system/media/audio/notifications/SoundTheme/Galaxy/ACH_ExtremeROMNoti.ogg 0 0 644 capabilities=0x0
+system/media/audio/ringtones 0 0 755 capabilities=0x0
+system/media/audio/ringtones/SoundTheme 0 0 755 capabilities=0x0
+system/media/audio/ringtones/SoundTheme/Galaxy 0 0 755 capabilities=0x0
+system/media/audio/ringtones/SoundTheme/Galaxy/ACH_ExtremeROM.ogg 0 0 644 capabilities=0x0
+system/media/audio/ui 0 0 755 capabilities=0x0
+system/media/audio/ui/Media_preview_Over_the_horizon.ogg 0 0 644 capabilities=0x0
+system/media/audio/ui/PowerOn.ogg 0 0 644 capabilities=0x0
+system/media/audio/ui/PowerOff.ogg 0 0 644 capabilities=0x0
