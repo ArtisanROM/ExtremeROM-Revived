@@ -1,5 +1,0 @@
-
-system 0 0 755 capabilities=0x0
-system/priv-app 0 0 755 capabilities=0x0
-system/priv-app/SamsungCamera 0 0 755 capabilities=0x0
-system/priv-app/SamsungCamera/SamsungCamera.apk 0 0 644 capabilities=0x0
