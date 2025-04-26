@@ -1,0 +1,4 @@
+id=selinux
+name=SELinux fix
+author=ExtremeXT
+description=Removes unsupported sepolicy entries.
