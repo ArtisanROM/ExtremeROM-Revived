@@ -75,6 +75,16 @@ if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" ]]; then
     fi
 fi
 
+if $SOURCE_HAS_QHD_DISPLAY; then
+    if ! $TARGET_HAS_QHD_DISPLAY; then
+        echo "Applying multi resolution patches"
+        ADD_TO_WORK_DIR "e1sxxx" "system" "."
+        # TODO: Finish SystemUI Resolution patch
+        #APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Disable-dynamic-resolution-control.patch"
+        #APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Disable-dynamic-resolution-control.patch"
+    fi
+fi
+
 if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" ]]; then
     echo "Applying fingerprint sensor patches"
 
@@ -120,16 +130,6 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]]; the
     for f in $FTP; do
         sed -i "s/\"$SOURCE_MDNIE_SUPPORTED_MODES\"/\"$TARGET_MDNIE_SUPPORTED_MODES\"/g" "$APKTOOL_DIR/$f"
     done
-fi
-
-if $SOURCE_HAS_QHD_DISPLAY; then
-    if ! $TARGET_HAS_QHD_DISPLAY; then
-        echo "Applying multi resolution patches"
-        ADD_TO_WORK_DIR "e1sxxx" "system" "."
-        # TODO: Finish SystemUI Resolution patch
-        #APPLY_PATCH "system/framework/framework.jar" "resolution/framework.jar/0001-Disable-dynamic-resolution-control.patch"
-        #APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "resolution/SecSettings.apk/0001-Disable-dynamic-resolution-control.patch"
-    fi
 fi
 
 if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
