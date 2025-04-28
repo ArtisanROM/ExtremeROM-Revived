@@ -16,7 +16,7 @@
 /system/lib/libtsmux\.so u:object_r:system_lib_file:s0
 /system/lib/vendor\.samsung\.hardware\.security\.hdcp\.wifidisplay-V2-ndk\.so u:object_r:system_lib_file:s0
 /system/lib/vendor\.samsung_slsi\.hardware\.ExynosHWCServiceTW@1\.0\.so u:object_r:system_lib_file:s0
-/system/lib/wfdlog\.so u:object_r:system_lib_file:s0
+/system/lib/wfd_log\.so u:object_r:system_lib_file:s0
 /system/lib64 u:object_r:system_lib_file:s0
 /system/lib64/libmidas_core\.camera\.samsung\.so u:object_r:system_lib_file:s0
 /system/lib64/libmidas_DNNInterface\.camera\.samsung\.so u:object_r:system_lib_file:s0
