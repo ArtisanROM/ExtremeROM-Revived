@@ -260,3 +260,10 @@ if $SOURCE_SUPPORT_HOTSPOT_WIFI_6; then
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "wifi/SecSettings.apk/0003-Disable-Hotspot-Wi-Fi-6.patch"
     fi
 fi
+
+if $SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
+    if ! $TARGET_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
+        echo "Applying Hotspot Enhanced Open patches"
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "wifi/SecSettings.apk/0004-Disable-Hotspot-Enhanced-Open.patch"
+    fi
+fi

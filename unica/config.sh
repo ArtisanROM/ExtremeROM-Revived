@@ -51,6 +51,7 @@ case "$TARGET_SINGLE_SYSTEM_IMAGE" in
         SOURCE_SUPPORT_HOTSPOT_WPA3=true
         SOURCE_SUPPORT_HOTSPOT_6GHZ=true
         SOURCE_SUPPORT_HOTSPOT_WIFI_6=true
+        SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN=true
         ;;
     *)
         echo "\"$TARGET_SINGLE_SYSTEM_IMAGE\" is not a valid system image."
