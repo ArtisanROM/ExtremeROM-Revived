@@ -91,6 +91,7 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
     DECODE_APK "system/framework/framework.jar"
     DECODE_APK "system/framework/services.jar"
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system/priv-app/BiometricSetting/BiometricSetting.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes2/android/hardware/fingerprint/FingerprintManager.smali
