@@ -176,14 +176,13 @@
     <local name="SUPPORT_SINGLE_TAKE_DYNAMIC_SLOW_MO" value="true"/>
     <local name="SINGLE_TAKE_USING_SINGLE_LENS_ONLY" value="true"/>
 
-
-	<!-- Night features -->
-    <local name="SUPPORT_NIGHT_MODE_REAR_LENS" value="true" />
-    <local name="SUPPORT_NIGHT_MODE_ZOOM" value="true" />
+    <!-- Night features -->
+    <local name="SUPPORT_NIGHT_CAPTURE_STOP" value="true"/>
+    <local name="SUPPORT_NIGHT_CIRCLE_SCREEN_FLASH" value="true"/>
     <local name="SUPPORT_NIGHT_MODE_FRONT_ANGLE" value="true" />
-    <local name="SUPPORT_NIGHT_CIRCLE_SCREEN_FLASH" value="true" />
-    <local name="SUPPORT_MOON_NIGHT_VI_IPP" value="true" />
-
+    <local name="SUPPORT_NIGHT_MODE_REAR_LENS" value="true"/>
+    <local name="SUPPORT_NIGHT_MODE_ZOOM" value="true" />
+    <local name="SUPPORT_POST_PROCESSING_NIGHT_SHOT" value="true"/>
 
     <!-- Food features -->
     <local name="SUPPORT_FOOD_SEAMLESS_ZOOM" value="true"/>
@@ -194,20 +193,17 @@
     <local name="SUPER_SLOW_MOTION_RECORDING_FPS" value="60"/>
 
     <!-- Hyperlapse features -->
-    <local name="SUPPORT_HYPER_LAPSE_SUPER_STEADY" value="true"/>
     <local name="SUPPORT_HYPER_LAPSE_NIGHT_AUTO" value="true"/>
-    <local name="SUPPORT_HYPER_LAPSE_SEAMLESS_ZOOM" value="true"/>
     <local name="SUPPORT_FRONT_HYPER_LAPSE_NIGHT" value="true"/>
+    <local name="SUPPORT_HYPER_LAPSE_SUPER_STEADY" value="true"/>
     <local name="SUPPORT_HYPER_LAPSE_ASTROGRAPHY" value="true"/>
 
-
     <!-- Multi-camera features -->
-    <local name="BACK_WIDE_CAMERA_ID" value="2"/>
-    <local name="BACK_TELE_CAMERA_ID" value="52"/>
+   <!--  <local name="BACK_WIDE_CAMERA_ID" value="2"/> -->
+  <!--   <local name="BACK_TELE_CAMERA_ID" value="52"/> -->
 
     <!-- Zoom features -->
     <local name="BACK_TELE_CAMERA_ZOOM_LEVEL" value="3.0"/>
-    <local name="DIGITAL_ZOOM_SHORTCUT_LIST" value="10.0, 20.0"/>
     <local name="DEFAULT_MAX_ZOOM_VALUE" value="1000" />
     <local name="SUPPORT_SEAMLESS_ZOOM" value="true"/>
     <local name="SUPPORT_SENSOR_CROP" value="true"/>
