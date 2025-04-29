@@ -137,6 +137,7 @@
     <local name="SUPPORT_ADDITIONAL_SCENE_DOCUMENT_SCAN" value="true"/>
     <local name="SUPPORT_COMPOSITION_GUIDE" value="true"/>
     <local name="SUPPORT_PHOTO_NIGHT" value="true"/>
+    <local name="SUPPORT_POST_PROCESSING_NIGHT_SHOT" value="true"/>
 
     <!-- Video features -->
     <local name="SUPPORT_BACK_VIDEO_BEAUTY" value="true"/>
@@ -176,13 +177,11 @@
     <local name="SUPPORT_SINGLE_TAKE_DYNAMIC_SLOW_MO" value="true"/>
     <local name="SINGLE_TAKE_USING_SINGLE_LENS_ONLY" value="true"/>
 
-    <!-- Night features -->
-    <local name="SUPPORT_NIGHT_CAPTURE_STOP" value="true"/>
-    <local name="SUPPORT_NIGHT_CIRCLE_SCREEN_FLASH" value="true"/>
+    <!-- Night mode features -->
     <local name="SUPPORT_NIGHT_MODE_FRONT_ANGLE" value="true" />
-    <local name="SUPPORT_NIGHT_MODE_REAR_LENS" value="true"/>
+    <local name="LIMITATION_MULTI_CAPTURE_POST_PROCESSING_NIGHT_SHOT" value="true"/>
     <local name="SUPPORT_NIGHT_MODE_ZOOM" value="true" />
-    <local name="SUPPORT_POST_PROCESSING_NIGHT_SHOT" value="true"/>
+    <local name="SUPPORT_NIGHT_MODE_REAR_LENS" value="true" />
 
     <!-- Food features -->
     <local name="SUPPORT_FOOD_SEAMLESS_ZOOM" value="true"/>
