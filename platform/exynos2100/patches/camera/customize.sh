@@ -71,7 +71,7 @@ system/lib64/libsuperresolution.arcsoft.so
 system/lib64/libsuperresolution_raw.arcsoft.so
 system/lib64/libsuperresolution_wrapper_v2.camera.samsung.so
 system/lib64/libsuperresolutionraw_wrapper_v2.camera.samsung.so
-system/lib64/vendor.samsung.hardware.snap-V3-ndk.so
+system/lib64/vendor.samsung.hardware.snap-V2-ndk.so
 "
 for blob in $BLOBS_LIST
 do

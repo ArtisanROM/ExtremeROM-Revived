@@ -61,7 +61,7 @@ done
 BLOBS_LIST="
 system/lib64/libeden_wrapper_system.so
 system/lib64/libsnap_aidl.snap.samsung.so
-system/lib64/vendor.samsung.hardware.snap-V3-ndk.so
+system/lib64/vendor.samsung.hardware.snap-V2-ndk.so
 "
 for blob in $BLOBS_LIST
 do
