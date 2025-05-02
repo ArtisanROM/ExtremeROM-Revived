@@ -52,8 +52,8 @@ done <<< "$(find "$WORK_DIR/optics" -type f -name "cscfeature.xml")"
 
 echo "Patching APKs for network speed monitoring..."
 
-DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
 FTP="
 system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/eternal/provider/items/NotificationsItem.smali

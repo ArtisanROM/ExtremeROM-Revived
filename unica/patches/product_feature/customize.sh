@@ -20,7 +20,7 @@ REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 if [[ "$SOURCE_PRODUCT_FIRST_API_LEVEL" != "$TARGET_PRODUCT_FIRST_API_LEVEL" ]]; then
     echo "Applying MAINLINE_API_LEVEL patches"
 
-    DECODE_APK "system/framework/services.jar"
+    DECODE_APK "system" "system/framework/services.jar"
 
     FTP="
     system/framework/services.jar/smali/com/android/server/SystemServer.smali
@@ -41,9 +41,9 @@ fi
 if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" && "$TARGET_AUTO_BRIGHTNESS_TYPE" != "4" ]]; then
     echo "Applying auto brightness type patches"
 
-    DECODE_APK "system/framework/services.jar"
-    DECODE_APK "system/framework/ssrm.jar"
-    DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system" "system/framework/services.jar"
+    DECODE_APK "system" "system/framework/ssrm.jar"
+    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
     FTP="
     system/framework/services.jar/smali_classes2/com/android/server/power/PowerManagerUtil.smali
@@ -63,11 +63,11 @@ fi
 if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
     echo "Applying fingerprint sensor patches"
 
-    DECODE_APK "system/framework/framework.jar"
-    DECODE_APK "system/framework/services.jar"
-    DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-    DECODE_APK "system/priv-app/BiometricSetting/BiometricSetting.apk"
-    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+    DECODE_APK "system" "system/framework/framework.jar"
+    DECODE_APK "system" "system/framework/services.jar"
+    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system" "system/priv-app/BiometricSetting/BiometricSetting.apk"
+    DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes2/android/hardware/fingerprint/FingerprintManager.smali
@@ -107,9 +107,9 @@ if ! $SOURCE_HAS_QHD_DISPLAY; then
     if $TARGET_HAS_QHD_DISPLAY; then
         echo "Applying multi resolution patches"
 
-        DECODE_APK "system/framework/framework.jar"
-        DECODE_APK "system/framework/gamemanager.jar"
-        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+        DECODE_APK "system" "system/framework/framework.jar"
+        DECODE_APK "system" "system/framework/gamemanager.jar"
+        DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/bootanimation"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/surfaceflinger"
@@ -128,18 +128,18 @@ if ! $SOURCE_HAS_HW_MDNIE; then
     if $TARGET_HAS_HW_MDNIE; then
         echo "Applying HW mDNIe patches"
 
-        DECODE_APK "system/framework/framework.jar"
-        DECODE_APK "system/framework/services.jar"
-        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-        DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+        DECODE_APK "system" "system/framework/framework.jar"
+        DECODE_APK "system" "system/framework/services.jar"
+        DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+        DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_LCD_SUPPORT_MDNIE_HW" "TRUE"
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_SUPPORT_COLOR_LENS" "TRUE"
         APPLY_PATCH "system" "system/framework/framework.jar" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/framework.jar/0001-Enable-HW-mDNIe.patch"
         APPLY_PATCH "system" "system/framework/services.jar" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/services.jar/0001-Enable-HW-mDNIe.patch"
         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
-        APPLY_PATCH "system" "system_ext/priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SystemUI.apk/0001-Add-EAD-APK-Support.patch"
-        APPLY_PATCH "system" "system_ext/priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SystemUI.apk/0002-Enable-EAD-Quick-Panel-Toggle.patch"
+        APPLY_PATCH "system_ext" "priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SystemUI.apk/0001-Add-EAD-APK-Support.patch"
+        APPLY_PATCH "system_ext" "priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SystemUI.apk/0002-Enable-EAD-Quick-Panel-Toggle.patch"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/mafpc_write" 0 2000 755 "u:object_r:mafpc_write_exec:s0"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/etc/permissions/privapp-permissions-com.samsung.android.sead.xml" 0 0 644 "u:object_r:system_file:s0"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/priv-app/EnvironmentAdaptiveDisplay"
@@ -150,8 +150,8 @@ if ! $SOURCE_MDNIE_SUPPORT_HDR_EFFECT; then
     if $TARGET_MDNIE_SUPPORT_HDR_EFFECT; then
         echo "Applying mDNIe HDR effect patches"
 
-        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-        DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
+        DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+        DECODE_APK "system" "system/priv-app/SettingsProvider/SettingsProvider.apk"
 
         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
@@ -167,7 +167,7 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]]; the
 
     SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_CONFIG_MDNIE_MODE" "$TARGET_MDNIE_SUPPORTED_MODES"
 
-    DECODE_APK "system/framework/services.jar"
+    DECODE_APK "system" "system/framework/services.jar"
 
     FTP="
     system/framework/services.jar/smali_classes2/com/samsung/android/hardware/display/SemMdnieManagerService.smali
@@ -177,7 +177,7 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]]; the
     done
 fi
 
-DECODE_APK "system/framework/framework.jar"
+DECODE_APK "system" "system/framework/framework.jar"
     
 if [[ "$TARGET_HFR_SEAMLESS_BRT" == "none" && "$TARGET_HFR_SEAMLESS_LUX" == "none" ]]; then
     APPLY_PATCH "system" "system/framework/framework.jar" "$SRC_DIR/unica/patches/product_feature/hfr/framework.jar/0001-Remove-brightness-threshold-values.patch"
@@ -195,12 +195,12 @@ fi
 if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
     echo "Applying HFR_MODE patches"
 
-    DECODE_APK "system/framework/framework.jar"
-    DECODE_APK "system/framework/gamemanager.jar"
-    DECODE_APK "system/framework/secinputdev-service.jar"
-    DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-    DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
-    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+    DECODE_APK "system" "system/framework/framework.jar"
+    DECODE_APK "system" "system/framework/gamemanager.jar"
+    DECODE_APK "system" "system/framework/secinputdev-service.jar"
+    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system" "system/priv-app/SettingsProvider/SettingsProvider.apk"
+    DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
@@ -227,8 +227,8 @@ fi
 if [[ "$SOURCE_HFR_SUPPORTED_REFRESH_RATE" != "$TARGET_HFR_SUPPORTED_REFRESH_RATE" ]]; then
     echo "Applying HFR_SUPPORTED_REFRESH_RATE patches"
 
-    DECODE_APK "system/framework/framework.jar"
-    DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system" "system/framework/framework.jar"
+    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
@@ -245,9 +245,9 @@ fi
 if [[ "$SOURCE_HFR_DEFAULT_REFRESH_RATE" != "$TARGET_HFR_DEFAULT_REFRESH_RATE" ]]; then
     echo "Applying HFR_DEFAULT_REFRESH_RATE patches"
 
-    DECODE_APK "system/framework/framework.jar"
-    DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
-    DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
+    DECODE_APK "system" "system/framework/framework.jar"
+    DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
+    DECODE_APK "system" "system/priv-app/SettingsProvider/SettingsProvider.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
@@ -262,7 +262,7 @@ fi
 if [[ "$TARGET_DISPLAY_CUTOUT_TYPE" == "right" ]]; then
     echo "Applying right cutout patch"
 
-    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+    DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
     APPLY_PATCH "system_ext" "priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/cutout/SystemUI.apk/0001-Add-right-cutout-support.patch"
 fi
@@ -270,7 +270,7 @@ fi
 if [[ "$SOURCE_DVFS_CONFIG_NAME" != "$TARGET_DVFS_CONFIG_NAME" ]]; then
     echo "Applying DVFS patches"
 
-    DECODE_APK "system/framework/ssrm.jar"
+    DECODE_APK "system" "system/framework/ssrm.jar"
 
     FTP="
     system/framework/ssrm.jar/smali/com/android/server/ssrm/Feature.smali
@@ -298,8 +298,8 @@ if [ ! -f "$FW_DIR/${MODEL}_${REGION}/vendor/etc/permissions/android.hardware.st
     APPLY_PATCH "system" "system/framework/framework.jar" "$SRC_DIR/unica/patches/product_feature/strongbox/framework.jar/0001-Disable-StrongBox-in-DevRootKeyATCmd.patch"
 fi
 
-DECODE_APK "system/framework/semwifi-service.jar"
-DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+DECODE_APK "system" "system/framework/semwifi-service.jar"
+DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
 if $SOURCE_SUPPORT_WIFI_7; then
     if ! $TARGET_SUPPORT_WIFI_7; then

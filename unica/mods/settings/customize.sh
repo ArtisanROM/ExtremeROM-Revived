@@ -1,6 +1,6 @@
 echo "Enabling BSOH in SecSettings..."
 
-DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 
 FTP="
 system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/deviceinfo/batteryinfo/BatteryRegulatoryPreferenceController.smali
