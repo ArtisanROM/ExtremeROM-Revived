@@ -1,9 +1,3 @@
-echo "Disabling A/B"
-SET_PROP "product" "ro.product.ab_ota_partitions" --delete
-
-echo "Disabling UFFD GC"
-SET_PROP "product" "ro.dalvik.vm.enable_uffd_gc" "false"
-
 echo "Disabling encryption"
 # Encryption
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos9820")

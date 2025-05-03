@@ -274,3 +274,8 @@ if $SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "wifi/SecSettings.apk/0004-Disable-Hotspot-Enhanced-Open.patch"
     fi
 fi
+
+if [ "$(GET_PROP "vendor" "ro.build.ab_update")" != "true" ]; then
+    echo "Disabling A/B partitions"
+    SET_PROP "product" "ro.product.ab_ota_partitions" --delete
+fi
