@@ -21,18 +21,7 @@ source "$SRC_DIR/scripts/utils/build_utils.sh"
 
 TMP_DIR="$OUT_DIR/zip"
 
-FILE_NAME="UN1CA_${ROM_VERSION}_$(date +%Y%m%d)_${TARGET_CODENAME}"
-PRIVATE_KEY_PATH="$SRC_DIR/security/"
-PUBLIC_KEY_PATH="$SRC_DIR/security/"
-if $ROM_IS_OFFICIAL; then
-    PRIVATE_KEY_PATH+="unica_ota"
-    PUBLIC_KEY_PATH+="unica_ota"
-else
-    PRIVATE_KEY_PATH+="aosp_testkey"
-    PUBLIC_KEY_PATH+="aosp_testkey"
-fi
-PRIVATE_KEY_PATH+=".pk8"
-PUBLIC_KEY_PATH+=".x509.pem"
+FILE_NAME="ExtremeROM_${ROM_VERSION}_$(date +%Y%m%d)_${TARGET_CODENAME}"
 
 trap 'rm -rf $TMP_DIR' EXIT
 
@@ -192,6 +181,54 @@ GENERATE_OP_LIST()
         LOGE "OS size ($OCCUPIED_SPACE) is bigger than the target group size ($TARGET_SUPER_GROUP_SIZE)"
         exit 1
     fi
+}
+
+GENERATE_OTA_METADATA()
+{
+    local PROTO_FILE="$SRC_DIR/external/android-tools/vendor/build/tools/releasetools/ota_metadata.proto"
+
+    local FINGERPRINT
+    local INCREMENTAL
+    local RELEASE
+    local SECURITY_PATCH_LEVEL
+    local TIMESTAMP
+
+    # TODO replace SSI name in fingerprint
+    FINGERPRINT="$(GET_PROP "system" "ro.system.build.fingerprint")"
+    INCREMENTAL="$(GET_PROP "system" "ro.build.version.incremental")"
+    RELEASE="$(GET_PROP "system" "ro.build.version.release")"
+    SECURITY_PATCH_LEVEL="$(GET_PROP "system" "ro.build.version.security_patch")"
+    TIMESTAMP="$(GET_PROP "system" "ro.build.date.utc")"
+
+    mkdir -p "$TMP_DIR/META-INF/com/android"
+
+    # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/ota_utils.py#259
+    if [ -f "$PROTO_FILE" ]; then
+        local MESSAGE
+
+        MESSAGE+="type: BLOCK"
+        MESSAGE+=", precondition: {device: \\\"$TARGET_CODENAME\\\"}"
+        MESSAGE+=", postcondition: {device: \\\"$TARGET_CODENAME\\\""
+        MESSAGE+=", build: \\\"$FINGERPRINT\\\""
+        MESSAGE+=", build_incremental: \\\"$INCREMENTAL\\\""
+        MESSAGE+=", timestamp: $TIMESTAMP"
+        MESSAGE+=", sdk_level: \\\"$RELEASE\\\""
+        MESSAGE+=", security_patch_level: \\\"$SECURITY_PATCH_LEVEL\\\"}"
+
+        EVAL "protoc --encode=build.tools.releasetools.OtaMetadata --proto_path=\"$(dirname "$PROTO_FILE")\" \"$PROTO_FILE\" <<< \"$MESSAGE\" > \"$TMP_DIR/META-INF/com/android/metadata.pb\"" || exit 1
+    fi
+
+    # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/ota_utils.py#317
+    {
+        echo "ota-required-cache=0"
+        echo "ota-type=BLOCK"
+        echo "post-build=$FINGERPRINT"
+        echo "post-build-incremental=$INCREMENTAL"
+        echo "post-sdk-level=$RELEASE"
+        echo "post-security-patch-level=$SECURITY_PATCH_LEVEL"
+        echo "post-timestamp=$TIMESTAMP"
+        echo "pre-device=$TARGET_CODENAME"
+    } > "$TMP_DIR/META-INF/com/android/metadata"
 }
 
 GENERATE_UPDATER_SCRIPT()
@@ -619,20 +656,21 @@ GENERATE_UPDATER_SCRIPT
 LOG "- Generating build_info.txt"
 GENERATE_BUILD_INFO
 
+LOG "- Generating OTA metadata"
+GENERATE_OTA_METADATA
+
 LOG "- Creating zip"
 EVAL "echo | zip > \"$OUT_DIR/rom.zip\" && zip -d \"$OUT_DIR/rom.zip\" -" || exit 1
 while IFS= read -r f; do
     # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/common.py#3601
     # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/common.py#3609
-    if [[ "$f" == *".new.dat.br" ]] || [[ "$f" == *".patch.dat" ]]; then
+    # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/ota_utils.py#184
+    # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/ota_utils.py#186
+    if [[ "$f" == *".new.dat.br" ]] || [[ "$f" == *".patch.dat" ]] || [[ "$f" == *"com/android/metadata"* ]]; then
         EVAL "cd \"$TMP_DIR\" && zip -r -X -Z store \"$OUT_DIR/rom.zip\" \"${f//$TMP_DIR\//}\"" || exit 1
     else
         EVAL "cd \"$TMP_DIR\" && zip -r -X \"$OUT_DIR/rom.zip\" \"${f//$TMP_DIR\//}\"" || exit 1
     fi
 done < <(find "$TMP_DIR" -type f)
-
-LOG "- Signing zip"
-EVAL "signapk -w \"$PUBLIC_KEY_PATH\" \"$PRIVATE_KEY_PATH\" \"$OUT_DIR/rom.zip\" \"$OUT_DIR/$FILE_NAME-sign.zip\"" || exit 1
-rm -f "$OUT_DIR/rom.zip"
 
 exit 0
