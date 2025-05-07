@@ -21,11 +21,7 @@ source "$SRC_DIR/scripts/utils/build_utils.sh" || exit 1
 
 FORCE=false
 BUILD_ROM=false
-BUILD_ZIP=false
-BUILD_TAR=false
-
-[[ "$TARGET_INSTALL_METHOD" == "zip" ]] && BUILD_ZIP=true
-[[ "$TARGET_INSTALL_METHOD" == "odin" ]] && BUILD_TAR=true
+BUILD_ZIP=true
 
 START_TIME="$(date +%s)"
 
@@ -46,24 +42,12 @@ PREPARE_SCRIPT()
                 FORCE=true
                 ;;
             "--no-rom-zip")
-                if $BUILD_TAR; then
-                    echo "TARGET_INSTALL_METHOD is \"odin\", ignoring --no-rom-zip"
-                else
-                    BUILD_ZIP=false
-                fi
-                ;;
-            "--no-rom-tar")
-                if $BUILD_ZIP; then
-                    echo "TARGET_INSTALL_METHOD is \"zip\", ignoring --no-rom-tar"
-                else
-                    BUILD_TAR=false
-                fi
+                BUILD_ZIP=false
                 ;;
             *)
                 echo "Usage: make_rom [options]"
                 echo " -f, --force : Force build"
                 echo " --no-rom-zip : Do not build ROM zip"
-                echo " --no-rom-tar : Do not build ROM tar"
                 exit 1
                 ;;
         esac
@@ -189,10 +173,6 @@ fi
 if $BUILD_ZIP; then
     LOG_STEP_IN true "Creating zip"
     "$SRC_DIR/scripts/internal/build_flashable_zip.sh" || exit 1
-    LOG_STEP_OUT
-elif $BUILD_TAR; then
-    LOG_STEP_IN true "Creating tar"
-    bash "$SRC_DIR/scripts/internal/build_odin_package.sh" || exit 1
     LOG_STEP_OUT
 fi
 
