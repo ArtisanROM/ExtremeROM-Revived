@@ -1,6 +1,3 @@
-echo "Disabling A/B"
-SET_PROP "product" "ro.product.ab_ota_partitions" --delete
-
 echo "Setting casefold props"
 SET_PROP "vendor" "external_storage.projid.enabled" "1"
 SET_PROP "vendor" "external_storage.casefold.enabled" "1"
