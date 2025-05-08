@@ -27,7 +27,7 @@ while [ -f "$OUT_DIR/$FILE_NAME" ]; do
     FILE_NAME="ExtremeROM_${ROM_VERSION}_$(date +%Y%m%d)-${INCREMENTAL}_${TARGET_CODENAME}.zip"
 done
 
-trap 'rm -rf $TMP_DIR' EXIT
+trap 'rm -rf $TMP_DIR' EXIT INT
 
 # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/build_super_image.py#72
 BUILD_SUPER_EMPTY()
