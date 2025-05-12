@@ -5,6 +5,15 @@
 # - DO NOT add add any parenthesis or statements (eg. "fabriccrypto" and NOT "expanttypeattribute ... (fabriccrypto)")
 # - DO NOT add unnecessary types or remove the existing ones unless they aren't necessary anymore for all devices
 
+# One UI 7.0 additions
+ENTRIES+="
+attiqi_app
+attiqi_app_data_file
+ker_app
+kpp_app
+kpp_data_file
+"
+
 # One UI 6.1.1 additions
 ENTRIES+="
 hal_dsms_default
