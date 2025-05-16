@@ -1,0 +1,254 @@
+From c42d7621b9cb173fcac7e8aaec973c15a3085954 Mon Sep 17 00:00:00 2001
+From: Ksawlii <maja.blaszczak@proton.me>
+Date: Sat, 2 Aug 2025 21:37:46 +0200
+Subject: [PATCH] Revert "AOSP: erofs-utils: mkfs: remove block list
+ implementation"
+
+This reverts commit ef1dac4b81793b429aaed5d8edfb25583546f04f.
+
+Signed-off-by: Ksawlii <maja.blaszczak@proton.me>
+---
+ include/erofs/block_list.h | 20 ++++++++++
+ lib/blobchunk.c            | 10 +++++
+ lib/block_list.c           | 77 ++++++++++++++++++++++++++++++++++++++
+ lib/compress.c             |  3 ++
+ lib/inode.c                |  5 +++
+ mkfs/main.c                | 13 +++++++
+ 6 files changed, 128 insertions(+)
+
+diff --git a/include/erofs/block_list.h b/include/erofs/block_list.h
+index 9d06c9c..8cc87d7 100644
+--- a/include/erofs/block_list.h
++++ b/include/erofs/block_list.h
+@@ -18,6 +18,26 @@ FILE *erofs_blocklist_close(void);
+ 
+ void tarerofs_blocklist_write(erofs_blk_t blkaddr, erofs_blk_t nblocks,
+ 			      erofs_off_t srcoff, unsigned int zeroedlen);
++#ifdef WITH_ANDROID
++void erofs_droid_blocklist_write(struct erofs_inode *inode,
++				 erofs_blk_t blk_start, erofs_blk_t nblocks);
++void erofs_droid_blocklist_write_tail_end(struct erofs_inode *inode,
++					  erofs_blk_t blkaddr);
++void erofs_droid_blocklist_write_extent(struct erofs_inode *inode,
++					erofs_blk_t blk_start, erofs_blk_t nblocks,
++					bool first_extent, bool last_extent);
++#else
++static inline void erofs_droid_blocklist_write(struct erofs_inode *inode,
++				 erofs_blk_t blk_start, erofs_blk_t nblocks) {}
++static inline void
++erofs_droid_blocklist_write_tail_end(struct erofs_inode *inode,
++					  erofs_blk_t blkaddr) {}
++static inline void
++erofs_droid_blocklist_write_extent(struct erofs_inode *inode,
++				   erofs_blk_t blk_start, erofs_blk_t nblocks,
++				   bool first_extent, bool last_extent) {}
++#endif
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/lib/blobchunk.c b/lib/blobchunk.c
+index 3388ce0..ebe30de 100644
+--- a/lib/blobchunk.c
++++ b/lib/blobchunk.c
+@@ -175,6 +175,11 @@ int erofs_blob_write_chunk_indexes(struct erofs_inode *inode,
+ 				tarerofs_blocklist_write(extent_start,
+ 						extent_end - extent_start,
+ 						source_offset, 0);
++				erofs_droid_blocklist_write_extent(inode,
++					extent_start,
++					extent_end - extent_start,
++					first_extent, false);
++				first_extent = false;
+ 			}
+ 			extent_start = startblk;
+ 			source_offset = chunk->sourceoffset;
+@@ -202,6 +207,11 @@ int erofs_blob_write_chunk_indexes(struct erofs_inode *inode,
+ 		tarerofs_blocklist_write(extent_start, extent_end - extent_start,
+ 					 source_offset, zeroedlen);
+ 	}
++	erofs_droid_blocklist_write_extent(inode, extent_start,
++			extent_start == EROFS_NULL_ADDR ?
++					0 : extent_end - extent_start,
++					   first_extent, true);
++
+ 	return erofs_dev_write(inode->sbi, inode->chunkindexes, off,
+ 			       inode->extent_isize);
+ }
+diff --git a/lib/block_list.c b/lib/block_list.c
+index f8dc913..80fec92 100644
+--- a/lib/block_list.c
++++ b/lib/block_list.c
+@@ -44,3 +44,80 @@ void tarerofs_blocklist_write(erofs_blk_t blkaddr, erofs_blk_t nblocks,
+ 		fprintf(block_list_fp, "%08llx %8llx %08" PRIx64 "\n",
+ 			blkaddr | 0ULL, nblocks | 0ULL, srcoff);
+ }
++
++#ifdef WITH_ANDROID
++static void blocklist_write(const char *path, erofs_blk_t blk_start,
++			    erofs_blk_t nblocks, bool first_extent,
++			    bool last_extent)
++{
++	const char *fspath = erofs_fspath(path);
++
++	if (first_extent) {
++		fprintf(block_list_fp, "/%s", cfg.mount_point);
++
++		if (fspath[0] != '/')
++			fprintf(block_list_fp, "/");
++
++		fprintf(block_list_fp, "%s", fspath);
++	}
++
++	if (nblocks == 1)
++		fprintf(block_list_fp, " %u", blk_start);
++	else
++		fprintf(block_list_fp, " %u-%u", blk_start,
++			blk_start + nblocks - 1);
++
++	if (last_extent)
++		fprintf(block_list_fp, "\n");
++}
++
++void erofs_droid_blocklist_write_extent(struct erofs_inode *inode,
++					erofs_blk_t blk_start,
++					erofs_blk_t nblocks, bool first_extent,
++					bool last_extent)
++{
++	if (!block_list_fp || !cfg.mount_point)
++		return;
++
++	if (!nblocks) {
++		if (last_extent)
++			fprintf(block_list_fp, "\n");
++		return;
++	}
++
++	blocklist_write(inode->i_srcpath, blk_start, nblocks, first_extent,
++			last_extent);
++}
++
++void erofs_droid_blocklist_write(struct erofs_inode *inode,
++				 erofs_blk_t blk_start, erofs_blk_t nblocks)
++{
++	if (!block_list_fp || !cfg.mount_point || !nblocks)
++		return;
++
++	blocklist_write(inode->i_srcpath, blk_start, nblocks,
++			true, !inode->idata_size);
++}
++
++void erofs_droid_blocklist_write_tail_end(struct erofs_inode *inode,
++					  erofs_blk_t blkaddr)
++{
++	if (!block_list_fp || !cfg.mount_point)
++		return;
++
++	/* XXX: a bit hacky.. may need a better approach */
++	if (S_ISDIR(inode->i_mode) || S_ISLNK(inode->i_mode))
++		return;
++
++	/* XXX: another hack, which means it has been outputed before */
++	if (erofs_blknr(inode->sbi, inode->i_size)) {
++		if (blkaddr == NULL_ADDR)
++			fprintf(block_list_fp, "\n");
++		else
++			fprintf(block_list_fp, " %u\n", blkaddr);
++		return;
++	}
++	if (blkaddr != NULL_ADDR)
++		blocklist_write(inode->i_srcpath, blkaddr, 1, true, true);
++}
++#endif
+diff --git a/lib/compress.c b/lib/compress.c
+index a57bb6a..efe9f8a 100644
+--- a/lib/compress.c
++++ b/lib/compress.c
+@@ -1389,6 +1389,9 @@ int erofs_commit_compressed_file(struct z_erofs_compress_ictx *ictx,
+ 		DBG_BUGON(ret);
+ 	}
+ 	inode->compressmeta = compressmeta;
++	if (!erofs_is_packed_inode(inode))
++		erofs_droid_blocklist_write(inode, pstart >> bbits,
++					    inode->u.i_blocks);
+ 	return 0;
+ 
+ err_free_meta:
+diff --git a/lib/inode.c b/lib/inode.c
+index c14aa66..00da2ef 100644
+--- a/lib/inode.c
++++ b/lib/inode.c
+@@ -589,6 +589,7 @@ static int write_uncompressed_file_from_fd(struct erofs_inode *inode, int fd,
+ 			return -EIO;
+ 		}
+ 	}
++	erofs_droid_blocklist_write(inode, inode->u.i_blkaddr, nblocks);
+ 	return 0;
+ }
+ 
+@@ -924,6 +925,8 @@ static int erofs_write_tail_end(struct erofs_inode *inode)
+ 
+ 		ibh->fsprivate = erofs_igrab(inode);
+ 		ibh->op = &erofs_write_inline_bhops;
++
++		erofs_droid_blocklist_write_tail_end(inode, NULL_ADDR);
+ 	} else {
+ 		struct iovec iov[2];
+ 		erofs_off_t pos;
+@@ -974,6 +977,8 @@ static int erofs_write_tail_end(struct erofs_inode *inode)
+ 		inode->idata_size = 0;
+ 		free(inode->idata);
+ 		inode->idata = NULL;
++
++		erofs_droid_blocklist_write_tail_end(inode, erofs_blknr(sbi, pos));
+ 	}
+ out:
+ 	/* now bh_data can drop directly */
+diff --git a/mkfs/main.c b/mkfs/main.c
+index fce2633..c63f7e8 100644
+--- a/mkfs/main.c
++++ b/mkfs/main.c
+@@ -63,6 +63,7 @@ static struct option long_options[] = {
+ #ifdef WITH_ANDROID
+ 	{"product-out", required_argument, NULL, 513},
+ 	{"fs-config-file", required_argument, NULL, 514},
++	{"block-list-file", required_argument, NULL, 515},
+ #endif
+ 	{"ovlfs-strip", optional_argument, NULL, 516},
+ 	{"offset", required_argument, NULL, 517},
+@@ -222,6 +223,7 @@ static void usage(int argc, char **argv)
+ 		"Android-specific options:\n"
+ 		" --product-out=X       X=product_out directory\n"
+ 		" --fs-config-file=X    X=fs_config file\n"
++		" --block-list-file=X   X=block_list file\n"
+ #endif
+ #ifdef EROFS_MT_ENABLED
+ 		, erofs_get_available_processors() /* --workers= */
+@@ -839,6 +841,9 @@ static int mkfs_parse_options_cfg(int argc, char *argv[])
+ 		case 514:
+ 			cfg.fs_config_file = optarg;
+ 			break;
++		case 515:
++			cfg.block_list_file = optarg;
++			break;
+ #endif
+ 		case 'C':
+ 			i = strtoull(optarg, &endptr, 0);
+@@ -1320,6 +1325,14 @@ int main(int argc, char **argv)
+ 		erofs_err("failed to load fs config %s", cfg.fs_config_file);
+ 		return 1;
+ 	}
++
++	if (cfg.block_list_file) {
++		blklst = fopen(cfg.block_list_file, "w");
++		if (!blklst || erofs_blocklist_open(blklst, false)) {
++			erofs_err("failed to open %s", cfg.block_list_file);
++			return 1;
++		}
++	}
+ #endif
+ 	erofs_show_config();
+ 	if (cfg.c_fragments || cfg.c_extra_ea_name_prefixes) {
+-- 
+2.49.0
+
