@@ -45,12 +45,8 @@ _GET_CALLER_INFO()
 LOG()
 {
     local INDENT="${INDENT_LEVEL:=0}"
-    while [ "$INDENT" -gt 0 ]; do
-        echo -n " "
-        INDENT="$((INDENT - 1))"
-    done
 
-    echo -e "$1"
+    echo -e "$(printf "%*s%s" "$INDENT" "" "$1")"
 }
 
 # LOGE <message>
