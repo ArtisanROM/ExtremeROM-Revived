@@ -1,6 +1,6 @@
 # [
 EXTREMEKRNL_REPO="https://github.com/ExtremeXT/M62-backport/"
-KERNELSU_MANAGER_APK="https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v1.0.6/KernelSU_Next_v1.0.6_12490-release.apk"
+KERNELSU_MANAGER_APK="https://github.com/KernelSU-Next/KernelSU-Next/releases/download/v1.0.7/KernelSU_Next_v1.0.7_12602-release.apk"
 
 BUILD_KERNEL()
 {
