@@ -114,7 +114,6 @@ system/priv-app/AREmojiEditor
 system/priv-app/AREmoji
 system/priv-app/YourPhone_P1_5
 system/priv-app/StickerFaceARAvatar
-system/priv-app/SamsungBilling
 system/priv-app/BCService
 system/priv-app/DiagMonAgent94
 system/priv-app/DigitalKey
