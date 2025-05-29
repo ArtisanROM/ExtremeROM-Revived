@@ -13,7 +13,7 @@ SET_PROP "vendor" "debug.sf.high_fps_late_app_phase_offset_ns" "0"
 SET_PROP "vendor" "debug.sf.high_fps_late_sf_phase_offset_ns" "0"
 
 echo "Setting Adaptive HFR flags"
-if [[ "$MODEL" != "c1s" && "$MODEL" != "c2s" ]]; then
+if [[ "$MODEL" != "c1s" && "$MODEL" != "c2s" && "$MODEL" != "r8s" ]]; then
     SET_PROP "vendor" "debug.sf.show_refresh_rate_overlay_render_rate" "true"
     SET_PROP "vendor" "ro.surface_flinger.game_default_frame_rate_override" "60"
     SET_PROP "vendor" "ro.surface_flinger.use_content_detection_for_refresh_rate" "true"
