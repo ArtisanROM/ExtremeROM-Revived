@@ -20,7 +20,9 @@ if [[ "$MODEL" != "c1s" && "$MODEL" != "c2s" && "$MODEL" != "r8s" ]]; then
     SET_PROP "vendor" "ro.surface_flinger.set_touch_timer_ms" "300"
     SET_PROP "vendor" "ro.surface_flinger.set_idle_timer_ms" "600"
     SET_PROP "vendor" "ro.surface_flinger.enable_frame_rate_override" "true"
-elif [[ "$MODEL" == "c1s" && "$MODEL" == "r8s" ]]; then
+elif [[ "$MODEL" == "c1s" || "$MODEL" == "r8s" ]]; then
+    SET_PROP "vendor" "debug.sf.show_refresh_rate_overlay_render_rate" "true"
+    SET_PROP "vendor" "ro.surface_flinger.game_default_frame_rate_override" "60"
     SET_PROP "vendor" "ro.surface_flinger.use_content_detection_for_refresh_rate" "false"
     SET_PROP "vendor" "ro.surface_flinger.enable_frame_rate_override" "false"
 elif [[ "$MODEL" == "c2s" ]]; then
