@@ -230,6 +230,12 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     SET_METADATA "system" "system/app/TEEgrisTuiService/lib/arm64" 0 0 755 "u:object_r:system_file:s0"
     SET_METADATA "system" "system/app/TEEgrisTuiService/lib/arm64/libtui_service_jni.so" 0 0 644 "u:object_r:system_file:s0"
 
+    # Set ESSI Props
+    SET_PROP "system" "ro.build.product" "essi"
+    SET_PROP "system" "ro.product.system.device" "essi"
+    SET_PROP "system" "ro.product.system_ext.device" "essi"
+    SET_PROP "system" "ro.product.product.device" "essi"
+
     # Remove Qualcomm Props
     SET_PROP "system" "rild.libpath" --delete
     SET_PROP "system" "ril.subscription.types" --delete
