@@ -233,8 +233,8 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     # Set ESSI Props
     SET_PROP "system" "ro.build.product" "essi"
     SET_PROP "system" "ro.product.system.device" "essi"
-    SET_PROP "system" "ro.product.system_ext.device" "essi"
-    SET_PROP "system" "ro.product.product.device" "essi"
+    SET_PROP "system_ext" "ro.product.system_ext.device" "essi"
+    SET_PROP "product" "ro.product.product.device" "essi"
 
     # Remove Qualcomm Props
     SET_PROP "system" "rild.libpath" --delete
