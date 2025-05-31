@@ -12,5 +12,5 @@ for f in $FTP; do
 done
 
 echo "Adding Multi-User Support"
-SET_PROP "system" "fw.max_users" "3"
+SET_PROP "system" "fw.max_users" "8"
 SET_PROP "system" "fw.show_multiuserui" "1"
