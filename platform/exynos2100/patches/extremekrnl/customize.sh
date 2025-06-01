@@ -71,6 +71,7 @@ REPLACE_KERNEL_BINARIES()
     # Move the files to the work dir
     mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/boot.img" "$WORK_DIR/kernel"
     mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/dtbo.img" "$WORK_DIR/kernel"
+    mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/vendor_boot.img" "$WORK_DIR/kernel"
 
     # Usually we would delete the temporary directory.
     # However, the Kernel has its own build system that
