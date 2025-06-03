@@ -94,10 +94,9 @@ system/app/SilentLog
 system/app/SimAppDialog
 system/app/Traceur
 system/app/UniversalMDMClient
-system/app/WebManual
 system/app/WifiGuider
 system/etc/default-permissions/default-permissions-com.sec.spp.push.xml
-system/etc/init/digitalkey_init_nfc_tss2.rc
+system/etc/init/digitalkey_init_uwb_tss2.rc
 system/etc/init/samsung_pass_authenticator_service.rc
 system/etc/permissions/authfw.xml
 system/etc/permissions/com.samsung.feature.ipsgeofence.xml
@@ -117,7 +116,6 @@ system/etc/permissions/privapp-permissions-com.samsung.oda.service.xml
 system/etc/permissions/privapp-permissions-com.sec.android.diagmonagent.xml
 system/etc/permissions/privapp-permissions-com.sec.android.soagent.xml
 system/etc/permissions/privapp-permissions-com.sec.bcservice.xml
-system/etc/permissions/privapp-permissions-com.sec.cpagent.xml
 system/etc/permissions/privapp-permissions-com.sec.imslogger.xml
 system/etc/permissions/privapp-permissions-com.sec.spp.push.xml
 system/etc/permissions/privapp-permissions-com.skms.android.agent.xml
@@ -138,7 +136,6 @@ system/priv-app/AREmoji
 system/priv-app/AREmojiEditor
 system/priv-app/AuthFramework
 system/priv-app/BCService
-system/priv-app/CpAgent
 system/priv-app/DiagMonAgent94
 system/priv-app/DigitalKey
 system/priv-app/EnhancedAttestationAgent
