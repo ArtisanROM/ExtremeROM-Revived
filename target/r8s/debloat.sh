@@ -1,5 +1,5 @@
 # mAFPC
-SYSTEM_DEBLOAT="
+SYSTEM_DEBLOAT+="
 system/bin/mafpc_write
 "
 
