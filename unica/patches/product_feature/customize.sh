@@ -121,6 +121,23 @@ if [[ "$(GET_FP_SENSOR_TYPE "$SOURCE_FP_SENSOR_CONFIG")" != "$(GET_FP_SENSOR_TYP
     fi
 fi
 
+if $SOURCE_HAS_HW_MDNIE; then
+    if ! $TARGET_HAS_HW_MDNIE; then
+        echo "Applying HW mDNIe patches"
+        SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_LCD_SUPPORT_MDNIE_HW" --delete
+        APPLY_PATCH "system/framework/framework.jar" "mdnie/hw/framework.jar/0001-Disable-HW-mDNIe.patch"
+        APPLY_PATCH "system/framework/services.jar" "mdnie/hw/services.jar/0001-Disable-HW-mDNIe.patch"
+    fi
+fi
+
+if $SOURCE_MDNIE_SUPPORT_HDR_EFFECT; then
+    if ! $TARGET_MDNIE_SUPPORT_HDR_EFFECT; then
+        echo "Applying mDNIe HDR effect patches"
+        SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_SUPPORT_HDR_EFFECT" --delete
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "mdnie/hdr/SecSettings.apk/0001-Disable-HDR-Settings.patch"
+    fi
+fi
+
 if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]]; then
     echo "Applying mDNIe features patches"
 
@@ -131,6 +148,19 @@ if [[ "$SOURCE_MDNIE_SUPPORTED_MODES" != "$TARGET_MDNIE_SUPPORTED_MODES" ]]; the
     "
     for f in $FTP; do
         sed -i "s/\"$SOURCE_MDNIE_SUPPORTED_MODES\"/\"$TARGET_MDNIE_SUPPORTED_MODES\"/g" "$APKTOOL_DIR/$f"
+    done
+fi
+
+if [[ "$SOURCE_MDNIE_WEAKNESS_SOLUTION_FUNCTION" != "$TARGET_MDNIE_WEAKNESS_SOLUTION_FUNCTION" ]]; then
+    echo "Applying mDNIe weakness features patches"
+
+    DECODE_APK "system/framework/framework.jar"
+
+    FTP="
+    system/framework/framework.jar/smali_classes4/android/view/accessibility/A11yRune.smali
+    "
+    for f in $FTP; do
+        sed -i "s/\"$SOURCE_MDNIE_WEAKNESS_SOLUTION_FUNCTION\"/\"$TARGET_MDNIE_WEAKNESS_SOLUTION_FUNCTION\"/g" "$APKTOOL_DIR/$f"
     done
 fi
 

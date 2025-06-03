@@ -1,0 +1,27 @@
+From 5af17b8986226cdd490a3fabeb640a70bff94f6a Mon Sep 17 00:00:00 2001
+From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+Date: Tue, 3 Jun 2025 22:05:54 +0300
+Subject: [PATCH] Disable HW mDNIe
+
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+---
+ smali_classes4/android/view/accessibility/A11yRune.smali | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/smali_classes4/android/view/accessibility/A11yRune.smali b/smali_classes4/android/view/accessibility/A11yRune.smali
+index f31252734..ed151beb1 100644
+--- a/smali_classes4/android/view/accessibility/A11yRune.smali
++++ b/smali_classes4/android/view/accessibility/A11yRune.smali
+@@ -191,6 +191,9 @@
+     move v0, v3
+ 
+     :goto_0
++
++    const/4 v0, 0x0
++
+     sput-boolean v0, Landroid/view/accessibility/A11yRune;->A11Y_COLOR_BOOL_SUPPORT_COLOR_FILTER_MDNIE_HW:Z
+ 
+     invoke-static {}, Lcom/samsung/android/feature/SemFloatingFeature;->getInstance()Lcom/samsung/android/feature/SemFloatingFeature;
+-- 
+2.45.2
+
