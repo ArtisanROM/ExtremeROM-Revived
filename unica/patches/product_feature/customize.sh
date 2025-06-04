@@ -316,14 +316,14 @@ if $SOURCE_AUDIO_SUPPORT_ACH_RINGTONE; then
     if ! $TARGET_AUDIO_SUPPORT_ACH_RINGTONE; then
         echo "Applying ACH ringtone patches"
         APPLY_PATCH "system/framework/framework.jar" "audio/framework.jar/0001-Disable-ACH-ringtone-support.patch"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "audio/SecSettings.apk/0002-Disable-ACH-ringtone-support.patch"
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "audio/SecSettings.apk/0001-Disable-ACH-ringtone-support.patch"
     fi
 fi
 
 if $SOURCE_AUDIO_SUPPORT_VIRTUAL_VIBRATION; then
     if ! $TARGET_AUDIO_SUPPORT_VIRTUAL_VIBRATION; then
         echo "Applying virtual vibration patches"
-        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "audio/SecSettings.apk/0001-Disable-Virtual-Vibration-support.patch"
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "audio/SecSettings.apk/0002-Disable-Virtual-Vibration-support.patch"
     fi
 fi
 
