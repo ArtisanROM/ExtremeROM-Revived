@@ -58,7 +58,6 @@ app/Maps
 app/Photos
 app/YouTube
 overlay/GmsConfigOverlaySearchSelector.apk
-priv-app/Messages
 priv-app/SearchSelector
 "
 
