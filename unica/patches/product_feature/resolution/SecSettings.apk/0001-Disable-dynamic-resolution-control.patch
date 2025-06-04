@@ -2336,8 +2336,8 @@ index 6ce67d1c4..2ea4a672c 100644
 -    iget-object v2, v8, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
 +    iget-object v2, v7, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
  
--    const v9, 0x7f140fde
-+    const v8, 0x7f140fde
+-    const v9, 0x7f140fe0
++    const v8, 0x7f140fe0
  
 -    invoke-virtual {v0, v9}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 +    invoke-virtual {v0, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -2351,8 +2351,8 @@ index 6ce67d1c4..2ea4a672c 100644
 -    iget-object v2, v8, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
 +    iget-object v2, v7, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
  
--    const v9, 0x7f140fdf
-+    const v8, 0x7f140fdf
+-    const v9, 0x7f140fe1
++    const v8, 0x7f140fe1
  
 -    invoke-virtual {v0, v9}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 +    invoke-virtual {v0, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -2377,8 +2377,8 @@ index 6ce67d1c4..2ea4a672c 100644
 -    iget-object v5, v8, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
 +    iget-object v4, v7, Lcom/samsung/android/settings/display/SecFontTrialSettings;->mBubbleListViewAdapter:Lcom/samsung/android/settings/display/FontPreviewBubbleListAdapter;
  
--    const v9, 0x7f140fe0
-+    const v8, 0x7f140fe0
+-    const v9, 0x7f140fe2
++    const v8, 0x7f140fe2
  
      filled-new-array {v2}, [Ljava/lang/Object;
  
@@ -3159,7 +3159,7 @@ index 6ce67d1c4..2ea4a672c 100644
 -    iget-object v3, v0, Lcom/samsung/android/settings/display/SecScreenZoomPreferenceFragment;->mResources:Landroid/content/res/Resources;
 +    iget-object v5, v0, Lcom/samsung/android/settings/display/SecScreenZoomPreferenceFragment;->mResources:Landroid/content/res/Resources;
  
-     const v6, 0x7f070db4
+     const v6, 0x7f070db6
  
 -    invoke-virtual {v3, v6}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
 +    invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -3299,7 +3299,7 @@ index 6ce67d1c4..2ea4a672c 100644
  
 @@ -1208,23 +1194,23 @@
  
-     const v11, 0x7f1426bd
+     const v11, 0x7f1426c0
  
 -    invoke-virtual {v3, v11, v10}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 +    invoke-virtual {v5, v11, v10}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
@@ -3508,8 +3508,8 @@ index 6ce67d1c4..2ea4a672c 100644
  
      iget-boolean v2, v0, Lcom/samsung/android/settings/display/SecScreenZoomPreferenceFragment;->mIsTabletDevice:Z
  
--    const v3, 0x7f070c36
-+    const v5, 0x7f070c36
+-    const v3, 0x7f070c38
++    const v5, 0x7f070c38
  
      if-eqz v2, :cond_29
  
@@ -3625,7 +3625,7 @@ index aeade4c08..450dee48c 100644
 -
 -    move-result p1
 -
--    const v2, 0x7f141ff5
+-    const v2, 0x7f141ff7
 -
 -    if-eqz p1, :cond_1
 +    invoke-static {}, Lcom/android/settings/Utils;->isGameModeEnabled()V
@@ -3634,7 +3634,7 @@ index aeade4c08..450dee48c 100644
 -
 -    iget-object v0, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
 -
--    const v3, 0x7f140818
+-    const v3, 0x7f140819
 -
 -    invoke-virtual {v0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 -
@@ -3694,8 +3694,8 @@ index aeade4c08..450dee48c 100644
 -    iget-object v0, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
 +    iget-object v1, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
  
--    const v3, 0x7f141116
-+    const v2, 0x7f141116
+-    const v3, 0x7f141118
++    const v2, 0x7f141118
  
 -    invoke-virtual {v0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 +    invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
