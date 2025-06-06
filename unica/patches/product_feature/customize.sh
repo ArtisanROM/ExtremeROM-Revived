@@ -127,6 +127,7 @@ if $SOURCE_HAS_HW_MDNIE; then
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_LCD_SUPPORT_MDNIE_HW" --delete
         APPLY_PATCH "system/framework/framework.jar" "mdnie/hw/framework.jar/0001-Disable-HW-mDNIe.patch"
         APPLY_PATCH "system/framework/services.jar" "mdnie/hw/services.jar/0001-Disable-HW-mDNIe.patch"
+        DELETE_FROM_WORK_DIR "system" "system/bin/mafpc_write"
     fi
 fi
 
