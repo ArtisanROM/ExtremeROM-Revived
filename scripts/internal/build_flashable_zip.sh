@@ -252,6 +252,7 @@ GENERATE_UPDATER_SCRIPT()
     [ "$NO_COMPRESSION" = "false" ] && BROTLI_EXTENSION=".br"
     local SCRIPT_FILE="$TMP_DIR/META-INF/com/google/android/updater-script"
     local PARTITION_COUNT=0
+    local HAS_UP_PARAM=false
     local HAS_BOOT=false
     local HAS_DTB=false
     local HAS_DTBO=false
@@ -270,6 +271,7 @@ GENERATE_UPDATER_SCRIPT()
     local HAS_OPTICS=false
     local HAS_POST_INSTALL=false
 
+    [ -f "$TMP_DIR/up_param.bin" ] && HAS_UP_PARAM=true
     [ -f "$TMP_DIR/boot.img" ] && HAS_BOOT=true
     [ -f "$TMP_DIR/dtb.img" ] && HAS_DTB=true
     [ -f "$TMP_DIR/dtbo.img" ] && HAS_DTBO=true
@@ -520,6 +522,12 @@ GENERATE_UPDATER_SCRIPT()
             echo -n "$TARGET_BOOT_DEVICE_PATH"
             echo    '/boot");'
         fi
+        if $HAS_UP_PARAM; then
+            echo    'ui_print("Installing up_param image...");'
+            echo -n 'package_extract_file("up_param.bin", "'
+            echo -n "$TARGET_BOOT_DEVICE_PATH"
+            echo    '/up_param");'
+        fi
 
         if $HAS_POST_INSTALL; then
             cat "$SRC_DIR/target/$TARGET_CODENAME/postinstall.edify"
@@ -614,6 +622,11 @@ while read -r i; do
     [ -f "$TMP_DIR/$IMG" ] && rm -f "$TMP_DIR/$IMG"
     cp -a --preserve=all "$i" "$TMP_DIR/$IMG"
 done <<< "$(find "$WORK_DIR/kernel" -mindepth 1 -maxdepth 1 -type f -name "*.img")"
+
+if [ -f "$WORK_DIR/up_param.bin" ]; then
+    echo "Copying up_param.bin"
+    cp -a "$WORK_DIR/up_param.bin" "$TMP_DIR/up_param.bin"
+fi
 
 echo "Generating updater-script"
 GENERATE_UPDATER_SCRIPT
