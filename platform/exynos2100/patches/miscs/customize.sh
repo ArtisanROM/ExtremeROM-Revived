@@ -5,6 +5,9 @@ SET_PROP "vendor" "debug.renderengine.backend" "skiagl"
 SET_PROP "vendor" "renderthread.skia.reduceopstasksplitting" "true"
 SET_PROP "vendor" "debug.hwui.skia_atrace_enabled" "false"
 
+echo "Setting FUSE passthough"
+SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
+
 echo "Disabling encryption"
 # Encryption
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos2100")
