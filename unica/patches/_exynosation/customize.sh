@@ -155,7 +155,6 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     system/etc/vintf/manifest.xml
     system/framework/com.android.nfc_extras.jar
     system/framework/displayaiqe_svc.jar
-    system/framework/ssrm.jar
     system/framework/vendor.samsung_slsi.telephony.hardware.oemservice-V1-java.jar
     system/lib64/android.hardware.graphics.composer3-V1-ndk.so
     system/lib64/android.hardware.graphics.extension.composer3-V1-ndk.so
@@ -198,9 +197,6 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "essi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     system/lib64/vendor.samsung.hardware.tlc.payment@1.0.so
     system/lib64/vendor.samsung_slsi.hardware.ExynosHWCServiceTW@1.0.so
     system/lib64/vendor.samsung_slsi.hardware.eden_runtime@1.0.so
-    system/priv-app/SamsungDeviceHealthManagerService/SamsungDeviceHealthManagerService.apk
-    system/priv-app/SamsungDeviceHealthManagerService/oat/arm64/SamsungDeviceHealthManagerService.odex
-    system/priv-app/SamsungDeviceHealthManagerService/oat/arm64/SamsungDeviceHealthManagerService.vdex
     "
     for blob in $BLOBS_LIST
     do
