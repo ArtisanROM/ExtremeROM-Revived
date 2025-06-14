@@ -14,7 +14,7 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     "
     for blob in $BLOBS_LIST
     do
-        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob" 0 0 644 "u:object_r:system_file:s0"
+        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob"
     done
 
     BLOBS_LIST="
@@ -23,7 +23,7 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     "
     for blob in $BLOBS_LIST
     do
-        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob" 0 0 644 "u:object_r:system_linker_exec:s0"
+        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob"
     done
 
     # Set props
