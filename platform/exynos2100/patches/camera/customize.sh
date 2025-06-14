@@ -76,18 +76,3 @@ for blob in $BLOBS_LIST
 do
     ADD_TO_WORK_DIR "p3sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
-
-# Polarr SDK
-ADD_TO_WORK_DIR "b0sxxx" "system" "system/etc/public.libraries-polarr.txt" 0 0 644 "u:object_r:system_file:s0"
-
-BLOBS_LIST="
-system/lib64/libBestComposition.polarr.so
-system/lib64/libFeature.polarr.so
-system/lib64/libPolarrSnap.polarr.so
-system/lib64/libTracking.polarr.so
-system/lib64/libYuv.polarr.so
-"
-for blob in $BLOBS_LIST
-do
-    ADD_TO_WORK_DIR "b0sxxx" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
-done
