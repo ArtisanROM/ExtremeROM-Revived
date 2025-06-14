@@ -22,7 +22,7 @@
 # ROM-specific prebuilt blobs
 prebuilts/bootable/deprecated-ota/updater binary
 prebuilts/*/*/*/** binary
-unica/mods/pif/system/bin/rezetprop binary
+unica/mods/rezetprop/system/bin/rezetprop binary
 
 # Device-specific prebuilt blobs
 target/a52sxq/patches/wpss/vendor/firmware/** binary
