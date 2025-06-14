@@ -7,3 +7,6 @@ system/lib64/libui.so 0 0 644 capabilities=0x0
 system/priv-app 0 0 755 capabilities=0x0
 system/priv-app/SamsungCamera 0 0 755 capabilities=0x0
 system/priv-app/SamsungCamera/SamsungCamera.apk 0 0 644 capabilities=0x0
+system/system_ext 0 0 755 capabilities=0x0
+system/system_ext/apex 0 0 755 capabilities=0x0
+system/system_ext/apex/com.android.vndk.v34.apex 0 0 644 capabilities=0x0
