@@ -21,6 +21,6 @@
 /system_ext/etc/selinux/system_ext_mac_permissions\.xml u:object_r:mac_perms_file:s0
 /system_ext/etc/selinux/system_ext_property_contexts u:object_r:property_contexts_file:s0
 /system_ext/etc/selinux/system_ext_seapp_contexts u:object_r:seapp_contexts_file:s0
-/system_ext/etc/selinux/system_ext_sepolicy\.cil u:object_r:system_file:s0
 /system_ext/etc/selinux/system_ext_sepolicy_and_mapping\.sha256 u:object_r:system_file:s0
+/system_ext/etc/selinux/system_ext_sepolicy\.cil u:object_r:system_file:s0
 /system_ext/etc/selinux/system_ext_service_contexts u:object_r:service_contexts_file:s0

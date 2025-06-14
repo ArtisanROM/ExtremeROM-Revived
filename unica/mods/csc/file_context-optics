@@ -1,5 +1,4 @@
 /optics u:object_r:vendor_file:s0
-/optics/lost\+found u:object_r:vendor_file:s0
 /optics/configs u:object_r:vendor_configs_file:s0
 /optics/configs/carriers u:object_r:vendor_configs_file:s0
 /optics/configs/carriers/single u:object_r:vendor_configs_file:s0
