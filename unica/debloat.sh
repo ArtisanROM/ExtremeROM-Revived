@@ -72,7 +72,6 @@ system/app/MAPSAgent
 system/app/MDMApp
 system/app/PlayAutoInstallConfig
 system/app/Rampart
-system/app/SamsungCarKeyFw
 system/app/SamsungPassAutofill_v1
 system/app/SamsungTTSVoice_ar_AE_m00_ICLM
 system/app/SamsungTTSVoice_de_DE_f00
