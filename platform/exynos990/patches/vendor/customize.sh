@@ -17,14 +17,11 @@ do
     DELETE_FROM_WORK_DIR "vendor" "$blob"
 done
 
-ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/rild"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/vendor.samsung.hardware.biometrics.face@3.0-service"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "bin/hw/vendor.samsung.hardware.vibrator-service"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "lib64"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/init"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/vintf"
-ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/mtu-conf.xml"
-ADD_TO_WORK_DIR "p3sxxx" "vendor" "etc/pdpcnt-conf.xml"
 
 # WPA Supplicant HAL
 if [[ "$TARGET_CODENAME" != "r8s" ]]; then
