@@ -120,6 +120,10 @@ else
     echo -e "- Nothing to do in work dir.\n"
 fi
 
+if [ -n "$GITHUB_ACTIONS" ]; then
+    bash "$SRC_DIR/scripts/cleanup.sh" fw kernel_tmp_dir
+fi
+
 if $BUILD_ZIP; then
     echo "- Building ROM zip..."
     bash "$SRC_DIR/scripts/internal/build_flashable_zip.sh"
