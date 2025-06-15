@@ -33,7 +33,7 @@ sed -i "${LINE}s|ext4|f2fs|g" "$WORK_DIR/vendor/etc/fstab.exynos9820" \
 
 echo "Switching to FBE v2"
 FBE_V1="fileencryption=ice"
-FBE_V2="fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,metadata_encryption=aes-256-xts,keydirectory=/metadata/vold/metadata_encryption"
+FBE_V2="fscompress,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,metadata_encryption=aes-256-xts,keydirectory=/metadata/vold/metadata_encryption"
 sed -i "${LINE}s|resgid=5678|resgid=5678,inlinecrypt|g" "$WORK_DIR/vendor/etc/fstab.exynos9820" \
     && sed -i "${LINE}s|$FBE_V1|$FBE_V2|g" "$WORK_DIR/vendor/etc/fstab.exynos9820"
 
