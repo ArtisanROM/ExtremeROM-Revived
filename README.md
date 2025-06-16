@@ -12,23 +12,31 @@
 <p align="center">
   <a href="https://t.me/extremerom">💬 Telegram</a>
   <a href="https://github.com/ExtremeXT/ExtremeROM/wiki">📖 Wiki</a>
+  <a href="https://github.com/ExtremeXT/ExtremeROM/CHANGELOG.md">📝 Changelog</a>
 </p>
 
 # What is ExtremeROM Nexus?
 ExtremeROM Nexus is a work-in-progress custom firmware for Samsung Galaxy devices. It's based on the latest and greatest iteration of Samsung's UX and it also includes additional features and tweaks to ensure the best possible experience out of the box.
 It is based on the UN1CA build system which allows automatic downloading/extraction of the firmware, applying the required patches and generating a flashable zip/tar package for the specified target device.
-ExtremeROM Nexus supports devices using the the Exynos 9820 and Exynos 990 SoCs
+ExtremeROM Nexus supports devices using the Exynos 9820, Exynos 990 and Exynos 2100 SoCs
 
 Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
 
 # Features
 - Based on the latest stable OneUI 7 Galaxy S25 Ultra firmware
 - All software features from S25 Ultra
-- Slightly Debloated
-- Partially DeKnoxed
+- Moderately Debloated
+- Heavily DeKnoxed
 - Full SELinux Support
 - Full Galaxy AI support
-- Completely upstreamed kernels 4.14 and 4.19 kernels for 9820 respectively 990
+- Completely upstreamed kernels for all officially supported devices
+- Super HDR support
+- Adaptive Brightness support
+- Full CSC support
+- Adaptive Refresh Rate support (for some models)
+- Multi-User support
+- Stock models in Settings and user apps
+- Removed Telemetry and tracing
 - High end animations
 - Native/live blur support
 - Adaptive color tone support
@@ -37,7 +45,8 @@ Any form of contribution, suggestions, bug report or feature request for the pro
 - [BluetoothLibraryPatcher](https://github.com/3arthur6/BluetoothLibraryPatcher) included
 - [KnoxPatch](https://github.com/salvogiangri/KnoxPatch) implemented in system frameworks
 - Extra mods (Disable Secure Flag, OutDoor mode, more coming soon)
-- Extra CSC features (Call recording, Network speed in status bar)
+- Extra CSC features (Call recording, Network speed in status bar, 5GHz Hotspot)
+- Countless other small optimizations
 - More that I can't remember right now and will have to be added in the future
 
 # Bugs
@@ -90,6 +99,11 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **[Fred](https://github.com/xfwdrev)** for WFD, HDR10+, audiopolicy and more fixes
 - **[Saad](https://github.com/saadelasfur)** for help with build system
 - **[Vince](https://github.com/vinceboberly)** for help with kernel upstream
+- **Nhat Vo** for Google Telemetry app removal
+- **Code Malaya** for SPen Air Actions
+- **[Renox](https://github.com/renoxtv)** for overlay patches and testing
+- **[Ksawlii](https://github.com/Ksawlii)** for FOD animation patch
+- **[nalz0](https://github.com/nalz0)** for Multi-User support
 - **@april865** (TG) for ExtremeROM Nexus banner
 
 Original UN1CA credits:
