@@ -63,15 +63,14 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
         </DateTimeFormat>
       </Phone>
       <Display>
         <NbWallpaper>1</NbWallpaper>
-        <Wallpaper src="/Customer/CHE/Wallpaper/default_wallpaper.png" width="1024" height="600" usedWithLockScreen="true" default="true">
+        <Wallpaper src="/Customer/CHE/Wallpaper/default_wallpaper.jpg" width="2280" height="2280" usedWithLockScreen="true" default="true">
           <Position>1</Position>
-          <FileType>PNG</FileType>
+          <FileType>JPG</FileType>
         </Wallpaper>
       </Display>
     </Main>

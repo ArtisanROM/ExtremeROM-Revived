@@ -83,7 +83,6 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>12h</TimeFormat>
         </DateTimeFormat>
       </Phone>

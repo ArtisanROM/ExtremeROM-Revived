@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SamsungMobileFeature>
+  <Version>ED00005</Version>
+  <Country>EGYPT</Country>
+  <CountryISO>EG</CountryISO>
+  <SalesCode>EGY</SalesCode>
+  <FeatureSet>
+    <CscFeature_Calendar_EnableLocalHolidayDisplay>ARABIC</CscFeature_Calendar_EnableLocalHolidayDisplay>
+    <CscFeature_Calendar_SetColorOfDays>XXXXBRX</CscFeature_Calendar_SetColorOfDays>
+    <CscFeature_Clock_DisableIsraelCountry>TRUE</CscFeature_Clock_DisableIsraelCountry>
+    <CscFeature_Common_SupportHijriLunarCalendar>TRUE</CscFeature_Common_SupportHijriLunarCalendar>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_RIL_ConfigWbamr>2G</CscFeature_RIL_ConfigWbamr>
+    <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
+    <CscFeature_Setting_DisableIsraelCountry>TRUE</CscFeature_Setting_DisableIsraelCountry>
+    <CscFeature_Setting_SupportELabelFccId>FALSE</CscFeature_Setting_SupportELabelFccId>
+    <CscFeature_Setting_SupportELabelSPenFccId>FALSE</CscFeature_Setting_SupportELabelSPenFccId>
+    <CscFeature_SetupWizard_SupportEsimAsPrimary>TRUE</CscFeature_SetupWizard_SupportEsimAsPrimary>
+    <CscFeature_Sip_ConfigWhetherToProvideGif>disable</CscFeature_Sip_ConfigWhetherToProvideGif>
+    <CscFeature_VT_SupportMerge>TRUE</CscFeature_VT_SupportMerge>
+    <CscFeature_VoiceCall_ConfigRecording>RecordingAllowed</CscFeature_VoiceCall_ConfigRecording>
+  </FeatureSet>
+</SamsungMobileFeature>

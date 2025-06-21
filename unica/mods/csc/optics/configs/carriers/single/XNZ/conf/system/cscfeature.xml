@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SamsungMobileFeature>
+  <Version>ED00009</Version>
+  <Country>NEW ZEALAND</Country>
+  <CountryISO>NZ</CountryISO>
+  <SalesCode>XNZ</SalesCode>
+  <FeatureSet>
+    <CscFeature_Camera_CameraFlicker>50hz</CscFeature_Camera_CameraFlicker>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,off</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_GMS_SetClientIDBaseCr>android-samsung-ss</CscFeature_GMS_SetClientIDBaseCr>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-rvo1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_GMS_SetClientIDBaseVs>android-samsung-rvo1</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_RIL_ConfigWbamr>2G</CscFeature_RIL_ConfigWbamr>
+    <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
+    <CscFeature_Setting_DisableELabelCeWeeeMarks>FALSE</CscFeature_Setting_DisableELabelCeWeeeMarks>
+    <CscFeature_Setting_EnableDataRoamingMenuInDetail>TRUE</CscFeature_Setting_EnableDataRoamingMenuInDetail>
+    <CscFeature_Setting_SupportELabelFccId>FALSE</CscFeature_Setting_SupportELabelFccId>
+    <CscFeature_Setting_SupportRegulatoryInfo>TRUE</CscFeature_Setting_SupportRegulatoryInfo>
+    <CscFeature_SetupWizard_SupportEsimAsPrimary>TRUE</CscFeature_SetupWizard_SupportEsimAsPrimary>
+  </FeatureSet>
+</SamsungMobileFeature>

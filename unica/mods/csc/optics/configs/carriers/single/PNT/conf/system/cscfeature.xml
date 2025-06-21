@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <SamsungMobileFeature>
-  <Version>ED00010</Version>
+  <Version>ED00008</Version>
   <Country>PERU</Country>
   <CountryISO>PE</CountryISO>
   <SalesCode>PNT</SalesCode>
@@ -10,7 +10,7 @@
     <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
     <CscFeature_GMS_SetClientIDBaseCr>android-samsung-ss</CscFeature_GMS_SetClientIDBaseCr>
     <CscFeature_GMS_SetClientIDBaseMs>android-samsung-rvo1</CscFeature_GMS_SetClientIDBaseMs>
-    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-sros-21-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
     <CscFeature_GMS_SetClientIDBaseVs>android-samsung-rvo1</CscFeature_GMS_SetClientIDBaseVs>
     <CscFeature_RIL_ConfigSVNVersion>1</CscFeature_RIL_ConfigSVNVersion>
     <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>

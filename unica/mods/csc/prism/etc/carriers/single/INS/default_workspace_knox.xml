@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<favorites xmlns:launcher="http://schemas.android.com/apk/res/com.sec.android.app.launcher" >
+
+    <PageCount>1</PageCount>
+
+    <ScreenIndex>0</ScreenIndex>
+
+    <home>
+
+        <!-- email u -->
+        <favorite
+            launcher:className="com.samsung.android.email.ui.activity.MessageListXL"
+            launcher:packageName="com.samsung.android.email.provider"
+            launcher:screen="0"
+            launcher:x="0"
+            launcher:y="4" />
+
+        <!-- s planneru -->
+        <favorite
+            launcher:className="com.android.calendar.AllInOneActivity"
+            launcher:packageName="com.samsung.android.calendar"
+            launcher:screen="0"
+            launcher:x="1"
+            launcher:y="4" />
+
+        <!-- My files u -->
+        <favorite
+            launcher:className="com.sec.android.app.myfiles.common.MainActivity"
+            launcher:packageName="com.sec.android.app.myfiles"
+            launcher:screen="0"
+            launcher:x="2"
+            launcher:y="4" />
+            
+        <!-- S Note u -->
+        <favorite
+            launcher:className="com.samsung.android.app.notes.memolist.MemoListActivity"
+            launcher:packageName="com.samsung.android.app.notes" 
+            launcher:screen="0"
+            launcher:x="3"
+            launcher:y="4" />
+            
+        <!-- Memo u -->
+        <favorite
+            launcher:className="com.samsung.android.app.memo.Main"
+            launcher:packageName="com.samsung.android.app.memo" 
+            launcher:screen="0"
+            launcher:x="3"
+            launcher:y="4" />
+
+        <!-- KnoxSettings u -->
+        <favorite
+            launcher:className="com.sec.knox.containeragent2.ui.settings.KnoxSettingsActivity"
+            launcher:packageName="com.sec.knox.containeragent2"
+            launcher:screen="0"
+            launcher:x="4"
+            launcher:y="4" />
+
+        <favorite
+            launcher:className="com.sec.knox.containeragent2.ui.settings.KnoxSettingsActivity2"
+            launcher:packageName="com.sec.knox.containeragent2"
+            launcher:screen="0"
+            launcher:x="4"
+            launcher:y="4" />
+
+    </home>
+
+    <!-- Hotseat (We use the screen as the position of the item in the hotseat) -->
+    <hotseat>
+
+        <!-- personal home -->
+        <favorite
+            launcher:className="com.sec.knox.switcher.MainActivity"
+            launcher:packageName="com.sec.knox.switcher"
+            launcher:screen="0" />
+
+        <!-- phone -->
+        <favorite
+            launcher:className="com.sec.knox.shortcutsms.PhoneShortcut"
+            launcher:packageName="com.sec.knox.shortcutsms"
+            launcher:screen="1" />  
+
+        <favorite
+            launcher:className="com.android.dialer.DialtactsActivity"
+            launcher:packageName="com.samsung.android.app.contacts"
+            launcher:screen="1" />
+
+        <!-- contacts -->
+        <favorite
+            launcher:className="com.android.contacts.activities.PeopleActivity"
+            launcher:packageName="com.samsung.android.app.contacts"
+            launcher:screen="2" />
+
+        <!-- Msg -->
+        <favorite
+            launcher:className="com.sec.knox.shortcutsms.SMSShortcut"
+            launcher:packageName="com.sec.knox.shortcutsms"
+            launcher:screen="3" />
+
+		<!-- internet -->		
+        <favorite
+            launcher:className="com.sec.android.app.sbrowser.SBrowserMainActivity"
+            launcher:packageName="com.sec.android.app.sbrowser"
+            launcher:screen="4" />
+    </hotseat>
+
+</favorites>

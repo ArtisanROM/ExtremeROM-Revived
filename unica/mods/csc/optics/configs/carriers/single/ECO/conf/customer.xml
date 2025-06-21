@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0005</CSCEdition>
+    <CSCEdition>ED0003</CSCEdition>
     <Country>ECUADOR</Country>
     <CountryISO>EC</CountryISO>
     <Region>LA</Region>
@@ -44,29 +44,28 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
         </DateTimeFormat>
       </Phone>
       <Display>
         <NbWallpaper>5</NbWallpaper>
-        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-01.png" width="1024" height="600">
+        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-01.png" width="2280" height="2280">
           <Position>1</Position>
           <FileType>PNG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-14.png" width="1024" height="600">
+        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-04.png" width="2280" height="2280">
           <Position>2</Position>
           <FileType>PNG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-15.png" width="1024" height="600">
+        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-06.png" width="2280" height="2280">
           <Position>3</Position>
           <FileType>PNG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-17.png" width="1024" height="600">
+        <Wallpaper src="/Customer/ECO/Wallpaper/ClaroWallpaper_w-14.png" width="2280" height="2280">
           <Position>4</Position>
           <FileType>PNG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/ECO/Wallpaper/default_wallpaper.png" width="1024" height="600" usedWithLockScreen="true" default="true">
+        <Wallpaper src="/Customer/ECO/Wallpaper/default_wallpaper.png" width="2280" height="2280" usedWithLockScreen="true" default="true">
           <Position>5</Position>
           <FileType>PNG</FileType>
         </Wallpaper>

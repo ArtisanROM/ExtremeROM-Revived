@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SamsungMobileFeature>
+  <Version>ED00004</Version>
+  <Country>RUSSIA</Country>
+  <CountryISO>RU</CountryISO>
+  <SalesCode>SER</SalesCode>
+  <FeatureSet>
+    <CscFeature_Audio_SupportSafeMediaVolumeDialog>TRUE</CscFeature_Audio_SupportSafeMediaVolumeDialog>
+    <CscFeature_Common_DisableBixby>TRUE</CscFeature_Common_DisableBixby>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Contact_ConfigOpStyleVariation>SER</CscFeature_Contact_ConfigOpStyleVariation>
+    <CscFeature_Contact_FullCountryPrefixSearchSupport>TRUE</CscFeature_Contact_FullCountryPrefixSearchSupport>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_GMS_SetClientIDBaseCr>android-samsung-ss</CscFeature_GMS_SetClientIDBaseCr>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-ss</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBaseVs>android-samsung-ss</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_RIL_ConfigWbamr>2G</CscFeature_RIL_ConfigWbamr>
+    <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
+    <CscFeature_Setting_SupportELabelFccId>FALSE</CscFeature_Setting_SupportELabelFccId>
+    <CscFeature_Setting_SupportELabelSPenFccId>FALSE</CscFeature_Setting_SupportELabelSPenFccId>
+    <CscFeature_SetupWizard_ConfigStepSequenceType>GooglePAI</CscFeature_SetupWizard_ConfigStepSequenceType>
+    <CscFeature_SetupWizard_SupportEsimAsPrimary>TRUE</CscFeature_SetupWizard_SupportEsimAsPrimary>
+    <CscFeature_Sip_ConfigWhetherToProvideGif>disable</CscFeature_Sip_ConfigWhetherToProvideGif>
+    <CscFeature_SystemUI_ConfigQuickSettingPopup>SER</CscFeature_SystemUI_ConfigQuickSettingPopup>
+    <CscFeature_Wifi_SupportNetworkConnectionsRequired>TRUE</CscFeature_Wifi_SupportNetworkConnectionsRequired>
+  </FeatureSet>
+</SamsungMobileFeature>

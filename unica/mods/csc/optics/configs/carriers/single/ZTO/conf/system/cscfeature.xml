@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <SamsungMobileFeature>
-  <Version>ED00013</Version>
+  <Version>ED00009</Version>
   <Country>BRAZIL</Country>
   <CountryISO>BR</CountryISO>
   <SalesCode>ZTO</SalesCode>
@@ -10,9 +10,9 @@
     <CscFeature_Contact_ConfigOpStyleVariation>ZTO</CscFeature_Contact_ConfigOpStyleVariation>
     <CscFeature_Contact_EnableDynCallerIdMatchingDigitWithAutoSim>TRUE</CscFeature_Contact_EnableDynCallerIdMatchingDigitWithAutoSim>
     <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
-    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-sros-21-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
     <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
-    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;fccforspen=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
+    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
     <CscFeature_Setting_SupportRegulatoryInfo>TRUE</CscFeature_Setting_SupportRegulatoryInfo>
     <CscFeature_SetupWizard_SupportEsimAsPrimary>TRUE</CscFeature_SetupWizard_SupportEsimAsPrimary>
     <CscFeature_VT_SupportMerge>TRUE</CscFeature_VT_SupportMerge>

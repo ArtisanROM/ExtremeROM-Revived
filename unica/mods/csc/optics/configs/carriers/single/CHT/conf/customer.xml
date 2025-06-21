@@ -56,7 +56,6 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>enable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>12h</TimeFormat>
           <TimezoneUpdate>on</TimezoneUpdate>
         </DateTimeFormat>

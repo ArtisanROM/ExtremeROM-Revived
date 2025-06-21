@@ -1,0 +1,33 @@
+<SamsungMobileLanguage>
+
+   <Country>India</Country>
+
+   <CountryISO>IN</CountryISO>
+
+   <SalesCode>INU</SalesCode>
+
+   <LanguageSet>
+
+          <Display>
+
+					en_GB;en_US;ko_KR;hi_IN;ta_IN;pa_IN;bn_IN;gu_IN;kn_IN;ml_IN;mr_IN;si_IN;as_IN;ne_IN;te_IN;or_IN;ur_PK;
+          </Display>
+
+          <Input>
+
+                <SupportList>
+
+                en_GB;en_US;hi;bn;gu;kn;ml;mr;pa;ta;te;or;as;ne;si;ur;ko;
+
+                </SupportList>
+
+                <EnableList>
+
+                </EnableList>
+
+          </Input>
+
+   </LanguageSet>
+
+</SamsungMobileLanguage>
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0004</CSCEdition>
+    <CSCEdition>ED0003</CSCEdition>
     <Country>Paraguay</Country>
     <CountryISO>PY</CountryISO>
     <Region>LA</Region>
@@ -44,16 +44,15 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>enable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
           <TimezoneUpdate>on</TimezoneUpdate>
         </DateTimeFormat>
       </Phone>
       <Display>
         <NbWallpaper>1</NbWallpaper>
-        <Wallpaper src="/Customer/PSP/Wallpaper/default_wallpaper.png" width="1440" height="3088" usedWithLockScreen="true" default="true">
+        <Wallpaper src="/Customer/PSP/Wallpaper/default_wallpaper.jpg" width="2280" height="2280" usedWithLockScreen="true" default="true">
           <Position>1</Position>
-          <FileType>PNG</FileType>
+          <FileType>JPG</FileType>
         </Wallpaper>
       </Display>
       <Sound>

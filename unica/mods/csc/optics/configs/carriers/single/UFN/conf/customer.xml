@@ -91,7 +91,6 @@
         <DefLanguage>spanish_latin</DefLanguage>
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
           <TimezoneUpdate>on</TimezoneUpdate>
         </DateTimeFormat>

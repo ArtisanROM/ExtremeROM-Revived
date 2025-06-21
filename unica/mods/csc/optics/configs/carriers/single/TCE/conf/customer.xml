@@ -56,29 +56,28 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>12h</TimeFormat>
         </DateTimeFormat>
       </Phone>
       <Display>
         <NbWallpaper>5</NbWallpaper>
-        <Wallpaper src="/Customer/TCE/Wallpaper/default_wallpaper.jpg" width="1024" height="600" usedWithLockScreen="true" default="true">
+        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-04.jpg" width="2280" height="2280">
           <Position>1</Position>
           <FileType>JPG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-01.jpg" width="1024" height="600">
+        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-07.jpg" width="2280" height="2280">
           <Position>2</Position>
           <FileType>JPG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-02.jpg" width="1024" height="600">
+        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-09.jpg" width="2280" height="2280">
           <Position>3</Position>
           <FileType>JPG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-06.jpg" width="1024" height="600">
+        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-11.jpg" width="2280" height="2280">
           <Position>4</Position>
           <FileType>JPG</FileType>
         </Wallpaper>
-        <Wallpaper src="/Customer/TCE/Wallpaper/TelcelWallpaper_w-09.jpg" width="1024" height="600">
+        <Wallpaper src="/Customer/TCE/Wallpaper/default_wallpaper.jpg" width="2280" height="2280" usedWithLockScreen="true" default="true">
           <Position>5</Position>
           <FileType>JPG</FileType>
         </Wallpaper>

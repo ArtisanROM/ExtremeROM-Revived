@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0003</CSCEdition>
+    <CSCEdition>ED0002</CSCEdition>
     <Country>Argentina</Country>
     <CountryISO>AR</CountryISO>
     <Region>LA</Region>
@@ -47,9 +47,7 @@
       <Phone>
         <DefLanguage>spanish_latin</DefLanguage>
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
-        <T9Enabling>enable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
         </DateTimeFormat>
       </Phone>
@@ -91,6 +89,17 @@
       <SMS>
         <DeliveryReport>off</DeliveryReport>
       </SMS>
+      <MMS>
+        <MmsSending>
+          <ReqDeliveryRep>off</ReqDeliveryRep>
+          <ReqReadRep>off</ReqReadRep>
+          <CreationMode>free</CreationMode>
+        </MmsSending>
+        <MmsReceiving>
+          <Home>auto</Home>
+          <Roaming>manual</Roaming>
+        </MmsReceiving>
+      </MMS>
     </Messages>
     <Browser>
       <NbBookmark>4</NbBookmark>
@@ -122,13 +131,14 @@
     <Connections>
       <NbProfileHandle>1</NbProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>3</NbNetProfile>
+        <NbNetProfile>4</NbNetProfile>
         <NetworkName>Personal</NetworkName>
         <ProfBrowser>Personal Datos</ProfBrowser>
+        <ProfMMS>Personal MMS</ProfMMS>
         <ProfIntSharing>Personal Internet Movil</ProfIntSharing>
         <ProfIMS>Personal IMS</ProfIMS>
       </ProfileHandle>
-      <NbProfile>3</NbProfile>
+      <NbProfile>4</NbProfile>
       <Profile>
         <NetworkName>Personal</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
@@ -159,6 +169,27 @@
           <APN>internet.personal.com</APN>
           <UserId>internet</UserId>
           <Password>internet</Password>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>Personal</NetworkName>
+        <IpVersion>ipv4</IpVersion>
+        <RoamingIpVersion>ipv4</RoamingIpVersion>
+        <Editable>no</Editable>
+        <ProfileName>Personal MMS</ProfileName>
+        <URL>http://mms.personal.com/</URL>
+        <Auth>normal</Auth>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <Proxy>
+          <EnableFlag>on</EnableFlag>
+          <ServAddr>172.25.7.31</ServAddr>
+          <Port>8080</Port>
+        </Proxy>
+        <PSparam>
+          <APN>mms</APN>
+          <UserId>mms</UserId>
+          <Password>mms</Password>
         </PSparam>
       </Profile>
       <Profile>

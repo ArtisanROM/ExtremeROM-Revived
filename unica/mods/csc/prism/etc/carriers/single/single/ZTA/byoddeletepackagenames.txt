@@ -1,0 +1,13 @@
+com.amazon.appmanager
+com.amazon.appmanager
+com.srbr.AMX.rro.stk1
+com.srbr.AMX.rro.stk2
+com.instagram.android
+com.facebook.orca
+com.tims.rt
+com.amazon.appmanager
+com.amazon.appmanager
+com.amazon.mShop.android.shopping
+com.dti.attmx
+com.dti.millicom
+com.samsung.vvm

@@ -1,0 +1,12 @@
+com.amazon.appmanager
+com.amazon.appmanager
+com.instagram.android
+com.facebook.orca
+com.tims.rt
+com.sidia.suframa.notification
+com.amazon.appmanager
+com.amazon.appmanager
+com.amazon.mShop.android.shopping
+com.dti.attmx
+com.dti.millicom
+com.samsung.vvm

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <SamsungMobileFeature>
-  <Version>ED00009</Version>
+  <Version>ED00006</Version>
   <Country>PARAGUAY</Country>
   <CountryISO>PY</CountryISO>
   <SalesCode>CTP</SalesCode>
@@ -12,10 +12,9 @@
     <CscFeature_GMS_SetClientIDBaseAm>android-americamovil-{country}</CscFeature_GMS_SetClientIDBaseAm>
     <CscFeature_GMS_SetClientIDBaseCr>android-americamovil-{country}-rvc2</CscFeature_GMS_SetClientIDBaseCr>
     <CscFeature_GMS_SetClientIDBaseMs>android-americamovil-{country}-rvc2</CscFeature_GMS_SetClientIDBaseMs>
-    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-sros-21-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
     <CscFeature_GMS_SetClientIDBaseVs>android-americamovil-{country}-rvc2</CscFeature_GMS_SetClientIDBaseVs>
     <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
-    <CscFeature_Setting_ConfigAboutDeviceItems>modelnumberDSsuffix=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
     <CscFeature_Setting_SupportELabelManufacturer>DISEÑADO Y DESARROLLADO POR SAMSUNG</CscFeature_Setting_SupportELabelManufacturer>
     <CscFeature_Setting_SupportRegulatoryInfo>TRUE</CscFeature_Setting_SupportRegulatoryInfo>
     <CscFeature_SetupWizard_SupportEsimAsPrimary>TRUE</CscFeature_SetupWizard_SupportEsimAsPrimary>

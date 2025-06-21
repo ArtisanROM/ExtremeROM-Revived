@@ -63,13 +63,12 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>12h</TimeFormat>
         </DateTimeFormat>
       </Phone>
       <Display>
         <NbWallpaper>1</NbWallpaper>
-        <Wallpaper src="/Customer/DOR/Wallpaper/default_wallpaper.jpg" width="1024" height="600" usedWithLockScreen="true" default="true">
+        <Wallpaper src="/Customer/DOR/Wallpaper/default_wallpaper.jpg" width="2280" height="2280" usedWithLockScreen="true" default="true">
           <Position>1</Position>
           <FileType>JPG</FileType>
         </Wallpaper>

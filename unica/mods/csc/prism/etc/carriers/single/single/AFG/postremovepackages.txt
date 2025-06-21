@@ -1,0 +1,5 @@
+4
+AmazonMDIP-release-signed-sdk34-Samsung.apk
+DigitalKey.apk
+SamsungCarKeyFw.apk
+SamsungPayStub.apk

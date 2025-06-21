@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <SamsungMobileFeature>
-  <Version>ED00009</Version>
+  <Version>ED00007</Version>
   <Country>MEXICO</Country>
   <CountryISO>MX</CountryISO>
   <SalesCode>MXO</SalesCode>
@@ -9,7 +9,7 @@
     <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,off</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
     <CscFeature_Contact_EnableDynCallerIdMatchingDigitWithAutoSim>TRUE</CscFeature_Contact_EnableDynCallerIdMatchingDigitWithAutoSim>
     <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
-    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-sros-21-43</CscFeature_GMS_SetClientIDBasePg2>
+    <CscFeature_GMS_SetClientIDBasePg2>android-samsung-deos-43</CscFeature_GMS_SetClientIDBasePg2>
     <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
     <CscFeature_Setting_ConfigAboutDeviceItems>modelnumberDSsuffix=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
     <CscFeature_Setting_SupportELabelManufacturer>DISEÑADO Y DESARROLLADO POR SAMSUNG</CscFeature_Setting_SupportELabelManufacturer>

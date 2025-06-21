@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omcInfo>
+  <contentType>0</contentType>
+  <version>SAOMC_SM-S721B_OXM_ANC_15_0007</version>
+  <model>
+    <name>SM-S721B</name>
+  </model>
+  <catalog>
+    <customer>yes</customer>
+    <customerEdition>ED0001</customerEdition>
+    <carrierListVersion>150038</carrierListVersion>
+    <cscfeature>yes</cscfeature>
+    <carrierfeature>yes</carrierfeature>
+    <cp>no</cp>
+    <imsupdate>no</imsupdate>
+  </catalog>
+  <carrierList>
+    <carrierCount>1</carrierCount>
+    <carrier>
+      <mcc>748</mcc>
+      <mnc>01</mnc>
+      <networkName>ANTEL</networkName>
+    </carrier>
+  </carrierList>
+</omcInfo>

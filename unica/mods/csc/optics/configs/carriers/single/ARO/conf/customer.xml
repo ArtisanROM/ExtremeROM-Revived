@@ -105,7 +105,6 @@
         <DefLanguageNoSIM>spanish_latin</DefLanguageNoSIM>
         <T9Enabling>disable</T9Enabling>
         <DateTimeFormat>
-          <DateFormat>ddmmyyyy</DateFormat>
           <TimeFormat>24h</TimeFormat>
         </DateTimeFormat>
       </Phone>
@@ -171,9 +170,10 @@
     <Connections>
       <NbProfileHandle>3</NbProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>3</NbNetProfile>
+        <NbNetProfile>4</NbNetProfile>
         <NetworkName>Personal AR</NetworkName>
         <ProfBrowser>Personal Datos AR</ProfBrowser>
+        <ProfMMS>Personal MMS AR</ProfMMS>
         <ProfIntSharing>Personal Internet AR</ProfIntSharing>
         <ProfIMS>Personal IMS</ProfIMS>
       </ProfileHandle>
@@ -192,7 +192,7 @@
         <ProfIMS>Movistar IMS</ProfIMS>
         <ProfXCAP>Movistar WAP</ProfXCAP>
       </ProfileHandle>
-      <NbProfile>8</NbProfile>
+      <NbProfile>9</NbProfile>
       <Profile>
         <NetworkName>Personal AR</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
@@ -223,6 +223,27 @@
           <APN>internet.personal.com</APN>
           <UserId>internet</UserId>
           <Password>internet</Password>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>Personal AR</NetworkName>
+        <IpVersion>ipv4</IpVersion>
+        <RoamingIpVersion>ipv4</RoamingIpVersion>
+        <Editable>no</Editable>
+        <ProfileName>Personal MMS AR</ProfileName>
+        <URL>http://mms.personal.com/</URL>
+        <Auth>normal</Auth>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <Proxy>
+          <EnableFlag>on</EnableFlag>
+          <ServAddr>172.25.7.31</ServAddr>
+          <Port>8080</Port>
+        </Proxy>
+        <PSparam>
+          <APN>mms</APN>
+          <UserId>mms</UserId>
+          <Password>mms</Password>
         </PSparam>
       </Profile>
       <Profile>
