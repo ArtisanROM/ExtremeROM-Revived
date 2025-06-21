@@ -6,6 +6,7 @@ SET_PROP "system" "ro.build.display.id" "ExtremeROM $ROM_CODENAME $ROM_VERSION -
 
 # Disable FRP
 SET_PROP "vendor" "ro.frp.pst" ""
+SET_PROP "product" "ro.frp.pst" ""
 
 # Set Edge Lighting model
 MODEL=$(echo "$TARGET_FIRMWARE" | sed -E 's/^([^/]+)\/.*/\1/')
