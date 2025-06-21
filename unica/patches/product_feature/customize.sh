@@ -328,8 +328,3 @@ if $SOURCE_AUDIO_SUPPORT_VIRTUAL_VIBRATION; then
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "audio/SecSettings.apk/0002-Disable-Virtual-Vibration-support.patch"
     fi
 fi
-
-if [ "$(GET_PROP "vendor" "ro.build.ab_update")" != "true" ]; then
-    echo "Disabling A/B partitions"
-    SET_PROP "product" "ro.product.ab_ota_partitions" --delete
-fi
