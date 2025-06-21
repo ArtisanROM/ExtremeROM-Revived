@@ -1,0 +1,13 @@
+system 0 0 755 capabilities=0x0
+system/etc 0 0 755 capabilities=0x0
+system/etc/libnfc-nci.conf 0 0 644 capabilities=0x0
+system/lib64 0 0 755 capabilities=0x0
+system/lib64/vendor.samsung.hardware.nfc_aidl-V1-ndk.so 0 0 644 capabilities=0x0
+system/lib64/vendor.samsung.hardware.nfc@2.0.so 0 0 644 capabilities=0x0
+system/lib64/libnfc_nxpsn_jni.so 0 0 644 capabilities=0x0
+system/priv-app 0 0 755 capabilities=0x0
+system/priv-app/NfcNci 0 0 755 capabilities=0x0
+system/priv-app/NfcNci/lib 0 0 755 capabilities=0x0
+system/priv-app/NfcNci/lib/arm64 0 0 755 capabilities=0x0
+system/priv-app/NfcNci/lib/arm64/libnfc_nxpsn_jni.so 0 0 644 capabilities=0x0
+

@@ -1,0 +1,12 @@
+/system u:object_r:system_file:s0
+/system/etc u:object_r:system_file:s0
+/system/etc/libnfc-nci\.conf u:object_r:system_file:s0
+/system/lib64 u:object_r:system_lib_file:s0
+/system/lib64/vendor\.samsung\.hardware\.nfc_aidl-V1-ndk\.so u:object_r:system_lib_file:s0
+/system/lib64/vendor\.samsung\.hardware\.nfc@2\.0\.so u:object_r:system_lib_file:s0
+/system/lib64/libnfc_nxpsn_jni\.so u:object_r:system_lib_file:s0
+/system/priv-app u:object_r:system_file:s0
+/system/priv-app/NfcNci u:object_r:system_file:s0
+/system/priv-app/NfcNci/lib u:object_r:system_file:s0
+/system/priv-app/NfcNci/lib/arm64 u:object_r:system_file:s0
+/system/priv-app/NfcNci/lib/arm64/libnfc_nxpsn_jni\.so u:object_r:system_file:s0
