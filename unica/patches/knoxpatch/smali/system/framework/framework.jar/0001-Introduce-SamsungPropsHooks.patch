@@ -1,14 +1,22 @@
-From 5f25a0a11124e86ffeb08e557c2a2270205c33a5 Mon Sep 17 00:00:00 2001
+From 9efe2460dd538db3c46e72a18086a1992cd5d920 Mon Sep 17 00:00:00 2001
 From: Salvo Giangreco <giangrecosalvo9@gmail.com>
-Date: Sat, 14 Jun 2025 21:49:10 +0200
+Date: Sat, 21 Jun 2025 19:44:23 +0200
 Subject: [PATCH] Introduce SamsungPropsHooks
 
 Signed-off-by: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
+---
+ .../smali/android/app/Instrumentation.smali   |   4 +
+ .../android/os/SystemProperties.smali         |  14 +
+ .../android/provider/Settings$Global.smali    |   9 +
+ .../ocin4ever/spoof/SamsungPropsHooks.smali   | 826 ++++++++++++++++++
+ 4 files changed, 853 insertions(+)
+ create mode 100644 smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
+
 diff --git a/smali/android/app/Instrumentation.smali b/smali/android/app/Instrumentation.smali
-index 6c24fd2ee..1c4956360 100644
+index 0d935febf0..36c0eed9d2 100644
 --- a/smali/android/app/Instrumentation.smali
 +++ b/smali/android/app/Instrumentation.smali
-@@ -788,6 +788,8 @@
+@@ -780,6 +780,8 @@
  
      invoke-virtual {v0, p1}, Landroid/app/Application;->attach(Landroid/content/Context;)V
  
@@ -17,7 +25,7 @@ index 6c24fd2ee..1c4956360 100644
      return-object v0
  .end method
  
-@@ -4927,6 +4929,8 @@
+@@ -4784,6 +4786,8 @@
  
      invoke-virtual {v0, p3}, Landroid/app/Application;->attach(Landroid/content/Context;)V
  
@@ -27,7 +35,7 @@ index 6c24fd2ee..1c4956360 100644
  .end method
  
 diff --git a/smali_classes3/android/os/SystemProperties.smali b/smali_classes3/android/os/SystemProperties.smali
-index 63e0dd64c..6204c0ab3 100644
+index 63e0dd64c5..6204c0ab39 100644
 --- a/smali_classes3/android/os/SystemProperties.smali
 +++ b/smali_classes3/android/os/SystemProperties.smali
 @@ -383,10 +383,17 @@
@@ -67,10 +75,10 @@ index 63e0dd64c..6204c0ab3 100644
  .end method
  
 diff --git a/smali_classes3/android/provider/Settings$Global.smali b/smali_classes3/android/provider/Settings$Global.smali
-index c4aaccbb3..65c8e9368 100644
+index ca35db8a77..84a6ae23bb 100644
 --- a/smali_classes3/android/provider/Settings$Global.smali
 +++ b/smali_classes3/android/provider/Settings$Global.smali
-@@ -4482,6 +4482,15 @@
+@@ -4487,6 +4487,15 @@
      return-object v0
  
      :cond_1
@@ -88,7 +96,7 @@ index c4aaccbb3..65c8e9368 100644
      invoke-virtual {v0, p0, p1, p2}, Landroid/provider/Settings$NameValueCache;->getStringForUser(Landroid/content/ContentResolver;Ljava/lang/String;I)Ljava/lang/String;
 diff --git a/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali b/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
 new file mode 100644
-index 000000000..36bce6bb7
+index 0000000000..36bce6bb73
 --- /dev/null
 +++ b/smali_classes6/com/ocin4ever/spoof/SamsungPropsHooks.smali
 @@ -0,0 +1,826 @@
@@ -919,5 +927,5 @@ index 000000000..36bce6bb7
 +    return-void
 +.end method
 -- 
-2.39.5 (Apple Git-154)
+2.43.0
 
