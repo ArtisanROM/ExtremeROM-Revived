@@ -7,3 +7,6 @@ if [[ -d "$SRC_DIR/target/$TARGET_CODENAME/overlay" ]]; then
         "$SRC_DIR/target/$TARGET_CODENAME/overlay" \
         "$APKTOOL_DIR/product/overlay/framework-res__pa3qxxx__auto_generated_rro_product.apk/res"
 fi
+
+# TODO: Add a proper check if we need to remove this
+DELETE_FROM_WORK_DIR "product" "overlay/SystemUI__r12sxxx__auto_generated_rro_product.apk"
