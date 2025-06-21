@@ -1,15 +1,11 @@
-From a3c01d8cbdf115c4b220e6af029d59abffa635de Mon Sep 17 00:00:00 2001
-From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Fri, 6 Jun 2025 21:12:59 +0300
-Subject: [PATCH] Force Extra Dim
+From e91d4b6774dc41fb26fd8152e4b583d7261d4780 Mon Sep 17 00:00:00 2001
+From: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
+Date: Wed, 7 May 2025 23:22:48 +0200
+Subject: [PATCH] Remove device specific checks
 
-Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
----
- .../accessibility/SecAccessibilityUtils.smali  | 18 ++----------------
- 1 file changed, 2 insertions(+), 16 deletions(-)
 
 diff --git a/smali_classes4/com/samsung/android/settings/accessibility/SecAccessibilityUtils.smali b/smali_classes4/com/samsung/android/settings/accessibility/SecAccessibilityUtils.smali
-index ab25cf02e..30c1931a0 100644
+index eb9ab6deca..845d490688 100644
 --- a/smali_classes4/com/samsung/android/settings/accessibility/SecAccessibilityUtils.smali
 +++ b/smali_classes4/com/samsung/android/settings/accessibility/SecAccessibilityUtils.smali
 @@ -21,15 +21,7 @@
@@ -25,13 +21,13 @@ index ab25cf02e..30c1931a0 100644
 -    invoke-virtual {v0, v1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 -
 -    const-string v1, "d2"
-+    const-string v1, "theanswerisno"
++    const-string v1, "fck"
  
      invoke-virtual {v0, v1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
  
-@@ -1429,13 +1421,7 @@
+@@ -1485,13 +1477,7 @@
  
-     move-result v0
+     sget-boolean v1, Lcom/samsung/android/settings/accessibility/AccessibilityRune;->FEATURE_ACCESSIBILITY_SETTINGS_HOME_APPLIANCE_BACKUP:Z
  
 -    const-string/jumbo v1, "ro.surface_flinger.protected_contents"
 -
@@ -45,5 +41,5 @@ index ab25cf02e..30c1931a0 100644
      const/4 v3, 0x1
  
 -- 
-2.45.2
+2.43.0
 

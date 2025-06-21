@@ -1,15 +1,11 @@
-From 8b87437483de82a55211d4827896823afdb742f7 Mon Sep 17 00:00:00 2001
-From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Fri, 6 Jun 2025 21:09:29 +0300
-Subject: [PATCH] Force Extra Dim
+From 7ecb4444e2352e60ae446967009f7bc8b214ad1c Mon Sep 17 00:00:00 2001
+From: Ocin4ever <85343782+Ocin4ever@users.noreply.github.com>
+Date: Wed, 7 May 2025 23:31:58 +0200
+Subject: [PATCH] Remove device specific checks
 
-Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
----
- .../qs/tiles/ReduceBrightColorsTile.smali        | 16 ++--------------
- 1 file changed, 2 insertions(+), 14 deletions(-)
 
 diff --git a/smali_classes2/com/android/systemui/qs/tiles/ReduceBrightColorsTile.smali b/smali_classes2/com/android/systemui/qs/tiles/ReduceBrightColorsTile.smali
-index bbc11bc0d..b69319005 100644
+index 3c3229fb0d..9dee0fd2fc 100644
 --- a/smali_classes2/com/android/systemui/qs/tiles/ReduceBrightColorsTile.smali
 +++ b/smali_classes2/com/android/systemui/qs/tiles/ReduceBrightColorsTile.smali
 @@ -26,15 +26,7 @@
@@ -25,15 +21,15 @@ index bbc11bc0d..b69319005 100644
 -    invoke-virtual {v0, v1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 -
 -    const-string v1, "d2"
-+    const-string v1, "theanswerisno"
++    const-string v1, "fck"
  
      invoke-virtual {v0, v1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
  
-@@ -390,11 +382,7 @@
+@@ -392,11 +384,7 @@
  
      move-result v0
  
--    const-string v2, "ro.surface_flinger.protected_contents"
+-    const-string/jumbo v2, "ro.surface_flinger.protected_contents"
 -
 -    invoke-static {v2, v1}, Landroid/os/SystemProperties;->getBoolean(Ljava/lang/String;Z)Z
 -
@@ -43,5 +39,5 @@ index bbc11bc0d..b69319005 100644
      const/4 v3, 0x1
  
 -- 
-2.45.2
+2.43.0
 
