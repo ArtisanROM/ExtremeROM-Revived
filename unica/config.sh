@@ -16,7 +16,7 @@
 #
 
 # UN1CA configuration file
-ROM_VERSION="2.0.0"
+ROM_VERSION="2.5.0-nxt-r12s-beta4"
 ROM_VERSION+="-$(git rev-parse --short HEAD)"
 ROM_CODENAME="Nexus"
 
