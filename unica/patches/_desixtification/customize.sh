@@ -1,7 +1,7 @@
 if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "essi" ]]; then
     echo "Target device with 32-Bit HALs detected! Patching..."
 
-    ADD_TO_WORK_DIR "dm3qxxx" "system" "system/lib" 0 0 644
+    ADD_TO_WORK_DIR "r11sxxx" "system" "system/lib" 0 0 644
 
     BLOBS_LIST="
     system/apex/com.android.i18n.apex
@@ -12,7 +12,7 @@ if [[ $TARGET_SINGLE_SYSTEM_IMAGE == "qssi" || $TARGET_SINGLE_SYSTEM_IMAGE == "e
     "
     for blob in $BLOBS_LIST
     do
-        ADD_TO_WORK_DIR "dm3qxxx" "system" "$blob"
+        ADD_TO_WORK_DIR "r11sxxx" "system" "$blob"
     done
 
     # Creating symlinks
