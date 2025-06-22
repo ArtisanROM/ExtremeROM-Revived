@@ -1,3 +1,5 @@
+SKIPUNZIP=1
+
 # S25 Ultra OneUI 7 -> SoundBooster 2000
 # S10 Series -> SoundBooster 1000
 echo "Replacing SoundBooster"
@@ -43,3 +45,7 @@ fi
 
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/priv-app/LedBackCoverAppBeyond/LedBackCoverAppBeyond.apk" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/privapp-permissions-com.samsung.android.app.ledbackcover.xml" 0 0 644 "u:object_r:system_file:s0"
+
+echo "Adding stock cutout assets"
+DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+cp -a "$MODPATH/assets/"* "$APKTOOL_DIR/system_ext/priv-app/SystemUI/SystemUI.apk/assets/"
