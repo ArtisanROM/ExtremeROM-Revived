@@ -82,6 +82,7 @@ if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
     DECODE_APK "system/framework/services.jar"
     DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
     DECODE_APK "system/priv-app/BiometricSetting/BiometricSetting.apk"
+    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
 
     FTP="
     system/framework/framework.jar/smali_classes2/android/hardware/fingerprint/FingerprintManager.smali
