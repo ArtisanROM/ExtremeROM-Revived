@@ -24,7 +24,6 @@ system/lib64/libSwIsp_wrapper_v1.camera.samsung.so
 system/lib64/libVideoClassifier.camera.samsung.so
 system/lib64/libsecuresnap_aidl.snap.samsung.so
 system/lib64/libDocShadowRemoval.arcsoft.so
-system/lib64/libHpr_RecFace_dl_v1.0.camera.samsung.so
 system/lib64/libImageSegmenter_v1.camera.samsung.so
 system/lib64/libObjectDetector_v1.camera.samsung.so
 system/lib64/libSceneDetector_v1.camera.samsung.so
