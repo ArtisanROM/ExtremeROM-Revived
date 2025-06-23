@@ -158,6 +158,7 @@
 
     <!-- Super Slow Motion features -->
     <local name="SUPER_SLOW_MOTION_MAX_FRC_TIME" value="800"/>
+    <local name="BACK_WIDE_SUPER_SLOW_MOTION" value="true"/>
     <local name="SUPPORT_SUPER_SLOW_MOTION_FRC_FIXED" value="true"/>
     <local name="SUPPORT_SUPER_SLOW_MOTION_AUTO_DETECT_PREPARE" value="true"/>
 
