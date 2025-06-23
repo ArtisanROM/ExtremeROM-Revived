@@ -441,7 +441,7 @@ index 0000000000..36bce6bb73
 +    :cond_9
 +    const-string p0, "ro.boot.em.model"
 +
-+    const-string v0, "SM-S938B"
++    const-string v0, "SM-S721B"
 +
 +    invoke-static {p0, v0}, Landroid/os/SemSystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 +
