@@ -33,6 +33,8 @@ system/lib64/libsuperresolutionraw_wrapper_v2.camera.samsung.so
 system/lib64/vendor.samsung.hardware.snap-V3-ndk.so
 system/lib64/libdualcam_portraitlighting_gallery_360.so
 system/lib64/libHREnhancementAPI.camera.samsung.so
+system/lib64/libdualcam_refocus_image.so
+system/lib64/libarcsoft_superresolution_bokeh.so
 "
 if [[ "$TARGET_CODENAME" == "r0s" || "$TARGET_CODENAME" == "g0s" ]]; then
     BLOBS_LIST+="
