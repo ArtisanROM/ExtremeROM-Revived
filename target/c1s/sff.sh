@@ -83,7 +83,7 @@ SEC_FLOATING_FEATURE_CAMERA_CONFIG_WINE_DETECTOR=OFF
 SEC_FLOATING_FEATURE_CAMERA_GRAW_CONFIG_MFP_PIPELINE_MODE=V1
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_SDK_FEATURE_INFO=version2,super_night,preview_dis,video_hdr,smooth_zoom,logical_rear_camera:camera_id=20
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_UW_DISTORTION_CORRECTION=0,119,2,18010101,4608,3456,0,0,0,0
-SEC_FLOATING_FEATURE_CAMERA_CONFIG_VENDOR_LIB_INFO=beauty.samsung.v4,human_tracking.arcsoft.v2_1,face_landmark.arcsoft.v2_1,facial_attribute.samsung.v1,image_codec.samsung.v1,smart_scan.samsung.v2,selfie_correction.samsung.v1,swuwdc.arcsoft.v1,hifills.mpi.v1,scene_detection.samsung.v1,event_detection.samsung.v2,single_bokeh.samsung.v2,dual_bokeh.samsung.v1,human_segmentation.samsung.v2,super_night.mpi.v2,mfhdr.mpi.v1,llhdr.mpi.v1,food.samsung.v1,localtm.samsung.v1_1,star_effect.samsung.v1
+SEC_FLOATING_FEATURE_CAMERA_CONFIG_VENDOR_LIB_INFO=beauty.samsung.v4,human_tracking.arcsoft.v2_1,face_landmark.arcsoft.v2_1,facial_attribute.samsung.v1,image_codec.samsung.v1,smart_scan.samsung.v2,selfie_correction.samsung.v1,swuwdc.arcsoft.v1,hifills.mpi.v1,scene_detection.samsung.v1,event_detection.samsung.v2,single_bokeh.samsung.v2,dual_bokeh.samsung.v1,human_segmentation.samsung.v2,super_night.mpi.v2,mfhdr.mpi.v1,llhdr.mpi.v1,food.samsung.v1,localtm.samsung.v1_1,star_effect.samsung.v1,super_resolution.arcsoft.v2_1
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_WIDE_DISTORTION_CORRECTION=0,0,0,0,0,0,0,0,0,0
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_HIGH_RESOLUTION_MAX_CAPTURE=1000
 SEC_FLOATING_FEATURE_CAMERA_CONFIG_MOTIONPHOTO_CAPTURE_MODE=[[3,1]]
