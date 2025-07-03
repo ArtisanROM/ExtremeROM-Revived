@@ -41,6 +41,8 @@ if [[ "$TARGET_CODENAME" == "c1s" || "$TARGET_CODENAME" == "c2s" ]]; then
     system/lib64/libofi_rt_framework_user.so
     system/lib64/libofi_service_interface.so
     system/lib64/libofi_gc.so
+    system/lib64/vendor.samsung_slsi.hardware.ofi@2.0.so
+    system/lib64/vendor.samsung_slsi.hardware.ofi@2.1.so
     "
     for blob in $BLOBS_LIST
     do
