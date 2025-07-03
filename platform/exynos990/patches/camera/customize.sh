@@ -33,7 +33,7 @@ do
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
 
-if [[ "$MODEL" == "c1s" || "$MODEL" == "c2s" ]]; then
+if [[ "$TARGET_CODENAME" == "c1s" || "$TARGET_CODENAME" == "c2s" ]]; then
     BLOBS_LIST="
     system/lib64/libofi_seva.so
     system/lib64/libofi_klm.so
