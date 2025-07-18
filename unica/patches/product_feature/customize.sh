@@ -152,6 +152,8 @@ if ! $SOURCE_HAS_HW_MDNIE; then
         APPLY_PATCH "system/framework/framework.jar" "mdnie/hw/framework.jar/0001-Enable-HW-mDNIe.patch"
         APPLY_PATCH "system/framework/services.jar" "mdnie/hw/services.jar/0001-Enable-HW-mDNIe.patch"
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
+        APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "mdnie/hw/SystemUI.apk/0001-Add-EAD-APK-Support.patch"
+        APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "mdnie/hw/SystemUI.apk/0002-Enable-EAD-Quick-Panel-Toggle.patch"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/mafpc_write" 0 2000 755 "u:object_r:mafpc_write_exec:s0"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/etc/permissions/privapp-permissions-com.samsung.android.sead.xml" 0 0 644 "u:object_r:system_file:s0"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/priv-app/EnvironmentAdaptiveDisplay"
