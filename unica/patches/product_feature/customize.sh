@@ -120,6 +120,11 @@ fi
 if ! $SOURCE_HAS_QHD_DISPLAY; then
     if $TARGET_HAS_QHD_DISPLAY; then
         echo "Applying multi resolution patches"
+
+        DECODE_APK "system/framework/framework.jar"
+        DECODE_APK "system/framework/gamemanager.jar"
+        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/bootanimation"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/bin/surfaceflinger"
         ADD_TO_WORK_DIR "e2sxxx" "system" "system/lib64/libgui.so"
@@ -136,6 +141,12 @@ fi
 if ! $SOURCE_HAS_HW_MDNIE; then
     if $TARGET_HAS_HW_MDNIE; then
         echo "Applying HW mDNIe patches"
+
+        DECODE_APK "system/framework/framework.jar"
+        DECODE_APK "system/framework/services.jar"
+        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+        DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_LCD_SUPPORT_MDNIE_HW" "TRUE"
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_SUPPORT_COLOR_LENS" "TRUE"
         APPLY_PATCH "system/framework/framework.jar" "mdnie/hw/framework.jar/0001-Enable-HW-mDNIe.patch"
@@ -150,6 +161,13 @@ fi
 if ! $SOURCE_MDNIE_SUPPORT_HDR_EFFECT; then
     if $TARGET_MDNIE_SUPPORT_HDR_EFFECT; then
         echo "Applying mDNIe HDR effect patches"
+
+        DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
+        DECODE_APK "system/priv-app/SettingsProvider/SettingsProvider.apk"
+
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
+        APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
+
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_SUPPORT_HDR_EFFECT" "TRUE"
         APPLY_PATCH "system/priv-app/SecSettings/SecSettings.apk" "mdnie/hdr/SecSettings.apk/0001-Enable-HDR-Settings.patch"
         APPLY_PATCH "system/priv-app/SettingsProvider/SettingsProvider.apk" "mdnie/hdr/SettingsProvider.apk/0001-Enable-HDR-Settings.patch"
@@ -255,6 +273,9 @@ fi
 
 if [[ "$TARGET_DISPLAY_CUTOUT_TYPE" == "right" ]]; then
     echo "Applying right cutout patch"
+
+    DECODE_APK "system_ext/priv-app/SystemUI/SystemUI.apk"
+
     APPLY_PATCH "system_ext/priv-app/SystemUI/SystemUI.apk" "cutout/SystemUI.apk/0001-Add-right-cutout-support.patch"
 fi
 
@@ -288,6 +309,9 @@ if [ ! -f "$FW_DIR/${MODEL}_${REGION}/vendor/etc/permissions/android.hardware.st
     echo "Applying strongbox patches"
     APPLY_PATCH "system/framework/framework.jar" "strongbox/framework.jar/0001-Disable-StrongBox-in-DevRootKeyATCmd.patch"
 fi
+
+DECODE_APK "system/framework/semwifi-service.jar"
+DECODE_APK "system/priv-app/SecSettings/SecSettings.apk"
 
 if $SOURCE_SUPPORT_WIFI_7; then
     if ! $TARGET_SUPPORT_WIFI_7; then
