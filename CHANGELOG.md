@@ -1,5 +1,14 @@
 # ExtremeROM Nexus changelog
 
+# 2.5.0
+- Switched base to S24 FE
+- Heavily improved smoothness, battery and thermals
+- Add missing SPen APKs for Note20
+- Fixed camera crashes on Note20
+- Fix camera animations
+- Fix Heart Rate Monitor in Samsung Health on S10
+- Updated Security Patch Level and all proprietary blobs used
+
 # 2.0.0
 - Added Adaptive Brightness feature
 - Added Adaptive Refresh Rate for S20

@@ -23,23 +23,25 @@ ExtremeROM Nexus supports devices using the Exynos 9820, Exynos 990 and Exynos 2
 Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
 
 # Features
-- Based on the latest stable OneUI 7 Galaxy S25 Ultra firmware
-- All software features from S25 Ultra
+- Based on the latest stable OneUI 7 Galaxy S24 FE firmware
+- All software features from S24 FE
+- S25 Ultra CSC, ringtones and more
 - Moderately Debloated
 - Heavily DeKnoxed
 - Full SELinux Support
 - Full Galaxy AI support
 - Completely upstreamed kernels for all officially supported devices
+- Now Brief Support
+- Adaptive color tone support
 - Super HDR support
 - Adaptive Brightness support
 - Full CSC support
 - Adaptive Refresh Rate support (for some models)
 - Multi-User support
 - Stock models in Settings and user apps
-- Removed Telemetry and tracing
+- Semi-Removed Telemetry and tracing
 - High end animations
 - Native/live blur support
-- Adaptive color tone support
 - Custom ExtremeROM Ringtones
 - Debloated from useless system services/additional apps
 - [BluetoothLibraryPatcher](https://github.com/3arthur6/BluetoothLibraryPatcher) included
@@ -106,6 +108,7 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **[nalz0](https://github.com/nalz0)** for Multi-User support
 - **[EndaDwagon](https://github.com/EndaDwagon)** for the big majority of the ExtremeROM Wiki
 - **[Oskar](https://github.com/osrott61-gh), [Mesazane](https://github.com/Mesazane)** for Building alot before we started using actions
+- **[RayShocker](https://github.com/RayShocker)** for HRM fix
 - **@april865** (TG) for ExtremeROM Nexus banner
 - And everyone else who aided in testing, wiki, translations etc!
 
