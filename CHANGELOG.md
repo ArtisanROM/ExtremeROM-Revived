@@ -3,10 +3,12 @@
 # 2.5.0
 - Switched base to S24 FE
 - Heavily improved smoothness, battery and thermals
-- Add missing SPen APKs for Note20
+- Added missing SPen APKs for Note20
 - Fixed camera crashes on Note20
-- Fix camera animations
-- Fix Heart Rate Monitor in Samsung Health on S10
+- Fixed front camera animations
+- Fixed Heart Rate Monitor in Samsung Health on S10
+- Fixed NowBar position for S10, S20FE and S21FE models
+- Fixed Gemini black bar
 - Updated Security Patch Level and all proprietary blobs used
 
 # 2.0.0
