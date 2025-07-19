@@ -1,14 +1,15 @@
 # ExtremeROM Nexus changelog
 
 # 2.5.0
-- Switched base to S24 FE
-- Heavily improved smoothness, battery and thermals
+- Switched base to S24 FE (S721BXXS6BYF5)
+- HEAVILY improved performance, general smoothness, battery and thermals
 - Added missing SPen APKs for Note20
 - Fixed camera crashes on Note20
 - Fixed front camera animations
 - Fixed Heart Rate Monitor in Samsung Health on S10
 - Fixed NowBar position for S10, S20FE and S21FE models
 - Fixed Gemini black bar
+- Added support for: r0s/g0s/b0s (exynos2200/s5e9925)
 - Updated Security Patch Level and all proprietary blobs used
 
 # 2.0.0
