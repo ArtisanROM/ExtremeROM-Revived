@@ -66,19 +66,6 @@ DELETE_FROM_WORK_DIR "system" "system/priv-app/SamsungCamera/oat"
 DELETE_FROM_WORK_DIR "system" "system/priv-app/SamsungCamera/SamsungCamera.apk.prof"
 DELETE_FROM_WORK_DIR "system" "system/app/FilterProvider/oat"
 
-# Allow OneUI 6.1.1 camera
-DECODE_APK "system/framework/services.jar"
-FTP="
-system/framework/services.jar/smali/com/android/server/locales/LocaleManagerService.smali
-system/framework/services.jar/smali_classes2/com/android/server/pm/InstallPackageHelper.smali
-system/framework/services.jar/smali_classes2/com/android/server/pm/PackageManagerService.smali
-system/framework/services.jar/smali_classes2/com/samsung/android/localeoverlaymanager/LocaleOverlayManager.smali
-system/framework/services.jar/smali_classes2/com/samsung/android/localeoverlaymanager/LocaleOverlayManager\$OverlayHandler.smali
-"
-for f in $FTP; do
-    sed -i "s/com.samsung.android.hasZippedOverlays/com.samsung.android.whySamsungBlockingStuff/g" "$APKTOOL_DIR/$f"
-done
-
 echo "Fix AI Photo Editor"
 cp -a --preserve=all \
     "$WORK_DIR/system/system/cameradata/portrait_data/single_bokeh_feature.json" \
