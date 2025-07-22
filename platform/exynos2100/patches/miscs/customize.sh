@@ -32,18 +32,13 @@ SET_PROP "product" "bluetooth.profile.hid.device.enabled" "true"
 SET_PROP "product" "bluetooth.profile.hid.host.enabled" "true"
 SET_PROP "product" "bluetooth.profile.map.server.enabled" "true"
 SET_PROP "product" "bluetooth.profile.mcp.server.enabled" "false"
+SET_PROP "product" "bluetooth.profile.opp.enabled" "false"
 SET_PROP "product" "bluetooth.profile.pan.nap.enabled" "true"
 SET_PROP "product" "bluetooth.profile.pan.panu.enabled" "true"
 SET_PROP "product" "bluetooth.profile.pbap.server.enabled" "true"
 SET_PROP "product" "bluetooth.profile.sap.server.enabled" "true"
 SET_PROP "product" "bluetooth.profile.ccp.server.enabled" "false"
 SET_PROP "product" "bluetooth.profile.vcp.controller.enabled" "false"
-
-if [[ "$TARGET_CODENAME" = "o1s" ]]; then
-    SET_PROP "product" "bluetooth.profile.opp.enabled" "true"
-else
-    SET_PROP "product" "bluetooth.profile.opp.enabled" "false"
-fi
 
 if [[ "$TARGET_CODENAME" == "r9s" ]]; then
     ADD_TO_WORK_DIR "r11sxxx" "system" "system/apex/com.android.btservices.apex" 0 0 644 "u:object_r:system_file:s0"
