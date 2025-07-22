@@ -7,6 +7,9 @@ SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
 echo "Enabling IncrementalFS"
 SET_PROP "vendor" "ro.incremental.enable" "yes"
 
+echo "Enabling FS Verity"
+SET_PROP "vendor" "ro.apk_verity.mode" "2"
+
 echo "Setting SF flags"
 SET_PROP "vendor" "debug.sf.latch_unsignaled" "1"
 SET_PROP "vendor" "debug.sf.high_fps_late_app_phase_offset_ns" "0"
