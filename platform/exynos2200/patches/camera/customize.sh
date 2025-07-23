@@ -10,6 +10,11 @@ done
 
 echo "Add stock camera libs"
 BLOBS_LIST="
+system/lib64/libPortraitDistortionCorrection.arcsoft.so
+system/lib64/libPortraitDistortionCorrectionCali.arcsoft.so
+system/lib64/libUltraWideDistortionCorrection.camera.samsung.so
+system/lib64/libWideDistortionCorrection.camera.samsung.so
+system/lib64/libFacialBasedSelfieCorrection.camera.samsung.so
 system/lib64/libMultiFrameProcessing30.camera.samsung.so
 system/lib64/libMultiFrameProcessing30.snapwrapper.camera.samsung.so
 system/lib64/libMultiFrameProcessing30Tuning.camera.samsung.so
@@ -22,7 +27,6 @@ system/lib64/libImageSegmenter_v1.camera.samsung.so
 system/lib64/libObjectDetector_v1.camera.samsung.so
 system/lib64/libSceneDetector_v1.camera.samsung.so
 system/lib64/libDualCamBokehCapture.camera.samsung.so
-system/lib64/libPortraitDistortionCorrection.arcsoft.so
 system/lib64/libarcsoft_dualcam_portraitlighting.so
 system/lib64/vendor.samsung_slsi.hardware.eden_runtime@1.0.so
 system/lib64/libhigh_dynamic_range.arcsoft.so
