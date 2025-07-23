@@ -1,9 +1,12 @@
 system 0 0 755 capabilities=0x0
+system/app/UwbRROverlayMccMncRegulation 0 0 755 capabilities=0x0
+system/app/UwbRROverlayMccMncRegulation/UwbRROverlayMccMncRegulation.apk 0 0 644 capabilities=0x0
 system/app/UwbTest 0 0 755 capabilities=0x0
-system/app/UwbTest.apk 0 0 644 capabilities=0x0
 system/app/UwbTest/oat 0 0 755 capabilities=0x0
-system/app/UwbTest/oat/UwbTest.odex 0 0 644 capabilities=0x0
-system/app/UwbTest/oat/UwbTest.vdex 0 0 644 capabilities=0x0
+system/app/UwbTest/oat/arm64 0 0 755 capabilities=0x0
+system/app/UwbTest/oat/arm64/UwbTest.odex 0 0 644 capabilities=0x0
+system/app/UwbTest/oat/arm64/UwbTest.vdex 0 0 644 capabilities=0x0
+system/app/UwbTest/UwbTest.apk 0 0 644 capabilities=0x0
 system/bin 0 0 755 capabilities=0x0
 system/bin/bootanimation 0 2000 755 capabilities=0x0
 system/bin/mafpc_write 0 2000 755 capabilities=0x0
