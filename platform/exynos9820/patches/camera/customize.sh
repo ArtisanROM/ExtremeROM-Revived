@@ -18,7 +18,6 @@ echo "Add stock camera libs"
 BLOBS_LIST="
 system/lib64/libPortraitDistortionCorrection.arcsoft.so
 system/lib64/libPortraitDistortionCorrectionCali.arcsoft.so
-system/lib64/libUltraWideDistortionCorrection.camera.samsung.so
 system/lib64/libMultiFrameProcessing10.camera.samsung.so
 system/lib64/libMultiFrameProcessing20.camera.samsung.so
 system/lib64/libMultiFrameProcessing20Day.camera.samsung.so
