@@ -1,7 +1,7 @@
 MODEL=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 1)
 REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 
-if [ -d "$FW_DIR/${MODEL}_${REGION}/system/system/app/UwbRROverlayMccMncRegulation" ]; then
+if [ -d "$FW_DIR/${MODEL}_${REGION}/vendor/firmware/uwb" ]; then
     echo "Adding UWB blobs..."
     ADD_TO_WORK_DIR "e2sxxx" "system" "system/app/UwbTest"
     ADD_TO_WORK_DIR "e2sxxx" "system" "system/app/UwbRROverlayMccMncRegulation"
