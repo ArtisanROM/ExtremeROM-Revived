@@ -1,8 +1,8 @@
-# Add S22 Photo Remaster Service
+# Add target Photo Remaster Service
 DELETE_FROM_WORK_DIR "system" "system/priv-app/PhotoRemasterService/oat"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/priv-app/PhotoRemasterService/PhotoRemasterService.apk"
 
-# Add S22 MIDAS libraries
+# Add target MIDAS libraries
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libmidas_core.camera.samsung.so"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libmidas_DNNInterface.camera.samsung.so"
 
