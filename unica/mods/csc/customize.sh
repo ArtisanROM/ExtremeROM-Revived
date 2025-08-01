@@ -30,7 +30,7 @@ find "$WORK_DIR/optics" -type f -exec sed -i "s/SAOMC_SM-S938B/SAOMC_${TARGET_MO
 echo "Patching CSC Features"
 while read -r FILE; do
     # Decode XML
-    ! grep -q 'CscFeature' "$FILE" && $TOOLS_DIR/cscdecoder --decode --in-place "$FILE"
+    ! grep -q 'CscFeature' "$FILE" && $TOOLS_DIR/bin/cscdecoder --decode --in-place "$FILE"
 
     # eSIM
     if $SOURCE_IS_ESIM_SUPPORTED && ! $TARGET_IS_ESIM_SUPPORTED; then
@@ -47,7 +47,7 @@ while read -r FILE; do
     SET_CSC_FEATURE_CONFIG "CscFeature_Common_DisableBixby" --delete
 
     # Encode XML
-    $TOOLS_DIR/cscdecoder --encode --in-place "$FILE"
+    $TOOLS_DIR/bin/cscdecoder --encode --in-place "$FILE"
 done <<< "$(find "$WORK_DIR/optics" -type f -name "cscfeature.xml")"
 
 echo "Patching APKs for network speed monitoring..."
