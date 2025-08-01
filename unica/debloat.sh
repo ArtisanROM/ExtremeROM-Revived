@@ -50,7 +50,6 @@ etc/init/vendor_flash_recovery.rc
 
 # Apps debloat
 PRODUCT_DEBLOAT+="
-app/AssistantShell
 app/Chrome64
 app/Duo
 app/Gmail2
