@@ -32,7 +32,6 @@ system/lib64/libsecuresnap_aidl.snap.samsung.so
 system/lib64/libsnap_aidl.snap.samsung.so
 system/lib64/libsuperresolution_wrapper_v2.camera.samsung.so
 system/lib64/libsuperresolution.arcsoft.so
-system/lib64/libsuperresolutionraw_wrapper_v2.camera.samsung.so
 system/lib64/libSwIsp_core.camera.samsung.so
 system/lib64/libSwIsp_wrapper_v1.camera.samsung.so
 system/lib64/libVideoClassifier.camera.samsung.so
