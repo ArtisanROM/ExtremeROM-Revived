@@ -26,7 +26,6 @@ system/lib64/libMultiFrameProcessing30.camera.samsung.so
 system/lib64/libMultiFrameProcessing30.snapwrapper.camera.samsung.so
 system/lib64/libMultiFrameProcessing30Tuning.camera.samsung.so
 system/lib64/libObjectDetector_v1.camera.samsung.so
-system/lib64/libPortraitDistortionCorrection.arcsoft.so
 system/lib64/libPortraitDistortionCorrectionCali.arcsoft.so
 system/lib64/libSceneDetector_v1.camera.samsung.so
 system/lib64/libsecuresnap_aidl.snap.samsung.so
