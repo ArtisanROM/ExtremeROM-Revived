@@ -113,6 +113,7 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **[Mesazane](https://github.com/Mesazane)** for Building alot before we started using actions
 - **[Dupa](https://github.com/dupazlasu)** for Maintaining S22 Series (ROM + Kernel)
 - **[RayShocker](https://github.com/RayShocker)** for HRM fix
+- **[Kurt](https://github.com/kurtbahartr)** for ASCII art
 - **@april865** (TG) for ExtremeROM Nexus banner
 - And everyone else who aided in testing, wiki, translations etc!
 
