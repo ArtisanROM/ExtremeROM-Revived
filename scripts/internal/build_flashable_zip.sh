@@ -540,9 +540,18 @@ GENERATE_UPDATER_SCRIPT()
         fi
 
         if $HAS_POST_INSTALL; then
+            echo -e "\n"
+            echo    'ui_print("Executing post-install tasks...");'
             cat "$SRC_DIR/target/$TARGET_CODENAME/postinstall.edify"
         fi
 
+        echo -e "\n"
+        echo    'ui_print("Cleaning up...");'
+        echo    'package_extract_dir("scripts", "/tmp/scripts");'
+        echo    'set_metadata_recursive("/tmp/scripts", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);'
+        echo    'run_program("/tmp/scripts/cleanup.sh");'
+
+        echo -e "\n"
         echo    'set_progress(1);'
         echo    'ui_print("****************************************************");'
         echo    'ui_print(" ");'
@@ -575,6 +584,8 @@ mkdir -p "$TMP_DIR"
 [ -d "$TMP_DIR/META-INF/com/google/android" ] && rm -rf "$TMP_DIR/META-INF/com/google/android"
 mkdir -p "$TMP_DIR/META-INF/com/google/android"
 cp --preserve=all "$SRC_DIR/prebuilts/bootable/deprecated-ota/updater" "$TMP_DIR/META-INF/com/google/android/update-binary"
+mkdir -p "$TMP_DIR/scripts"
+cp --preserve=all "$SRC_DIR/prebuilts/extras/cleanup.sh" "$TMP_DIR/scripts/cleanup.sh"
 
 while read -r i; do
     PARTITION=$(basename "$i")
