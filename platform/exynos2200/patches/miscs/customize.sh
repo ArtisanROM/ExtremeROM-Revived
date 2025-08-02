@@ -1,9 +1,9 @@
 # Encryption
-echo "Disabling encryption"
+LOG "- Disabling encryption"
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.s5e9925")
 sed -i "${LINE}s/,fileencryption=aes-256-xts:aes-256-cts:v2//g" "$WORK_DIR/vendor/etc/fstab.s5e9925"
 
-echo "Setting stock Bluetooth profiles"
+LOG_STEP_IN "- Setting stock Bluetooth profiles"
 SET_PROP "product" "bluetooth.profile.asha.central.enabled" "true"
 SET_PROP "product" "bluetooth.profile.a2dp.source.enabled" "true"
 SET_PROP "product" "bluetooth.profile.avrcp.target.enabled" "true"
@@ -32,3 +32,4 @@ if [[ "$TARGET_CODENAME" == "r0s" || "$TARGET_CODENAME" == "r11s" ]]; then
 else
     ADD_TO_WORK_DIR "b0sxxx" "system" "system/apex/com.android.btservices.apex" 0 0 644 "u:object_r:system_file:s0"
 fi
+LOG_STEP_OUT

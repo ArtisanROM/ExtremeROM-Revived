@@ -28,16 +28,15 @@ if [[ "$TARGET_CODENAME" != "r11s" ]]; then # TODO: add r11s support to ExtremeK
 
         # Now we have three cases that we need to take care of.
         if [ "$LOCAL" = "$REMOTE" ]; then
-            echo "Local branch is up-to-date with remote."
+            LOG "- Local branch is up-to-date with remote."
         elif [ "$LOCAL" = "$BASE" ]; then
-            echo "Fast-forward possible. Pulling..."
+            LOG "- Fast-forward possible. Pulling."
             git pull --ff-only
         elif [ "$REMOTE" = "$BASE" ]; then
-            echo "Local branch is ahead of remote. Not doing anything."
+            LOG "- Local branch is ahead of remote. Not doing anything."
         else
-            echo "ERR: Remote history has diverged (possible force-push)."
-	    cd "$PARENT"
-	    return 1
+            cd "$PARENT"
+            LOGE "Remote history has diverged (possible force-push)."
         fi
 
         cd "$PARENT"
@@ -48,31 +47,29 @@ if [[ "$TARGET_CODENAME" != "r11s" ]]; then # TODO: add r11s support to ExtremeK
         local KERNEL_TMP_DIR="$KERNEL_TMP_DIR-$TARGET_PLATFORM"
         [ ! -d "$KERNEL_TMP_DIR" ] && mkdir -p "$KERNEL_TMP_DIR"
 
-        echo "Cloning/updating ExtremeKernel"
+        LOG_STEP_IN "- Cloning/updating ExtremeKernel"
 
         # If the kernel dir exists, pull the latest changes.
         # If it does not exist, clone the repo.
         if [ -d "$KERNEL_TMP_DIR/.git" ]; then
-            echo "Existing git repo found, trying to pull latest changes."
+            LOG "- Existing git repo found, trying to pull latest changes."
             if ! SAFE_PULL_CHANGES; then
-		    echo "ERR: Could not pull latest Kernel changes."
-		    echo "If you hold local changes, please rebase to the new base."
-		    echo "If not, cleaning the kernel_tmp_dir should suffice."
-		    return 1
-	    fi
+		            LOGE "ERR: Could not pull latest Kernel changes. If you hold local changes, please rebase to the new base. If not, cleaning the kernel_tmp_dir should suffice."
+	          fi
         else
             rm -rf "$KERNEL_TMP_DIR"
             git clone "$EXTREMEKRNL_REPO" --single-branch "$KERNEL_TMP_DIR" --recurse-submodules
         fi
+        LOG_STEP_OUT
 
-        echo "Running the kernel build script."
+        LOG "- Running the kernel build script."
         BUILD_KERNEL
         rm -f "$WORK_DIR/kernel/"*.img
 
         # Move the files to the work dir
-        mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/boot.img" "$WORK_DIR/kernel"
-        mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/dtbo.img" "$WORK_DIR/kernel"
-        mv -v "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/vendor_boot.img" "$WORK_DIR/kernel"
+        mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/boot.img" "$WORK_DIR/kernel"
+        mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/dtbo.img" "$WORK_DIR/kernel"
+        mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/vendor_boot.img" "$WORK_DIR/kernel"
 
         # Usually we would delete the temporary directory.
         # However, the Kernel has its own build system that
@@ -86,7 +83,7 @@ if [[ "$TARGET_CODENAME" != "r11s" ]]; then # TODO: add r11s support to ExtremeK
         # https://github.com/tiann/KernelSU/issues/886
         local APK_PATH="system/preload/KernelSU-Next/com.rifsxd.ksunext-mesa==/base.apk"
 
-        echo "Adding KernelSU-Next.apk to preload apps"
+        LOG "- Adding KernelSU-Next.apk to preload apps"
         mkdir -p "$WORK_DIR/system/$(dirname "$APK_PATH")"
         curl -L -s -o "$WORK_DIR/system/$APK_PATH" -z "$WORK_DIR/system/$APK_PATH" "$KERNELSU_MANAGER_APK"
 
@@ -109,14 +106,14 @@ if [[ "$TARGET_CODENAME" != "r11s" ]]; then # TODO: add r11s support to ExtremeK
 
     UPDATE_MODULES()
     {
-        mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/fingerprint.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
-        mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/fingerprint_sysfs.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
-        mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/input_booster_lkm.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
-        mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/sec_debug_coredump.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+        mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/fingerprint.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+        mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/fingerprint_sysfs.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+        mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/input_booster_lkm.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+        mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/sec_debug_coredump.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
         if [[ "$TARGET_CODENAME" == "r0s" || "$TARGET_CODENAME" == "r11s" ]]; then
-            mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/wlan.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+            mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/wlan.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
         else
-            mv -v "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/dhd.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
+            mv -f "$KERNEL_TMP_DIR-$TARGET_PLATFORM/build/out/$TARGET_CODENAME/modules_dlkm/dhd.ko" "$WORK_DIR/vendor_dlkm/lib/modules"
         fi
     }
 # ]
@@ -125,5 +122,5 @@ if [[ "$TARGET_CODENAME" != "r11s" ]]; then # TODO: add r11s support to ExtremeK
     UPDATE_MODULES
     ADD_MANAGER_APK_TO_PRELOAD
 else
-    echo "r11s detected! Skipping..."
+    LOG "- S23 FE (r11s) detected. Skipping."
 fi

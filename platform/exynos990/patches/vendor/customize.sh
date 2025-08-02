@@ -1,4 +1,4 @@
-echo "Updating Vibrator/RIL/Face/WPA HALs..."
+LOG_STEP_IN "- Updating Vibrator/RIL/Face/WPA HALs"
 # Delete hermes to get rid of weaver encryption blobs
 BLOBS_LIST="
 bin/hw/vendor.samsung.hardware.vibrator@2.2-service
@@ -38,3 +38,4 @@ else
     ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/android.hardware.light-V1-ndk_platform.so"
     ADD_TO_WORK_DIR "a73xqxx" "vendor" "lib64/vendor.samsung.hardware.light-V1-ndk_platform.so"
 fi
+LOG_STEP_OUT

@@ -1,38 +1,40 @@
 # S24 FE OneUI 7 -> SoundBooster 2000
 # S21 Series -> SoundBooster 1050
 # S21 FE -> SoundBooster 1070
-echo "Replacing SoundBooster"
+
+SOUND_BOOSTER="$(basename "$(find "$TARGET_FIRMWARE_PATH/system/system/lib64" -type f -name 'lib_SoundBooster*' -print -quit)")"
+
+LOG_STEP_IN "- Replacing SoundBooster"
 DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SoundBooster_ver2000.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SAG_EQ_ver2000.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/libsoundboostereq_legacy.so"
-if [[ "$TARGET_CODENAME" != "r9s"  ]]; then
-ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib_SoundBooster_ver1050.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libsamsungSoundbooster_plus_legacy.so" 0 0 644 "u:object_r:system_lib_file:s0"
-else 
-ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib_SoundBooster_ver1070.so" 0 0 644 "u:object_r:system_lib_file:s0"
-ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libsamsungSoundbooster_plus_legacy.so" 0 0 644 "u:object_r:system_lib_file:s0"
-fi
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/$SOUND_BOOSTER" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
 
-echo "Replacing GameDriver"
+LOG_STEP_IN "- Replacing GameDriver"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/priv-app/GameDriver-EX2100/GameDriver-EX2100.apk" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/priv-app/DevGPUDriver-EX2100/DevGPUDriver-EX2100.apk" 0 0 644 "u:object_r:system_file:s0"
+LOG_STEP_OUT
 
-echo "Replacing Hotword"
+LOG_STEP_IN "- Replacing Hotword"
 DELETE_FROM_WORK_DIR "product" "priv-app/HotwordEnrollmentOKGoogleEx4CORTEXM55"
 DELETE_FROM_WORK_DIR "product" "priv-app/HotwordEnrollmentXGoogleEx4CORTEXM55"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "product" "priv-app/HotwordEnrollmentOKGoogleEx3CORTEXM4/HotwordEnrollmentOKGoogleEx3CORTEXM4.apk" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "product" "priv-app/HotwordEnrollmentXGoogleEx3CORTEXM4/HotwordEnrollmentXGoogleEx3CORTEXM4.apk" 0 0 644 "u:object_r:system_file:s0"
+LOG_STEP_OUT
 
-echo "Add 32-Bit WFD blobs"
+LOG_STEP_IN "- Adding 32-Bit WFD blobs from S21 (p3sxxx)"
 ADD_TO_WORK_DIR "p3sxxx" "system" "system/bin/remotedisplay" 0 2000 755 "u:object_r:remotedisplay_exec:s0"
 ADD_TO_WORK_DIR "p3sxxx" "system" "system/lib" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
 
 if [[ "$TARGET_CODENAME" = "p3s" ]]; then
-    echo "Adding SPen SEC Feature"
+    LOG_STEP_IN "- Adding SPen SEC Feature"
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.spen_usp_level75.xml" 0 0 644 "u:object_r:system_file:s0"
+    LOG_STEP_OUT
 fi
 
-echo "Adding stock NFC Case features"
+LOG_STEP_IN "- Adding stock NFC Case features"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.cover.clearsideviewcover.xml" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.cover.xml" 0 0 644 "u:object_r:system_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.cover.sview.xml" 0 0 644 "u:object_r:system_file:s0"
@@ -45,3 +47,4 @@ if [[ "$TARGET_CODENAME" != "r9s"  ]]; then
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.cover.ledbackcover.xml" 0 0 644 "u:object_r:system_file:s0"
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/etc/permissions/com.sec.feature.cover.nfcledcover.xml" 0 0 644 "u:object_r:system_file:s0"
 fi
+LOG_STEP_OUT

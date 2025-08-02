@@ -1,3 +1,4 @@
+LOG_STEP_IN "- Replacing camera blobs"
 BLOBS_LIST="
 system/lib64/libpic_best.arcsoft.so
 system/lib64/libhybrid_high_dynamic_range.arcsoft.so
@@ -8,7 +9,6 @@ do
     DELETE_FROM_WORK_DIR "system" "$blob"
 done
 
-echo "Add stock camera libs"
 BLOBS_LIST="
 system/lib64/libPortraitDistortionCorrectionCali.arcsoft.so
 system/lib64/libMultiFrameProcessing30.camera.samsung.so
@@ -52,6 +52,7 @@ for blob in $BLOBS_LIST
 do
     ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "$blob" 0 0 644 "u:object_r:system_lib_file:s0"
 done
+LOG_STEP_OUT
 
 # Fix portrait mode
 sed -i "s/ro.product.name/ro.unica.camera/g" "$WORK_DIR/system/system/lib64/libDualCamBokehCapture.camera.samsung.so"

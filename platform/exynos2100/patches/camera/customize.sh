@@ -1,3 +1,4 @@
+LOG_STEP_IN "- Replacing camera blobs"
 BLOBS_LIST="
 system/lib64/libae_bracket_hdr.arcsoft.so
 system/lib64/libarcsoft_dualcam_portraitlighting.so
@@ -14,7 +15,6 @@ do
     DELETE_FROM_WORK_DIR "system" "$blob"
 done
 
-echo "Add stock camera libs"
 BLOBS_LIST="
 system/lib64/libDocShadowRemoval.arcsoft.so
 system/lib64/libeden_wrapper_system.so
@@ -50,3 +50,4 @@ do
 done
 
 ADD_TO_WORK_DIR "p3sxxx" "system" "system/priv-app/SingleTakeService/SingleTakeService.apk" 0 0 644 "u:object_r:system_file:s0"
+LOG_STEP_OUT

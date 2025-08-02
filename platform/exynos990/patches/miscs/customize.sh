@@ -1,21 +1,25 @@
-echo "Setting casefold props"
+LOG_STEP_IN "- Setting casefold props"
 SET_PROP "vendor" "external_storage.projid.enabled" "1"
 SET_PROP "vendor" "external_storage.casefold.enabled" "1"
 SET_PROP "vendor" "external_storage.sdcardfs.enabled" "0"
 SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
+LOG_STEP_OUT
 
-echo "Enabling IncrementalFS"
+LOG_STEP_IN "- Enabling IncrementalFS"
 SET_PROP "vendor" "ro.incremental.enable" "yes"
+LOG_STEP_OUT
 
-echo "Enabling FS Verity"
+LOG_STEP_IN "- Enabling FS Verity"
 SET_PROP "vendor" "ro.apk_verity.mode" "2"
+LOG_STEP_OUT
 
-echo "Setting SF flags"
+LOG_STEP_IN "- Setting SF flags"
 SET_PROP "vendor" "debug.sf.latch_unsignaled" "1"
 SET_PROP "vendor" "debug.sf.high_fps_late_app_phase_offset_ns" "0"
 SET_PROP "vendor" "debug.sf.high_fps_late_sf_phase_offset_ns" "0"
+LOG_STEP_OUT
 
-echo "Setting Adaptive HFR flags"
+LOG_STEP_IN "- Setting Adaptive HFR flags"
 if [[ "$TARGET_CODENAME" != "c1s" && "$TARGET_CODENAME" != "c2s" ]]; then
     SET_PROP "vendor" "debug.sf.show_refresh_rate_overlay_render_rate" "true"
     SET_PROP "vendor" "ro.surface_flinger.game_default_frame_rate_override" "60"
@@ -34,12 +38,14 @@ elif [[ "$TARGET_CODENAME" == "c2s" ]]; then
     SET_PROP "vendor" "ro.surface_flinger.game_default_frame_rate_override" "60"
     SET_PROP "vendor" "ro.surface_flinger.enable_frame_rate_override" "true"
 fi
+LOG_STEP_OUT
 
-echo "Enable Vulkan"
+LOG_STEP_IN "- Enabling Vulkan"
 SET_PROP "vendor" "ro.hwui.use_vulkan" "true"
 SET_PROP "vendor" "debug.hwui.use_hint_manager" "true"
+LOG_STEP_OUT
 
-echo "Disabling encryption"
+LOG "- Disabling encryption"
 # Replace encryption with fscompress
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos990")
 sed -i "${LINE}s/fileencryption=ice/fscompress/g" "$WORK_DIR/vendor/etc/fstab.exynos990"
@@ -49,7 +55,7 @@ sed -i -e "/ODE/d" -e "/keydata/d" -e "/keyrefuge/d" "$WORK_DIR/vendor/etc/fstab
 
 # For some reason we are missing 2 permissions here: android.hardware.security.model.compatible and android.software.controls
 # First one is related to encryption and second one to SmartThings Device Control
-echo "Patching vendor permissions"
+LOG "- Patching vendor permissions"
 sed -i '$d' "$WORK_DIR/vendor/etc/permissions/handheld_core_hardware.xml"
 {
     echo ""
@@ -61,7 +67,7 @@ sed -i '$d' "$WORK_DIR/vendor/etc/permissions/handheld_core_hardware.xml"
     echo "</permissions>"
 } >> "$WORK_DIR/vendor/etc/permissions/handheld_core_hardware.xml"
 
-echo "Setting stock Bluetooth profiles"
+LOG_STEP_IN "- Setting stock Bluetooth profiles"
 SET_PROP "product" "bluetooth.profile.asha.central.enabled" "true"
 SET_PROP "product" "bluetooth.profile.a2dp.source.enabled" "true"
 SET_PROP "product" "bluetooth.profile.avrcp.target.enabled" "true"
@@ -90,3 +96,4 @@ if [[ "$TARGET_CODENAME" == "r8s" ]]; then
 else
     ADD_TO_WORK_DIR "b0sxxx" "system" "system/apex/com.android.btservices.apex" 0 0 644 "u:object_r:system_file:s0"
 fi
+LOG_STEP_OUT

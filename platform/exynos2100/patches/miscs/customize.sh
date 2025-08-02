@@ -1,14 +1,16 @@
-echo "Disable Vulkan"
+LOG_STEP_IN "- Disabling Vulkan"
 SET_PROP "vendor" "ro.hwui.use_vulkan" "false"
 SET_PROP "vendor" "debug.hwui.renderer" "skiagl"
 SET_PROP "vendor" "debug.renderengine.backend" "skiagl"
 SET_PROP "vendor" "renderthread.skia.reduceopstasksplitting" "true"
 SET_PROP "vendor" "debug.hwui.skia_atrace_enabled" "false"
+LOG_STEP_OUT
 
-echo "Setting FUSE passthough"
+LOG_STEP_IN "- Setting FUSE passthough"
 SET_PROP "vendor" "persist.sys.fuse.passthrough.enable" "true"
+LOG_STEP_OUT
 
-echo "Disabling encryption"
+LOG "- Disabling encryption"
 # Encryption
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos2100")
 sed -i "${LINE}s/,fileencryption=aes-256-xts:aes-256-cts:v2//g" "$WORK_DIR/vendor/etc/fstab.exynos2100"
@@ -16,7 +18,7 @@ sed -i "${LINE}s/,fileencryption=aes-256-xts:aes-256-cts:v2//g" "$WORK_DIR/vendo
 # ODE
 sed -i -e "/ODE/d" -e "/keydata/d" -e "/keyrefuge/d" "$WORK_DIR/vendor/etc/fstab.exynos2100"
 
-echo "Setting stock Bluetooth profiles"
+LOG_STEP_IN "- Setting stock Bluetooth profiles"
 SET_PROP "product" "bluetooth.profile.asha.central.enabled" "true"
 SET_PROP "product" "bluetooth.profile.a2dp.source.enabled" "true"
 SET_PROP "product" "bluetooth.profile.avrcp.target.enabled" "true"
@@ -44,4 +46,5 @@ if [[ "$TARGET_CODENAME" == "r9s" ]]; then
     ADD_TO_WORK_DIR "r11sxxx" "system" "system/apex/com.android.btservices.apex" 0 0 644 "u:object_r:system_file:s0"
 else
     ADD_TO_WORK_DIR "b0sxxx" "system" "system/apex/com.android.btservices.apex" 0 0 644 "u:object_r:system_file:s0"
-fi 
+fi
+LOG_STEP_OUT
