@@ -1,4 +1,4 @@
-echo "Updating UWB HAL"
+LOG_STEP_IN "- Updating UWB HAL"
 
 DELETE_FROM_WORK_DIR "vendor" "etc/init/nxp-uwb-service.rc"
 
@@ -20,3 +20,4 @@ do
 done
 
 SET_PROP "vendor" "ro.vendor.uwb.feature.chipname" "sr100"
+LOG_STEP_OUT
