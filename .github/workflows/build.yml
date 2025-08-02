@@ -94,3 +94,12 @@ jobs:
 
           echo "Uploaded successfully! Download link:"
           echo "$RESPONSE" | jq -r '.data.downloadPage'
+
+          md5sum "$ZIP_FILE" > checksums.txt
+          sha256sum "$ZIP_FILE" >> checksums.txt
+
+      - name: Upload checksum file
+        uses: actions/upload-artifact@v4
+        with:
+          name: zip-checksums
+          path: checksums.txt
