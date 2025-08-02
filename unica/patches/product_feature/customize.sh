@@ -130,7 +130,6 @@ if ! $SOURCE_HAS_HW_MDNIE; then
 
         DECODE_APK "system" "system/framework/framework.jar"
         DECODE_APK "system" "system/framework/services.jar"
-        DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
         DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_LCD_SUPPORT_MDNIE_HW" "TRUE"
@@ -152,9 +151,6 @@ if ! $SOURCE_MDNIE_SUPPORT_HDR_EFFECT; then
 
         DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
         DECODE_APK "system" "system/priv-app/SettingsProvider/SettingsProvider.apk"
-
-        APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
-        APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hw/SecSettings.apk/0001-Enable-EAD-Settings.patch"
 
         SET_FLOATING_FEATURE_CONFIG "SEC_FLOATING_FEATURE_COMMON_SUPPORT_HDR_EFFECT" "TRUE"
         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/mdnie/hdr/SecSettings.apk/0001-Enable-HDR-Settings.patch"
