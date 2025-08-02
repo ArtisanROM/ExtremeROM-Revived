@@ -1,5 +1,25 @@
 # ExtremeROM Nexus changelog
 
+# 2.6.0
+- Fixed MyFilter for exynos2200 (thx @dupazlasu)
+- Switched to OneUI 6.1.1 camera for exynos9820 (fixed watermark, filters, lockscreen gallery, double videos in gallery, post-processing and more) (thx @PeterKnecht)
+- Fixed back portrait mode for exynos9820 (finally!)
+- Bluetooth enhancements for all platforms
+- Fixed SingleTake in camera for 9820/990/2100 (thx @szucsy92)
+- Fixed Adaptive Refresh Rate Flickering issue for S20 series
+- Added Adaptive Refresh Rate for S20 FE and S21 FE
+- Fixed AirCommand crash for S21 Ultra
+- Removed Detail Enhancer button for unsupported models (S21/S21+) (thx @maximusXZ)
+- Fixed Detail Enhancer for S21 Ultra
+- Fixed zoom photos on S21 FE
+- Fixed Ultra Wideband on Note20 Ultra
+- Fixed Motion Photo on S20/N20
+- Fixed Link to Windows feature
+- Added AppLock
+- Fixed progress bar in installer
+- Switched to EroFS SYSTEM partition
+- Fixed SDCard and OTG in TWRP for Exynos 9820/990
+
 # 2.5.0
 - Switched base to S24 FE (S721BXXS6BYF5)
 - HEAVILY improved performance, general smoothness, battery and thermals
