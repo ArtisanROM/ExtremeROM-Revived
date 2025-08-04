@@ -35,23 +35,11 @@ FS_CONFIG_FILE=""
 # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/build_image.py#266
 BUILD_IMAGE_MKFS()
 {
-    local SPARSE=$SPARSE
-    local MANUAL_SPARSE=false
-
-    # Avoid OOM errors when building as sparse image
-    if $SPARSE && [[ "$(awk '/MemTotal/ { print int ($2 / 1024) }' "/proc/meminfo")" -lt "10240" ]]; then
-        SPARSE=false
-        MANUAL_SPARSE=true
-    fi
-
     local BUILD_CMD
 
     case "$FS_TYPE" in
         "ext4")
             BUILD_CMD+="mkuserimg_mke2fs "
-            if $SPARSE; then
-                BUILD_CMD+="-s "
-            fi
             BUILD_CMD+="\"$INPUT_DIR\" \"$OUTPUT_FILE\" \"ext4\" \"$MOUNT_POINT\" "
             BUILD_CMD+="\"$IMAGE_SIZE\" "
             # https://android.googlesource.com/platform/build/+/refs/tags/android-15.0.0_r1/tools/releasetools/build_image.py#808
@@ -103,18 +91,10 @@ BUILD_IMAGE_MKFS()
                 BUILD_CMD+="--block-list-file \"${OUTPUT_FILE//.img/.map}\" "
             fi
             BUILD_CMD+="\"$OUTPUT_FILE\" \"$INPUT_DIR\""
-
-            # mkfs.erofs has no built-in sparse support
-            if $SPARSE; then
-                MANUAL_SPARSE=true
-            fi
             ;;
         "f2fs")
             BUILD_CMD+="mkf2fsuserimg "
             BUILD_CMD+="\"$OUTPUT_FILE\" \"$IMAGE_SIZE\" "
-            if $SPARSE; then
-                BUILD_CMD+="-S "
-            fi
             BUILD_CMD+="-C \"$FS_CONFIG_FILE\" "
             BUILD_CMD+="-f \"$INPUT_DIR\" "
             BUILD_CMD+="-s \"$FILE_CONTEXT_FILE\" "
@@ -138,7 +118,7 @@ BUILD_IMAGE_MKFS()
 
     EVAL "$BUILD_CMD" || exit 1
 
-    if $MANUAL_SPARSE; then
+    if $SPARSE; then
         EVAL "img2simg \"$OUTPUT_FILE\" \"$OUTPUT_FILE.sparse\"" || exit 1
         mv -f "$OUTPUT_FILE.sparse" "$OUTPUT_FILE"
     fi
