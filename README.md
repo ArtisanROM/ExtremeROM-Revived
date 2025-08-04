@@ -106,7 +106,7 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **Nhat Vo** for Google Telemetry app removal
 - **[Code Malaya](https://github.com/jomiejoshiro)** for SPen Air Actions
 - **[Renox](https://github.com/renoxtv)** for overlay patches and testing
-- **[Ksawlii](https://github.com/Ksawlii)** for FOD animation patch
+- **[Ksawlii](https://github.com/Ksawlii)** for updating the build system and FOD animation patch
 - **[nalz0](https://github.com/nalz0)** for Multi-User support
 - **[EndaDwagon](https://github.com/EndaDwagon)** for the big majority of the ExtremeROM Wiki
 - **[Oskar](https://github.com/osrott61-gh)** for Odinpacks, Building before we started using CI, Wiki
