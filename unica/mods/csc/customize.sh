@@ -29,26 +29,31 @@ find "$WORK_DIR/optics" -type f -exec sed -i "s/SAOMC_SM-S938B/SAOMC_${TARGET_MO
 
 LOG_STEP_IN "- Patching CSC Features"
 while read -r FILE; do
-    # Decode XML
-    ! grep -q 'CscFeature' "$FILE" && $TOOLS_DIR/bin/cscdecoder --decode --in-place "$FILE"
+    (
+        LOG "- Decoding $FILE"
+        ! grep -q 'CscFeature' "$FILE" && $TOOLS_DIR/bin/cscdecoder --decode --in-place "$FILE"
 
-    # eSIM
-    if $SOURCE_IS_ESIM_SUPPORTED && ! $TARGET_IS_ESIM_SUPPORTED; then
-        SET_CSC_FEATURE_CONFIG "CscFeature_RIL_SupportEsim" "FALSE"
-        SET_CSC_FEATURE_CONFIG "CscFeature_SetupWizard_SupportEsimAsPrimary" --delete
-    fi
+        LOG_STEP_IN "- Applying CSC Tweaks"
+        if $SOURCE_IS_ESIM_SUPPORTED && ! $TARGET_IS_ESIM_SUPPORTED; then
+            SET_CSC_FEATURE_CONFIG "CscFeature_RIL_SupportEsim" "FALSE"
+            SET_CSC_FEATURE_CONFIG "CscFeature_SetupWizard_SupportEsimAsPrimary" --delete
+        fi
 
-    # Tweaks
-    SET_CSC_FEATURE_CONFIG "CscFeature_VoiceCall_ConfigRecording" "RecordingAllowed"
-    SET_CSC_FEATURE_CONFIG "CscFeature_Setting_SupportRealTimeNetworkSpeed" "TRUE"
-    SET_CSC_FEATURE_CONFIG "CscFeature_Setting_EnableHwVersionDisplay" "TRUE"
-    SET_CSC_FEATURE_CONFIG "CscFeature_Setting_SupportMenuSmartTutor" "FALSE"
-    SET_CSC_FEATURE_CONFIG "CscFeature_Setting_ConfigLongPressType" 1
-    SET_CSC_FEATURE_CONFIG "CscFeature_Common_DisableBixby" --delete
+        SET_CSC_FEATURE_CONFIG "CscFeature_VoiceCall_ConfigRecording" "RecordingAllowed"
+        SET_CSC_FEATURE_CONFIG "CscFeature_Setting_SupportRealTimeNetworkSpeed" "TRUE"
+        SET_CSC_FEATURE_CONFIG "CscFeature_Setting_EnableHwVersionDisplay" "TRUE"
+        SET_CSC_FEATURE_CONFIG "CscFeature_Setting_SupportMenuSmartTutor" "FALSE"
+        SET_CSC_FEATURE_CONFIG "CscFeature_Setting_ConfigLongPressType" 1
+        SET_CSC_FEATURE_CONFIG "CscFeature_Common_DisableBixby" --delete
+        LOG_STEP_OUT
 
-    # Encode XML
-    $TOOLS_DIR/bin/cscdecoder --encode --in-place "$FILE"
+        LOG "- Encoding $FILE"
+        $TOOLS_DIR/bin/cscdecoder --encode --in-place "$FILE"
+    ) &
 done <<< "$(find "$WORK_DIR/optics" -type f -name "cscfeature.xml")"
+
+# shellcheck disable=SC2046
+wait $(jobs -p) || exit 1
 LOG_STEP_OUT
 
 LOG_STEP_IN "- Patching APKs for network speed monitoring"
