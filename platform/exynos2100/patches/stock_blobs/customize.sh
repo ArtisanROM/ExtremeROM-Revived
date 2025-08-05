@@ -2,15 +2,6 @@
 # S21 Series -> SoundBooster 1050
 # S21 FE -> SoundBooster 1070
 
-# SOUND_BOOSTER="$(basename "$(find "$TARGET_FIRMWARE_PATH/system/system/lib64" -type f -name 'lib_SoundBooster*' -print -quit)")"
-
-# LOG_STEP_IN "- Replacing SoundBooster"
-# DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SoundBooster_ver2000.so"
-# DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SAG_EQ_ver2000.so"
-# DELETE_FROM_WORK_DIR "system" "system/lib64/libsoundboostereq_legacy.so"
-# ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/$SOUND_BOOSTER" 0 0 644 "u:object_r:system_lib_file:s0"
-# LOG_STEP_OUT
-
 LOG_STEP_IN "- Replacing SoundBooster"
 DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SoundBooster_ver2000.so"
 DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SAG_EQ_ver2000.so"
