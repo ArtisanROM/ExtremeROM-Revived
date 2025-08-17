@@ -18,6 +18,10 @@
 	path = external/samloader
 	url = https://github.com/ananjaser1211/samloader.git
 	ignore = dirty
+[submodule "external/signapk"]
+	path = external/signapk
+	url = https://github.com/salvogiangri/signapk.git
+	ignore = dirty
 [submodule "external/smali"]
 	path = external/smali
 	url = https://github.com/google/smali.git

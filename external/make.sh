@@ -133,6 +133,7 @@ APKTOOL=true
 EROFS_UTILS=true
 IMG2SDAT=true
 SAMLOADER=true
+SIGNAPK=true
 SMALI=true
 OMCDECODER=true
 
@@ -161,6 +162,10 @@ SAMLOADER_EXEC=(
     "../venv/bin/samloader"
 )
 CHECK_TOOLS "${SAMLOADER_EXEC[@]}" && SAMLOADER=false
+SIGNAPK_EXEC=(
+    "signapk" "signapk.jar"
+)
+CHECK_TOOLS "${SIGNAPK_EXEC[@]}" && SIGNAPK=false
 SMALI_EXEC=(
     "android-smali.jar" "baksmali" "smali" "smali-baksmali.jar"
 )
@@ -176,6 +181,7 @@ if [[ "$1" == "--check-tools" ]]; then
             ! $EROFS_UTILS && \
             ! $IMG2SDAT && \
             ! $SAMLOADER && \
+            ! $SIGNAPK && \
             ! $SMALI; then
         exit 0
     else
@@ -243,6 +249,15 @@ if $SAMLOADER; then
     )
 
     BUILD "samloader" "$SRC_DIR/external/samloader" "${SAMLOADER_CMDS[@]}"
+fi
+if $SIGNAPK; then
+    SIGNAPK_CMDS=(
+        "./gradlew build"
+        "cp -a \"scripts/linux/signapk\" \"$TOOLS_DIR/bin\""
+        "cp -a \"signapk/build/libs/signapk-all.jar\" \"$TOOLS_DIR/bin/signapk.jar\""
+    )
+
+    BUILD "signapk" "$SRC_DIR/external/signapk" "${SIGNAPK_CMDS[@]}"
 fi
 if $SMALI; then
     SMALI_CMDS=(
