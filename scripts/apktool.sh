@@ -77,7 +77,6 @@ BUILD()
     mkdir -p "$OUTPUT_PATH/build/apk"
     cp -a "$OUTPUT_PATH/original/META-INF" "$OUTPUT_PATH/build/apk/META-INF"
 
-    # Build APK with --shorten-resource-paths (https://developer.android.com/tools/aapt2#optimize_options)
     EVAL "apktool b -j \"$THREAD_COUNT\" -p \"$FRAMEWORK_DIR\" \"$OUTPUT_PATH\"" || exit 1
 
     find "$OUTPUT_PATH" -maxdepth 1 -type f -name "*.dex" -delete
@@ -85,9 +84,18 @@ BUILD()
     local FILE_NAME
     FILE_NAME="$(basename "$INPUT_FILE")"
 
-    LOG "- Zipaligning ${INPUT_FILE//$WORK_DIR/}"
-    EVAL "zipalign -p 4 \"$OUTPUT_PATH/dist/$FILE_NAME\" \"$OUTPUT_PATH/dist/temp\"" || exit 1
-    mv -f "$OUTPUT_PATH/dist/temp" "$OUTPUT_PATH/dist/$FILE_NAME"
+    if [[ "$INPUT_FILE" == *".apk" ]]; then
+        local CERT_PREFIX="aosp"
+        $ROM_IS_OFFICIAL && CERT_PREFIX="extremerom"
+
+        LOG "- Signing ${INPUT_FILE//$WORK_DIR/}"
+        EVAL "signapk \"$SRC_DIR/security/${CERT_PREFIX}_platform.x509.pem\" \"$SRC_DIR/security/${CERT_PREFIX}_platform.pk8\" \"$OUTPUT_PATH/dist/$FILE_NAME\" \"$OUTPUT_PATH/dist/temp.apk\"" || exit 1
+        mv -f "$OUTPUT_PATH/dist/temp.apk" "$OUTPUT_PATH/dist/$FILE_NAME"
+    else
+        LOG "- Zipaligning ${INPUT_FILE//$WORK_DIR/}"
+        EVAL "zipalign -p 4 \"$OUTPUT_PATH/dist/$FILE_NAME\" \"$OUTPUT_PATH/dist/temp\"" || exit 1
+        mv -f "$OUTPUT_PATH/dist/temp" "$OUTPUT_PATH/dist/$FILE_NAME"
+    fi
 
     mkdir -p "$(dirname "$INPUT_FILE")"
     mv -f "$OUTPUT_PATH/dist/$FILE_NAME" "$INPUT_FILE"
@@ -124,14 +132,13 @@ DECODE()
     fi
 
     LOG "- Decoding ${INPUT_FILE//$WORK_DIR/}"
-    [[ "$INPUT_FILE" != *rro_*.apk ]] && ARGS="-r"
 
     # Decode APK with --no-debug-info, which will disassemble DEX file with the following flags:
     # - Disabled synthetic accessors comments
     # - Disabled debug info
     # - Use .locals directive instead of the .registers one
     # - Use a sequential numbering scheme for labels
-    EVAL "apktool d -b -j \"$THREAD_COUNT\" -o \"$OUTPUT_PATH\" -p \"$FRAMEWORK_DIR\" -t \"$FRAMEWORK_TAG\" -s $ARGS \"$INPUT_FILE\"" || exit 1
+    EVAL "apktool d -b -j \"$THREAD_COUNT\" -o \"$OUTPUT_PATH\" -p \"$FRAMEWORK_DIR\" -t \"$FRAMEWORK_TAG\" -s \"$INPUT_FILE\"" || exit 1
 
     # DEX format version might not be matching minSdkVersion, currently we handle
     # baksmali manually as apktool will by default use minSdkVersion when available
