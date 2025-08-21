@@ -476,9 +476,9 @@ GENERATE_UPDATER_SCRIPT()
 
         echo -e "\n"
         echo    'ui_print("Cleaning up...");'
-        echo    'package_extract_dir("scripts", "/tmp/scripts");'
-        echo    'set_metadata_recursive("/tmp/scripts", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);'
-        echo    'run_program("/tmp/scripts/cleanup.sh");'
+        echo    'package_extract_file("cleanup.sh", "/tmp/cleanup.sh");'
+        echo    'set_metadata("/tmp/cleanup.sh", "uid", 0, "gid", 0, "dmode", 0755, "fmode", 0755);'
+        echo    'run_program("/tmp/cleanup.sh");'
 
         echo -e "\n"
         echo    'set_progress(1);'
