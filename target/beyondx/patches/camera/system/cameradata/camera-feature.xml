@@ -32,10 +32,10 @@
     <local name="BACK_CAMERA_RESOLUTION_HIGH_RESOLUTION_1BY1" value="3024x3024"/>
 
     <!-- Back wide camera resolution -->
-    <local name="BACK_WIDE_CAMERA_RESOLUTION_FULL_RATIO" value="4032x1908"/>
-    <local name="BACK_WIDE_CAMERA_RESOLUTION_16BY9_LARGE" value="4032x2268"/>
-    <local name="BACK_WIDE_CAMERA_RESOLUTION_4BY3_LARGE" value="4032x3024"/>
-    <local name="BACK_WIDE_CAMERA_RESOLUTION_1BY1_LARGE" value="3024x3024"/>
+    <local name="BACK_WIDE_CAMERA_RESOLUTION_FULL_RATIO" value="4608x2184"/>
+    <local name="BACK_WIDE_CAMERA_RESOLUTION_16BY9_LARGE" value="4608x2592"/>
+    <local name="BACK_WIDE_CAMERA_RESOLUTION_4BY3_LARGE" value="4608x3456"/>
+    <local name="BACK_WIDE_CAMERA_RESOLUTION_1BY1_LARGE" value="3456x3456"/>
 
     <!-- Back Camera Second picture resolution -->
     <local name="BACK_CAMERA_SECOND_PICTURE_RESOLUTION_FULL_RATIO" value="4608x2184"/>
