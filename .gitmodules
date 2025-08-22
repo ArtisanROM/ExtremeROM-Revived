@@ -29,3 +29,4 @@
 [submodule "external/omcdecoder"]
 	path = external/omcdecoder
 	url = https://github.com/soulr344/OMCDecoder
+	ignore = dirty
