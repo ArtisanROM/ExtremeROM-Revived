@@ -3,8 +3,10 @@
 # 2.6.1
 - Updated build system (thx @Ksawlii)
 - Added ASCII art in the installer (thx @bkurt)
-- Switched to ExtremeROM Certificate for modified APKs (thx @salvogiangri)
-- Brought back 4-digit OK PIN Patch (@thx Ocin4Ever)
+- Switched to ExtremeROM Certificate for modified APKs and main installer ZIP (thx @salvogiangri)
+- Added ExtremeROM Branding in Settings
+- Brought back 4-digit OK PIN Patch (thx @Ocin4ever)
+- Fixed 16MP UW on S10 Series (thx @Mesazane)
 - Fixed Heart Rate Monitor sensor on S10 Series
 - Fixed Camera on Note 20
 - Fixed Bluetooth on S10 Series and S20 FE
