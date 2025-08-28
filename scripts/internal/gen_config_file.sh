@@ -39,7 +39,7 @@ GET_BUILD_VAR()
 IS_EXTREMEROM_CERT_AVAILABLE()
 {
     local USES_EXTREMEROM_CERT="false"
-    [ -f "$SRC_DIR/security/extremerom_platform.pk8" ] && USES_EXTREMEROM_CERT="true"
+    [ -s "$SRC_DIR/security/extremerom_platform.pk8" ] && USES_EXTREMEROM_CERT="true"
     echo "$USES_EXTREMEROM_CERT"
 }
 # ]
