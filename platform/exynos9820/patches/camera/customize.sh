@@ -52,7 +52,7 @@ do
 done
 LOG_STEP_OUT
 
-LOG_STEP_OUT "- Adding S21 (p3sxxx) SWISP models"
+LOG_STEP_IN "- Adding S21 (p3sxxx) SWISP models"
 DELETE_FROM_WORK_DIR "vendor" "saiv/swisp_1.0"
 ADD_TO_WORK_DIR "p3sxxx" "vendor" "saiv/swisp_1.0"
 
