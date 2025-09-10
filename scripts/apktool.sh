@@ -54,7 +54,7 @@ BUILD()
         local DEX_FILENAME
 
         while IFS= read -r d; do
-            DEX_API_LEVEL="$(cat "$OUTPUT_PATH/../dex_api_version" 2> /dev/null)"
+            DEX_API_LEVEL="$(cat "$OUTPUT_PATH/dex_api_version" 2> /dev/null)"
 
             # https://github.com/google/smali/blob/3.0.9/dexlib2/src/main/java/com/android/tools/smali/dexlib2/VersionMap.java#L55-L79
             if [ ! "$DEX_API_LEVEL" ] || [[ "$DEX_API_LEVEL" -gt "35" ]]; then
@@ -152,7 +152,7 @@ DECODE()
         while IFS= read -r f; do
             DEX_API_LEVEL="$(DEX_TO_API "$f")"
             [ "$DEX_API_LEVEL" ] || exit 1
-            echo -n "$DEX_API_LEVEL" > "$OUTPUT_PATH/../dex_api_version"
+            echo -n "$DEX_API_LEVEL" > "$OUTPUT_PATH/dex_api_version"
 
             if [[ "$f" == *"classes.dex" ]]; then
                 SMALI_OUT="smali"
