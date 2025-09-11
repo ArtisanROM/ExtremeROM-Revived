@@ -39,3 +39,16 @@ if [[ -f "$FW_DIR/${MODEL}_${REGION}/vendor/lib64/liblivefocus_capture_engine.so
         SET_PROP "system" "ro.unica.camera" "$(GET_PROP "$FW_DIR/${MODEL}_${REGION}/system/system/build.prop" "ro.product.system.name")"
     fi
 fi
+
+ADD_TO_WORK_DIR "$SOURCE_FIRMWARE" "vendor" "bin/secril_config_svc"
+
+echo -e "\nro.telephony.sim_slots.count      u:object_r:telephony_config_prop:s0 exact int" >> "$WORK_DIR/system/system/etc/selinux/plat_property_contexts"
+
+{
+    echo ""
+    echo ""
+    echo "on property:ro.vendor.multisim.simslotcount=*"
+    echo "    setprop ro.telephony.sim_slots.count \${ro.vendor.multisim.simslotcount}"
+    echo ""
+} >> "$WORK_DIR/vendor/etc/init/init.vendor.rilcommon.rc"
+
