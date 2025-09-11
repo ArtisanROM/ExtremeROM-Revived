@@ -30,7 +30,7 @@ SOURCE_SUPER_GROUP_NAME="group_basic"
 # SEC Product Feature
 SOURCE_AUTO_BRIGHTNESS_TYPE="5"
 SOURCE_DVFS_CONFIG_NAME="dvfs_policy_default"
-SOURCE_NFC_CHIP_VENDOR="SLSI"
+SOURCE_NFC_CHIP_VENDOR="NXP"
 SOURCE_FP_SENSOR_CONFIG="google_touch_display_optical,settings=3,aod_transition_animation"
 SOURCE_HAS_MASS_CAMERA_APP=true
 SOURCE_HAS_QHD_DISPLAY=false
