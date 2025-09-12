@@ -1,25 +1,27 @@
-From ca4627f636923490311c8b1ee85e8cad091f4718 Mon Sep 17 00:00:00 2001
+From 43eab4fcf0b4e96aeb1dc20d2108622a9fb32636 Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Wed, 18 Jun 2025 12:46:17 +0300
-Subject: [PATCH] Set SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL to false
+Date: Fri, 12 Sep 2025 16:06:47 +0300
+Subject: [PATCH 1/2] Set SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL to false
 
+Change-Id: I51cb8095336009c133cf847acd8d44a3a2820e1a
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
 ---
  smali/com/android/systemui/LsRune.smali | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/smali/com/android/systemui/LsRune.smali b/smali/com/android/systemui/LsRune.smali
-index 6ae275d9..6d910e2d 100644
+index 648eb113..d04b1dd1 100644
 --- a/smali/com/android/systemui/LsRune.smali
 +++ b/smali/com/android/systemui/LsRune.smali
-@@ -662,7 +662,7 @@
+@@ -676,7 +676,7 @@
  
      sput-boolean v3, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY:Z
  
 -    sput-boolean v3, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL:Z
 +    sput-boolean v2, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL:Z
  
-     sput-boolean v2, Lcom/android/systemui/LsRune;->SECURITY_BACKGROUND_AUTHENTICATION:Z
+     const-string v7, "SEC_FLOATING_FEATURE_BIOAUTH_CONFIG_FINGERPRINT_FEATURES"
  
 -- 
-2.45.2
+2.51.0
 

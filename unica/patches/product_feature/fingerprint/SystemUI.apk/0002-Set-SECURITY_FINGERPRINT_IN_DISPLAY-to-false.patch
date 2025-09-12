@@ -1,22 +1,21 @@
-From ba85e94fabb1abca886c204b3f29a72314b96d5c Mon Sep 17 00:00:00 2001
+From 3a3c9537f219d6abfc863730246c3ece16dcf30c Mon Sep 17 00:00:00 2001
 From: Bahar KURT <kurtbahartr@users.noreply.github.com>
-Date: Sat, 28 Jun 2025 09:32:24 -0400
-Subject: [PATCH] Set SECURITY_FINGERPRINT_IN_DISPLAY to false
+Date: Fri, 12 Sep 2025 16:07:08 +0300
+Subject: [PATCH 2/2] Set SECURITY_FINGERPRINT_IN_DISPLAY to false
 
-Based on "Set SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL to false"
-
-Co-authored-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+Change-Id: Ibcf6b1e68c8027cbff4c9a4a2dad5c06a1cd7ff9
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
 ---
  smali/com/android/systemui/LsRune.smali | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/smali/com/android/systemui/LsRune.smali b/smali/com/android/systemui/LsRune.smali
-index f493ae7d..c070be3a 100644
+index d04b1dd1..6041ee32 100644
 --- a/smali/com/android/systemui/LsRune.smali
 +++ b/smali/com/android/systemui/LsRune.smali
-@@ -660,7 +660,7 @@
+@@ -674,7 +674,7 @@
  
-     sput-boolean v12, Lcom/android/systemui/LsRune;->SECURITY_UNPACK:Z
+     sput-boolean v7, Lcom/android/systemui/LsRune;->SECURITY_UNPACK:Z
  
 -    sput-boolean v3, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY:Z
 +    sput-boolean v2, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY:Z
@@ -24,5 +23,5 @@ index f493ae7d..c070be3a 100644
      sput-boolean v2, Lcom/android/systemui/LsRune;->SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL:Z
  
 -- 
-2.43.0
+2.51.0
 

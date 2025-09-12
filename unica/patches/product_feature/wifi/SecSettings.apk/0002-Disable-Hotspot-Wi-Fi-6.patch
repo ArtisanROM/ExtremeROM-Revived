@@ -1,25 +1,27 @@
-From d858f664da7b88b370170f6a61632b81379845ab Mon Sep 17 00:00:00 2001
+From 5c8306742d3c1fcb95765b27478ff06991fa3b9c Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Mon, 28 Apr 2025 00:40:22 +0300
-Subject: [PATCH] Disable Hotspot Wi-Fi 6
+Date: Fri, 12 Sep 2025 16:36:24 +0300
+Subject: [PATCH 2/3] Disable Hotspot Wi-Fi 6
 
+Change-Id: I5fe1bf55a932245191670a7095991f1cb3ea3370
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
 ---
  .../configure/WifiApConfigureSupportWifi6Controller.smali       | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali b/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
-index 7151c6185..eec27ca5c 100644
+index fb99b71a..da2c0b5c 100644
 --- a/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
 +++ b/smali_classes3/com/samsung/android/settings/wifi/mobileap/configure/WifiApConfigureSupportWifi6Controller.smali
-@@ -110,7 +110,7 @@
- .method public getAvailabilityStatus()I
-     .locals 0
+@@ -123,7 +123,7 @@
+ 
+     if-eqz p0, :cond_0
  
 -    const/4 p0, 0x0
 +    const/4 p0, 0x3
  
      return p0
- .end method
+ 
 -- 
-2.45.2
+2.51.0
 

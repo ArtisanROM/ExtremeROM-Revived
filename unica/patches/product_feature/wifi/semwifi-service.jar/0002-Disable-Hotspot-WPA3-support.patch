@@ -1,17 +1,19 @@
-From 49279d72fd40f790892ce35cd3035419321ee0c2 Mon Sep 17 00:00:00 2001
+From 084c099bad8b703c54f71ec8058214fb61ebeefe Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
-Date: Sun, 27 Apr 2025 20:24:06 +0300
-Subject: [PATCH] Disable Hotspot WPA3 support
+Date: Fri, 12 Sep 2025 16:15:16 +0300
+Subject: [PATCH 2/3] Disable Hotspot WPA3 support
 
+Change-Id: Ie1b0dd223026c030a93d00720a8764a07f3d3069
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
 ---
  .../samsung/android/server/wifi/ap/SemWifiApServiceImpl.smali   | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/smali/com/samsung/android/server/wifi/ap/SemWifiApServiceImpl.smali b/smali/com/samsung/android/server/wifi/ap/SemWifiApServiceImpl.smali
-index 6b903ef2..0d36b220 100644
+index 29794a0..8c75e54 100644
 --- a/smali/com/samsung/android/server/wifi/ap/SemWifiApServiceImpl.smali
 +++ b/smali/com/samsung/android/server/wifi/ap/SemWifiApServiceImpl.smali
-@@ -8076,7 +8076,7 @@
+@@ -8149,7 +8149,7 @@
  
      invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
  
@@ -21,5 +23,5 @@ index 6b903ef2..0d36b220 100644
      return p0
  .end method
 -- 
-2.45.2
+2.51.0
 
