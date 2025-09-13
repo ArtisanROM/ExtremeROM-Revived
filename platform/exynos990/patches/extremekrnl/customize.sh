@@ -3,40 +3,41 @@ EXTREMEKRNL_REPO="https://github.com/ExtremeXT/990_upstream_v2/"
 
 BUILD_KERNEL()
 {
-    PARENT=$(pwd)
+    local PARENT=$(pwd)
     cd $KERNEL_TMP_DIR
 
-    ./build.sh -m ${TARGET_CODENAME} -k y -r n
+    EVAL "./build.sh -m ${TARGET_CODENAME} -k y -r n"
 
     # Fixup for LTE devices
-    ./build.sh -m ${TARGET_CODENAME}lte -k n -r n -d y
+    EVAL "./build.sh -m ${TARGET_CODENAME}lte -k n -r n -d y"
 
     cd $PARENT
 }
 
 SAFE_PULL_CHANGES()
 {
-    PARENT=$(pwd)
-    cd "$KERNEL_TMP_DIR"
-
     set -eo pipefail
 
-    git fetch origin
+    local PARENT=$(pwd)
+
+    cd "$KERNEL_TMP_DIR"
+
+    EVAL "git fetch origin"
 
     LOCAL=$(git rev-parse @)
     REMOTE=$(git rev-parse origin/main)
     BASE=$(git merge-base @ origin/main)
 
     # Now we have three cases that we need to take care of.
-    if [ "$LOCAL" = "$REMOTE" ]; then
+    if [[ "$LOCAL" == "$REMOTE" ]]; then
         LOG "- Local branch is up-to-date with remote."
-    elif [ "$LOCAL" = "$BASE" ]; then
+    elif [[ "$LOCAL" == "$BASE" ]]; then
         LOG "- Fast-forward possible. Pulling."
-        git pull --ff-only
-    elif [ "$REMOTE" = "$BASE" ]; then
-        LOG "- Local branch is ahead of remote. Not doing anything."
+        EVAL "git pull --ff-only"
+    elif [[ "$REMOTE" == "$BASE" ]]; then
+        LOGW "- Local branch is ahead of remote. Not doing anything."
     else
-	      cd "$PARENT"
+        cd "$PARENT"
         ABORT "Remote history has diverged (possible force-push)."
     fi
 
@@ -46,41 +47,30 @@ SAFE_PULL_CHANGES()
 REPLACE_KERNEL_BINARIES()
 {
     local KERNEL_TMP_DIR="$KERNEL_TMP_DIR-$TARGET_PLATFORM"
-    [ ! -d "$KERNEL_TMP_DIR" ] && mkdir -p "$KERNEL_TMP_DIR"
+    [[ ! -d "$KERNEL_TMP_DIR" ]] && mkdir -p "$KERNEL_TMP_DIR"
 
-    LOG_STEP_IN "- Cloning/updating ExtremeKernel"
-
-    # If the kernel dir exists, pull the latest changes.
-    # If it does not exist, clone the repo.
-    if [ -d "$KERNEL_TMP_DIR/.git" ]; then
-        LOG "- Existing git repo found, trying to pull latest changes."
+    if [[ -d "$KERNEL_TMP_DIR/.git" ]]; then
+        LOG "- Existing git repo found, trying to pull latest changes"
         if ! SAFE_PULL_CHANGES; then
-		        ABORT "ERR: Could not pull latest Kernel changes. If you hold local changes, please rebase to the new base. If not, cleaning the kernel_tmp_dir should suffice."
-	      fi
+            ABORT "Could not pull latest Kernel changes. If you hold local changes, please rebase to the new base. If not, cleaning the kernel_tmp_dir should suffice."
+        fi
     else
-        rm -rf "$KERNEL_TMP_DIR"
-        git clone "$EXTREMEKRNL_REPO" --single-branch "$KERNEL_TMP_DIR" --recurse-submodules
+        LOG "- Cloning ExtremeKernel"
+        EVAL "git clone "$EXTREMEKRNL_REPO" --single-branch "$KERNEL_TMP_DIR" --recurse-submodules"
     fi
-    LOG_STEP_OUT
 
     LOG "- Running the kernel build script."
     BUILD_KERNEL
-    rm -f "$WORK_DIR/kernel/"*.img
 
-    # Move the files to the work dir
-    mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/boot.img" "$WORK_DIR/kernel"
-    mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/dtbo.img" "$WORK_DIR/kernel"
+    for i in "boot" "dtbo"; do
+        [[ -f "$WORK_DIR/kernel/$i.img" ]] && rm -f "$WORK_DIR/kernel/$i.img"
+        mv -f "$KERNEL_TMP_DIR/build/out/$TARGET_CODENAME/$i.img" "$WORK_DIR/kernel/$i.img"
+    done
 
     # And now for the LTE DTBOs
-    if [[ "$TARGET_CODENAME" != "r8s" && "$TARGET_CODENAME" != "z3s" && "$TARGET_INSTALL_METHOD" != "odin" ]]; then
-	      mv -f "$KERNEL_TMP_DIR/build/out/${TARGET_CODENAME}lte/dtbo.img" "$WORK_DIR/kernel/dtbo_lte.img"
+    if [[ "$TARGET_CODENAME" != "r8s" ]] && [[ "$TARGET_CODENAME" != "z3s" ]]; then
+	    mv -f "$KERNEL_TMP_DIR/build/out/${TARGET_CODENAME}lte/dtbo.img" "$WORK_DIR/kernel/dtbo_lte.img"
     fi
-
-    # Usually we would delete the temporary directory.
-    # However, the Kernel has its own build system that
-    # will track changes made to the source by itself.
-    # Clean building the kernel also takes a long time.
-    # So, keep the kernel temp dir.
 }
 # ]
 
