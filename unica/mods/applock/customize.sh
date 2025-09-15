@@ -1,7 +1,7 @@
 
-ADD_TO_WORK_DIR "pa3qzcx" "system" "system/etc/permissions/privapp-permissions-com.samsung.android.applock.xml" 0 0 644 "u:object_r:system_file:s0"
+ADD_TO_WORK_DIR "q7qzcx" "system" "system/etc/permissions/privapp-permissions-com.samsung.android.applock.xml" 0 0 644 "u:object_r:system_file:s0"
 
-[ ! -f "$WORK_DIR/system/system/priv-app/SAppLock/SAppLock.apk" ] && ADD_TO_WORK_DIR "pa3qzcx" "system" "system/priv-app/AppLock" 0 0 755 "u:object_r:system_file:s0"
+[ ! -f "$WORK_DIR/system/system/priv-app/SAppLock/SAppLock.apk" ] && ADD_TO_WORK_DIR "q7qzcx" "system" "system/priv-app/AppLock" 0 0 755 "u:object_r:system_file:s0"
 
 if [ -f "$WORK_DIR/system/system/priv-app/AppLock/AppLock.apk" ]; then
     mv -f "$WORK_DIR/system/system/priv-app/AppLock/AppLock.apk" "$WORK_DIR/system/system/priv-app/AppLock/SAppLock.apk"
