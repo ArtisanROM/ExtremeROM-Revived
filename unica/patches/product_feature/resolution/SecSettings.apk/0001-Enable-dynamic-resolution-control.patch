@@ -4940,7 +4940,7 @@ index 28e10272..98e3c2ee 100644
 -    if-lt p0, v0, :cond_3
 +    if-lt p0, v1, :cond_3
  
-     const-string p0, "60,48,96,120"
+     const-string p0, "60,120"
  
      invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
  
