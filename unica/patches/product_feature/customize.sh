@@ -211,6 +211,7 @@ if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
 
     FTP="
     system/framework/framework.jar/smali_classes6/com/samsung/android/hardware/display/RefreshRateConfig.smali
+    system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali
     system/framework/gamemanager.jar/smali/com/samsung/android/game/GameManagerService.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/SemInputDeviceManagerService.smali
     system/framework/secinputdev-service.jar/smali/com/samsung/android/hardware/secinputdev/utils/SemInputFeatures.smali
@@ -223,12 +224,6 @@ if [[ "$SOURCE_HFR_MODE" != "$TARGET_HFR_MODE" ]]; then
         sed -i "s/\"$SOURCE_HFR_MODE\"/\"$TARGET_HFR_MODE\"/g" "$APKTOOL_DIR/$f"
     done
 
-    if [[ "$TARGET_HFR_MODE" -eq 0 ]]; then
-        REPL=1
-    else
-        REPL=$TARGET_HFR_MODE
-    fi
-    sed -i "s/\"$SOURCE_HFR_MODE\"/\"$REPL\"/g" "$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/com/samsung/android/rune/CoreRune.smali"
     LOG_STEP_OUT
 fi
 
