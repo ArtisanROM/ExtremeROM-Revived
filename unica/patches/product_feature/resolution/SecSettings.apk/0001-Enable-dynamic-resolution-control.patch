@@ -1,4 +1,4 @@
-From 913246e91e24db1fc15830550e9f7eb59390c8f7 Mon Sep 17 00:00:00 2001
+From 61b339f31879685b7301af579f34338cf1d968e4 Mon Sep 17 00:00:00 2001
 From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
 Date: Mon, 15 Sep 2025 14:54:13 +0300
 Subject: [PATCH] Enable dynamic resolution control
@@ -7,20 +7,17 @@ Change-Id: I33598681e603780eb99507b1926ed922636d9462
 ---
  .../android/settings/DisplaySettings$3.smali  |   24 +
  .../android/settings/DisplaySettings$4.smali  |  203 +-
- .../Utils$$ExternalSyntheticLambda4.smali     |   56 +-
- .../Utils$$ExternalSyntheticLambda5.smali     |   38 +
  .../Utils$$ExternalSyntheticOutline0.smali    |   18 +
- .../com/android/settings/Utils.smali          |  151 +-
+ .../com/android/settings/Utils.smali          |  147 +-
  .../display/ScreenResolutionFragment.smali    |   77 +-
  .../display/ScreenZoomSettingsReceiver.smali  |   71 +-
  .../settings/display/SecDisplayUtils.smali    |  442 ++++-
- .../SecScreenZoomPreferenceFragment.smali     |  911 ++++-----
+ .../SecScreenZoomPreferenceFragment.smali     |  907 ++++-----
  .../EasyModePreferenceController.smali        |   71 +-
  ...ScreenResolutionPreferenceController.smali |   31 +-
  ...reenResolutionSingleChoiceController.smali |   43 +-
  .../eternal/provider/items/DisplayItem.smali  | 1669 +++++++++--------
- 14 files changed, 2325 insertions(+), 1480 deletions(-)
- create mode 100644 smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda5.smali
+ 12 files changed, 2239 insertions(+), 1464 deletions(-)
 
 diff --git a/smali_classes2/com/android/settings/DisplaySettings$3.smali b/smali_classes2/com/android/settings/DisplaySettings$3.smali
 index c436cd8c..6e721bcb 100644
@@ -656,137 +653,6 @@ index 5f868d9a..49dc7477 100644
      return-void
  
      :catch_0
-diff --git a/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda4.smali b/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda4.smali
-index c83ddb46..48ba6553 100644
---- a/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda4.smali
-+++ b/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda4.smali
-@@ -1,38 +1,70 @@
- .class public final synthetic Lcom/android/settings/Utils$$ExternalSyntheticLambda4;
- .super Ljava/lang/Object;
--.source "qb/99876889 5c0fe69e94e58354d05ad4431a37b4aac5ecff11ec6e83733d678147c59a2013"
-+.source "qb/97557293 4dcf04c2c3856ef0080bb5f3445dde0d67d5a14e84f10c35714826a732afc826"
- 
- # interfaces
--.implements Ljava/util/function/Predicate;
-+.implements Landroidx/core/view/OnApplyWindowInsetsListener;
- 
- 
- # instance fields
--.field public final synthetic f$0:Ljava/lang/String;
-+.field public final synthetic f$0:Landroidx/fragment/app/FragmentActivity;
- 
- 
- # direct methods
--.method public synthetic constructor <init>(Ljava/lang/String;)V
-+.method public synthetic constructor <init>(Landroidx/fragment/app/FragmentActivity;)V
-     .locals 0
- 
-     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
- 
--    iput-object p1, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;->f$0:Ljava/lang/String;
-+    iput-object p1, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;->f$0:Landroidx/fragment/app/FragmentActivity;
- 
-     return-void
- .end method
- 
- 
- # virtual methods
--.method public final test(Ljava/lang/Object;)Z
--    .locals 0
-+.method public final onApplyWindowInsets(Landroid/view/View;Landroidx/core/view/WindowInsetsCompat;)Landroidx/core/view/WindowInsetsCompat;
-+    .locals 2
-+
-+    iget-object p2, p2, Landroidx/core/view/WindowInsetsCompat;->mImpl:Landroidx/core/view/WindowInsetsCompat$Impl;
-+
-+    const/16 v0, 0x8f
-+
-+    invoke-virtual {p2, v0}, Landroidx/core/view/WindowInsetsCompat$Impl;->getInsets(I)Landroidx/core/graphics/Insets;
-+
-+    move-result-object p2
-+
-+    iget-object p0, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;->f$0:Landroidx/fragment/app/FragmentActivity;
-+
-+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
-+
-+    move-result-object p0
-+
-+    invoke-virtual {p0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
-+
-+    move-result-object p0
-+
-+    invoke-virtual {p0}, Landroid/view/View;->getRootWindowInsets()Landroid/view/WindowInsets;
-+
-+    move-result-object p0
-+
-+    const/4 v0, 0x5
-+
-+    invoke-virtual {p0, v0}, Landroid/view/WindowInsets;->getInsets(I)Landroid/graphics/Insets;
-+
-+    move-result-object p0
-+
-+    iget p0, p0, Landroid/graphics/Insets;->top:I
-+
-+    iget v0, p2, Landroidx/core/graphics/Insets;->left:I
- 
--    iget-object p0, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;->f$0:Ljava/lang/String;
-+    iget v1, p2, Landroidx/core/graphics/Insets;->right:I
- 
--    check-cast p1, Ljava/lang/String;
-+    iget p2, p2, Landroidx/core/graphics/Insets;->bottom:I
- 
--    invoke-virtual {p0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-+    invoke-virtual {p1, v0, p0, v1, p2}, Landroid/view/View;->setPadding(IIII)V
- 
--    move-result p0
-+    sget-object p0, Landroidx/core/view/WindowInsetsCompat;->CONSUMED:Landroidx/core/view/WindowInsetsCompat;
- 
--    return p0
-+    return-object p0
- .end method
-diff --git a/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda5.smali b/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda5.smali
-new file mode 100644
-index 00000000..cf3f6305
---- /dev/null
-+++ b/smali_classes2/com/android/settings/Utils$$ExternalSyntheticLambda5.smali
-@@ -0,0 +1,38 @@
-+.class public final synthetic Lcom/android/settings/Utils$$ExternalSyntheticLambda5;
-+.super Ljava/lang/Object;
-+.source "qb/97557293 4dcf04c2c3856ef0080bb5f3445dde0d67d5a14e84f10c35714826a732afc826"
-+
-+# interfaces
-+.implements Ljava/util/function/Predicate;
-+
-+
-+# instance fields
-+.field public final synthetic f$0:Ljava/lang/String;
-+
-+
-+# direct methods
-+.method public synthetic constructor <init>(Ljava/lang/String;)V
-+    .locals 0
-+
-+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-+
-+    iput-object p1, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda5;->f$0:Ljava/lang/String;
-+
-+    return-void
-+.end method
-+
-+
-+# virtual methods
-+.method public final test(Ljava/lang/Object;)Z
-+    .locals 0
-+
-+    iget-object p0, p0, Lcom/android/settings/Utils$$ExternalSyntheticLambda5;->f$0:Ljava/lang/String;
-+
-+    check-cast p1, Ljava/lang/String;
-+
-+    invoke-virtual {p0, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-+
-+    move-result p0
-+
-+    return p0
-+.end method
 diff --git a/smali_classes2/com/android/settings/Utils$$ExternalSyntheticOutline0.smali b/smali_classes2/com/android/settings/Utils$$ExternalSyntheticOutline0.smali
 index 7d3b5e35..2e756275 100644
 --- a/smali_classes2/com/android/settings/Utils$$ExternalSyntheticOutline0.smali
@@ -817,21 +683,9 @@ index 7d3b5e35..2e756275 100644
      .locals 1
  
 diff --git a/smali_classes2/com/android/settings/Utils.smali b/smali_classes2/com/android/settings/Utils.smali
-index 41d1e99d..339da7c0 100644
+index 41d1e99d..8ec6ab33 100644
 --- a/smali_classes2/com/android/settings/Utils.smali
 +++ b/smali_classes2/com/android/settings/Utils.smali
-@@ -4059,9 +4059,9 @@
- 
-     invoke-static {v1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
- 
--    new-instance v2, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;
-+    new-instance v2, Lcom/android/settings/Utils$$ExternalSyntheticLambda5;
- 
--    invoke-direct {v2, v1}, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;-><init>(Ljava/lang/String;)V
-+    invoke-direct {v2, v1}, Lcom/android/settings/Utils$$ExternalSyntheticLambda5;-><init>(Ljava/lang/String;)V
- 
-     invoke-interface {v0, v2}, Ljava/util/stream/Stream;->anyMatch(Ljava/util/function/Predicate;)Z
- 
 @@ -4500,36 +4500,34 @@
  .end method
  
@@ -1864,7 +1718,7 @@ index 28e10272..ee4a7723 100644
      .locals 5
  
 diff --git a/smali_classes4/com/samsung/android/settings/display/SecScreenZoomPreferenceFragment.smali b/smali_classes4/com/samsung/android/settings/display/SecScreenZoomPreferenceFragment.smali
-index a13e2611..31e9ecbf 100644
+index a13e2611..e9314ae6 100644
 --- a/smali_classes4/com/samsung/android/settings/display/SecScreenZoomPreferenceFragment.smali
 +++ b/smali_classes4/com/samsung/android/settings/display/SecScreenZoomPreferenceFragment.smali
 @@ -155,33 +155,35 @@
@@ -3658,18 +3512,6 @@ index a13e2611..31e9ecbf 100644
  .end method
  
  .method public final getHierarchicalParentFragment(Landroid/content/Context;)Ljava/lang/String;
-@@ -1853,9 +1876,9 @@
- 
-     move-result-object v0
- 
--    new-instance v1, Lcom/android/settings/Utils$$ExternalSyntheticLambda3;
-+    new-instance v1, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;
- 
--    invoke-direct {v1, p1}, Lcom/android/settings/Utils$$ExternalSyntheticLambda3;-><init>(Landroidx/fragment/app/FragmentActivity;)V
-+    invoke-direct {v1, p1}, Lcom/android/settings/Utils$$ExternalSyntheticLambda4;-><init>(Landroidx/fragment/app/FragmentActivity;)V
- 
-     sget-object p1, Landroidx/core/view/ViewCompat;->sViewPropertyAnimatorMap:Ljava/util/WeakHashMap;
- 
 diff --git a/smali_classes4/com/samsung/android/settings/display/controller/EasyModePreferenceController.smali b/smali_classes4/com/samsung/android/settings/display/controller/EasyModePreferenceController.smali
 index 1059e521..0fed25a2 100644
 --- a/smali_classes4/com/samsung/android/settings/display/controller/EasyModePreferenceController.smali
