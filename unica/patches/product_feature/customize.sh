@@ -53,9 +53,10 @@ if [[ "$SOURCE_AUTO_BRIGHTNESS_TYPE" != "$TARGET_AUTO_BRIGHTNESS_TYPE" && "$TARG
     done
 
     # WORKAROUND: Skip failure on CALIBRATEDLUX
-    # if [[ "$TARGET_AUTO_BRIGHTNESS_TYPE" == "3" ]]; then
-    #     HEX_PATCH "$WORK_DIR/system/system/lib64/libsensorservice.so" "284B009420008052" "284B009400008052"
-    # fi
+    # mov this,0x1 -> mov this,0x0
+    if [[ "$TARGET_AUTO_BRIGHTNESS_TYPE" == "3" ]]; then
+        HEX_PATCH "$WORK_DIR/system/system/lib64/libsensorservice.so" "07 4B 00 94 20 00 80 52" "07 4B 00 94 00 00 80 52"
+    fi
     LOG_STEP_OUT
 fi
 
