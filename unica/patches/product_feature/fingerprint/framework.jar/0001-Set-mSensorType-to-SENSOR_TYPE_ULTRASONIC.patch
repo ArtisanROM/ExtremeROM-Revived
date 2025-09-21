@@ -1,0 +1,27 @@
+From e8df0e70ba06233f0841a3659ec2bb35df4a2ad5 Mon Sep 17 00:00:00 2001
+From: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+Date: Sun, 21 Sep 2025 21:54:28 +0300
+Subject: [PATCH] Set mSensorType to SENSOR_TYPE_ULTRASONIC
+
+Change-Id: I2981781f42faecd63e6ff4e40042279025cf56fe
+Signed-off-by: ExtremeXT <75576145+ExtremeXT@users.noreply.github.com>
+---
+ .../bio/fingerprint/SemFingerprintManager$Characteristics.smali | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/smali_classes6/com/samsung/android/bio/fingerprint/SemFingerprintManager$Characteristics.smali b/smali_classes6/com/samsung/android/bio/fingerprint/SemFingerprintManager$Characteristics.smali
+index 870e4f26..82dc5aad 100644
+--- a/smali_classes6/com/samsung/android/bio/fingerprint/SemFingerprintManager$Characteristics.smali
++++ b/smali_classes6/com/samsung/android/bio/fingerprint/SemFingerprintManager$Characteristics.smali
+@@ -94,7 +94,7 @@
+ .method public whitelist getSensorType()I
+     .locals 0
+ 
+-    const/4 p0, 0x2
++    const/4 p0, 0x3
+ 
+     return p0
+ .end method
+-- 
+2.51.0
+

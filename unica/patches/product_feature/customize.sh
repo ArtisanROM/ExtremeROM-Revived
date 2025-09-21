@@ -76,6 +76,7 @@ if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
     system/framework/framework.jar/smali_classes6/com/samsung/android/rune/InputRune.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/biometrics/fingerprint/FingerprintEntry.smali
     system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/biometrics/fingerprint/FingerprintLockSettings.smali
+    system/priv-app/SecSettings/SecSettings.apk/smali_classes4/com/samsung/android/settings/biometrics/fingerprint/FingerprintSettingsUtils.smali
     "
     for f in $FTP; do
         sed -i "s/$SOURCE_FP_SENSOR_CONFIG/$TARGET_FP_SENSOR_CONFIG/g" "$APKTOOL_DIR/$f"
@@ -86,6 +87,8 @@ if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
         #ADD_TO_WORK_DIR "e1sxxx" "system" "system/lib64/libgui.so"
         #ADD_TO_WORK_DIR "e1sxxx" "system" "system/lib64/libui.so"
         DECODE_APK "system" "system/priv-app/BiometricSetting/BiometricSetting.apk"
+        sed -i "s/$SOURCE_FP_SENSOR_CONFIG/$TARGET_FP_SENSOR_CONFIG/g" "$APKTOOL_DIR/system/priv-app/BiometricSetting/BiometricSetting.apk/smali/com/samsung/android/biometrics/app/setting/DisplayStateManager.smali"
+        APPLY_PATCH "system" "system/framework/framework.jar" "$SRC_DIR/unica/patches/product_feature/fingerprint/framework.jar/0001-Set-mSensorType-to-SENSOR_TYPE_ULTRASONIC.patch"
         APPLY_PATCH "system" "system/framework/services.jar" "$SRC_DIR/unica/patches/product_feature/fingerprint/services.jar/0001-Set-FP_FEATURE_SENSOR_IS_OPTICAL-to-false.patch"
         APPLY_PATCH "system" "priv-app/BiometricSetting/BiometricSetting.apk" "$SRC_DIR/unica/patches/product_feature/fingerprint/BiometricSetting.apk/0001-Set-FP_FEATURE_SENSOR_IS_OPTICAL-to-false.patch"
         APPLY_PATCH "system_ext" "priv-app/SystemUI/SystemUI.apk" "$SRC_DIR/unica/patches/product_feature/fingerprint/SystemUI.apk/0001-Set-SECURITY_FINGERPRINT_IN_DISPLAY_OPTICAL-to-false.patch"
@@ -307,47 +310,46 @@ fi
 DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
 DECODE_APK "system" "system/framework/semwifi-service.jar"
 
-# if $SOURCE_SUPPORT_HOTSPOT_DUALAP; then
-#     if ! $TARGET_SUPPORT_HOTSPOT_DUALAP; then
-#         LOG_STEP_IN "- Applying Hotspot DualAP patches"
-#         APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0001-Disable-DualAP-support.patch"
-#         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/wifi/SecSettings.apk/0001-Disable-DualAP-support.patch"
-#         LOG_STEP_OUT
-#     fi
-# fi
+if $SOURCE_SUPPORT_HOTSPOT_DUALAP; then
+    if ! $TARGET_SUPPORT_HOTSPOT_DUALAP; then
+        LOG_STEP_IN "- Applying Hotspot DualAP patches"
+        APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0001-Disable-DualAP-support.patch"
+        APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/wifi/SecSettings.apk/0001-Disable-DualAP-support.patch"
+        LOG_STEP_OUT
+    fi
+fi
 
-# if $SOURCE_SUPPORT_HOTSPOT_WPA3; then
-#     if ! $TARGET_SUPPORT_HOTSPOT_WPA3; then
-#         LOG_STEP_IN "- Applying Hotspot WPA3 patches"
-#         APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0002-Disable-Hotspot-WPA3-support.patch"
-#         LOG_STEP_OUT
-#     fi
-# fi
+if $SOURCE_SUPPORT_HOTSPOT_WPA3; then
+    if ! $TARGET_SUPPORT_HOTSPOT_WPA3; then
+        LOG_STEP_IN "- Applying Hotspot WPA3 patches"
+        APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0002-Disable-Hotspot-WPA3-support.patch"
+        LOG_STEP_OUT
+    fi
+fi
 
-# if $SOURCE_SUPPORT_HOTSPOT_6GHZ; then
-#     if ! $TARGET_SUPPORT_HOTSPOT_6GHZ; then
-#         LOG_STEP_IN "- Applying Hotspot 6GHz patches"
-#         APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0003-Disable-Hotspot-6GHz-support.patch"
-#         LOG_STEP_OUT
-#     fi
-# fi
+if $SOURCE_SUPPORT_HOTSPOT_6GHZ; then
+    if ! $TARGET_SUPPORT_HOTSPOT_6GHZ; then
+        LOG_STEP_IN "- Applying Hotspot 6GHz patches"
+        APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0003-Disable-Hotspot-6GHz-support.patch"
+        LOG_STEP_OUT
+    fi
+fi
 
 # if $SOURCE_SUPPORT_HOTSPOT_WIFI_6; then
 #     if ! $TARGET_SUPPORT_HOTSPOT_WIFI_6; then
 #         LOG_STEP_IN "- Applying Hotspot Wi-Fi 6 patches"
-#         APPLY_PATCH "system" "system/framework/semwifi-service.jar" "$SRC_DIR/unica/patches/product_feature/wifi/semwifi-service.jar/0003-Disable-Hotspot-6GHz-support.patch"
 #         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/wifi/SecSettings.apk/0002-Disable-Hotspot-Wi-Fi-6.patch"
 #         LOG_STEP_OUT
 #     fi
 # fi
 
-# if $SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
-#     if ! $TARGET_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
-#         LOG_STEP_IN "- Applying Hotspot Enhanced Open patches"
-#         APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/wifi/SecSettings.apk/0003-Disable-Hotspot-Enhanced-Open.patch"
-#         LOG_STEP_OUT
-#     fi
-# fi
+if $SOURCE_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
+    if ! $TARGET_SUPPORT_HOTSPOT_ENHANCED_OPEN; then
+        LOG_STEP_IN "- Applying Hotspot Enhanced Open patches"
+        APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" "$SRC_DIR/unica/patches/product_feature/wifi/SecSettings.apk/0003-Disable-Hotspot-Enhanced-Open.patch"
+        LOG_STEP_OUT
+    fi
+fi
 
 if ! $SOURCE_AUDIO_SUPPORT_ACH_RINGTONE; then
     if $TARGET_AUDIO_SUPPORT_ACH_RINGTONE; then
