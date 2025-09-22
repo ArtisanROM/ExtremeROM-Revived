@@ -13,7 +13,7 @@
 /dev/block/by-name/optics       /optics                 ext4    ro,barrier=1    nofail,first_stage_mount
 
 /dev/block/by-name/cache	/cache	ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic	wait,check
-/dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678	wait,check,fscompress,quota,reservedsize=128M
+/dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678	wait,check,quota,reservedsize=128M
 /dev/block/by-name/efs	/mnt/vendor/efs	ext4	noatime,nosuid,nodev,noauto_da_alloc,discard,journal_checksum,data=ordered,errors=panic	wait,check
 /dev/block/by-name/misc	/misc	emmc	defaults	defaults,first_stage_mount
 /dev/block/by-name/recovery  /recovery           emmc      defaults                                               defaults

@@ -46,9 +46,8 @@ SET_PROP "vendor" "debug.hwui.use_hint_manager" "true"
 LOG_STEP_OUT
 
 LOG "- Disabling encryption"
-# Replace encryption with fscompress
 LINE=$(sed -n "/^\/dev\/block\/by-name\/userdata/=" "$WORK_DIR/vendor/etc/fstab.exynos990")
-sed -i "${LINE}s/fileencryption=ice/fscompress/g" "$WORK_DIR/vendor/etc/fstab.exynos990"
+sed -i "${LINE}s/,fileencryption=ice//g" "$WORK_DIR/vendor/etc/fstab.exynos990"
 
 # ODE
 sed -i -e "/ODE/d" -e "/keydata/d" -e "/keyrefuge/d" "$WORK_DIR/vendor/etc/fstab.exynos990"
