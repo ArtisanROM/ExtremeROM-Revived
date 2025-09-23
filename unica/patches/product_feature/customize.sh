@@ -67,7 +67,6 @@ if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
     DECODE_APK "system" "system/framework/framework.jar"
     DECODE_APK "system" "system/framework/services.jar"
     DECODE_APK "system" "system/priv-app/SecSettings/SecSettings.apk"
-    DECODE_APK "system" "system/priv-app/BiometricSetting/BiometricSetting.apk"
     DECODE_APK "system_ext" "priv-app/SystemUI/SystemUI.apk"
 
     FTP="
@@ -84,6 +83,7 @@ if [[ "$SOURCE_FP_SENSOR_CONFIG" != "$TARGET_FP_SENSOR_CONFIG" ]]; then
     done
 
     if [[ "$(GET_FP_SENSOR_TYPE "$TARGET_FP_SENSOR_CONFIG")" == "ultrasonic" ]]; then
+        DECODE_APK "system" "system/priv-app/BiometricSetting/BiometricSetting.apk"
         ADD_TO_WORK_DIR "e1sxxx" "system" "system/bin/surfaceflinger"
         ADD_TO_WORK_DIR "e1sxxx" "system" "system/lib64/libgui.so"
         ADD_TO_WORK_DIR "e1sxxx" "system" "system/lib64/libui.so"
