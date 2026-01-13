@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roms>
+    <rom channel="stable">
+        <version>3.0.1 </version>
+        <date>2026-01-13</date>
+        <filename>ExtremeROM_Revived-y2s-20260113-stable.zip</filename>
+        <url>https://example.com/downloads/ExtremeROM_Revived-y2s-20260113-stable.zip</url>
+        <md5>PUT_MD5_CHECKSUM_STABLE</md5>
+        <size>1234567890</size>
+    </rom>
+
+    <rom channel="beta">
+        <version>3.0.1 </version>
+        <date>2026-01-13</date>
+        <filename>ExtremeROM_UNOFFICIAL_3.0.0 _20260110_y2s-sign.zip</filename>
+        <url>https://pixeldrain.com/api/file/8JWG61a1?download</url>
+        <md5>PUT_MD5_CHECKSUM_BETA</md5>
+        <size>1234567890</size>
+    </rom>
+</roms>
