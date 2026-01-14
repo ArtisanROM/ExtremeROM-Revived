@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <roms>
     <rom channel="stable">
-        <version>3.0.0 </version>
+        <version>3.0.0</version>
         <date>2026-01-14</date>
         <filename>filename.zip</filename>
         <url>https://addsoon.com</url>
@@ -10,7 +10,7 @@
     </rom>
 
     <rom channel="beta">
-        <version>3.0.0 </version>
+        <version>3.0.0</version>
         <date>2026-01-14</date>
         <filename>filename.zip</filename>
         <url>https://addsoon.com</url>
