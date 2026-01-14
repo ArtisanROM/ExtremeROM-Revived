@@ -3,7 +3,7 @@
     <rom channel="stable">
         <version>3.0.0 </version>
         <date>2026-01-14</date>
-        <filename>ExtremeROM_Revived-y2s-20260113-stable.zip</filename>
+        <filename>filename.zip</filename>
         <url>https://addsoon.com</url>
         <md5>PUT_MD5_CHECKSUM_STABLE</md5>
         <size>1234567890</size>
@@ -12,7 +12,7 @@
     <rom channel="beta">
         <version>3.0.0 </version>
         <date>2026-01-14</date>
-        <filename>ExtremeROM_UNOFFICIAL_3.0.0 _20260110_y2s-sign.zip</filename>
+        <filename>filename.zip</filename>
         <url>https://addsoon.com</url>
         <md5>PUT_MD5_CHECKSUM_BETA</md5>
         <size>1234567890</size>
