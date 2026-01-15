@@ -83,7 +83,7 @@ jobs:
       - name: Build ROM
         run: |
           source ./buildenv.sh ${{ matrix.target }}
-          ./scripts/make_rom.sh --force
+          ./scripts/make_rom.sh
 
       - name: Upload build to Pixeldrain
         env:
