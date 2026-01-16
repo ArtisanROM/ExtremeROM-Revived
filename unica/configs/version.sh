@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2025 Salvo Giangreco
+# Copyright (C) 2026 Salvo Giangreco
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -17,10 +17,8 @@
 
 VERSION_MAJOR=3
 VERSION_MINOR=0
-VERSION_PATCH=1
+VERSION_PATCH=2
 
 ROM_VERSION="${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
-# Append current commit hash to version name
-ROM_VERSION+=" "
 ROM_BETA="beta"
 ROM_CODENAME="Revived"
