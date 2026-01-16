@@ -11,7 +11,7 @@
 
     <rom channel="beta">
         <version>3.0.1</version>
-        <date>2026-01-14</date>
+        <date>2026-01-16</date>
         <filename>filename.zip</filename>
         <url>https://pixeldrain.com/api/file/ADsPcFdp?download</url>
         <md5>PUT_MD5_CHECKSUM_BETA</md5>
