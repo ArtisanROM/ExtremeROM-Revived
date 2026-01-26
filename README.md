@@ -91,7 +91,7 @@ This project is licensed under the terms of the [GNU General Public License v3.0
 - **[ExtremeXT](https://github.com/ExtremeXT)** for helping me fix bugs, supporting me and most importantly letting me keep his brand image.
 - More that I can't remember right now and will have to be added in the future
 
-Original ExtremeROM credits:
+## Original ExtremeROM credits:
 A big thanks goes to the following for their invaluable contributions in no particular order (MORE INFO AND PEOPLE: TO BE WRITTEN)
 - **[salvogiangri](https://github.com/salvogiangri)** for the UN1CA build system, OneUI patches, and general help and support while developing
 - **[Ocin4Ever](https://github.com/Ocin4Ever)** for a lot of help especially on smali, advice and emotional support :D
@@ -124,7 +124,7 @@ A big thanks goes to the following for their invaluable contributions in no part
 - **@april865** (TG) for ExtremeROM Nexus banner
 - And everyone else who aided in testing, wiki, translations etc!
 
-Original UN1CA credits:
+## Original UN1CA credits:
 - **[ShaDisNX255](https://github.com/ShaDisNX255)** for his help, time and for his [NcX ROM](https://github.com/ShaDisNX255/NcX_Stock) which inspired this project
 - **[DavidArsene](https://github.com/DavidArsene)** for his help and time
 - **[paulowesll](https://github.com/paulowesll)** for his help and support
@@ -135,14 +135,10 @@ Original UN1CA credits:
 - *All the UN1CA project contributors and testers ❤️*
 
 # Kernel sources and device trees
-- 9820 Kernel Source Code (Maintainer: @ExtremeXT): https://github.com/ExtremeXT/M62-backport
-- 9820 Device Tree Code (Maintainer: @ExtremeXT): https://github.com/ExtremeXT/android_device_samsung_exynos9820
-- 990 Kernel Source Code (Maintainer: @ExtremeXT): https://github.com/ExtremeXT/990_upstream_v2
-- 990 Device Tree Code (Maintainer: @ExtremeXT): https://github.com/ExtremeXT/android_device_samsung_exynos9820
+- 990 Kernel Source Code (Maintainer: @ExtremeXT): https://github.com/Android-Artisan/android_kernel_samsung_exynos990
+- 990 Device Tree Code (Maintainer: @ExtremeXT): https://github.com/Android-Artisan/android_device_samsung_exynos990
 - 2100 Kernel Source Code (Maintainer: @xfwdrev/@maximusXZ): https://github.com/xfwdrev/android_kernel_samsung_ex2100
-- 2100 Device Tree Code (Maintainer: @xfwdrev/@maximusXZ): https://github.com/xfwdrev/android_device_samsung_exynos2100
-- 2200 Kernel Source Code (Maintainer: @dupazlasu): https://github.com/ExtremeXT/android_kernel_samsung_s5e9925
-- 2200 Device Tree Code (Maintainer: @dupazlasu): https://github.com/dupazlasu/android_device_samsung_s5e9925
+- 2100 Device Tree Code (Maintainer: @xfwdrev/@maximusXZ): https://github.com/Android-Artisan/android_device_samsung_exynos2100
 
 # Stargazers over time
 [![Stargazers over time](https://starchart.cc/ArtisanROM/ExtremeROM-Revived.svg)](https://starchart.cc/ArtisanROM/ExtremeROM-Revived)
