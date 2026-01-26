@@ -1,5 +1,14 @@
 # ExtremeROM Nexus changelog
 
+# 3.0.0
+- Switch to S25FE base
+- Upgrade to OneUI 8.0
+- Fix Motion photo (thx @riccigti)
+- Fixed 120HZ
+- Fix Extra Brightness not doing anything
+- Add UN1CA patches to improve experience
+- Add ArtisanROM Updater (Allows OTA updates without needing a pc to sideload or doing it in TWRP [Requires the ROM to already be installed])
+
 # 2.6.1
 - Updated build system (thx @Ksawlii)
 - Added ASCII art in the installer (thx @bkurt)
