@@ -2,6 +2,7 @@
 
 sleep 0.5
 
+
 rm -rf /data/dalvik-cache/*
 rm -rf /data/app/*/*/oat/*/* 
 rm -rf /data/system/package_cache/*
