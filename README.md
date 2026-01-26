@@ -2,17 +2,17 @@
   <img loading="lazy" src="readme-res/banner.png"/>
 </h1>
 <p align="center">
-  <a href="https://github.com/ExtremeXT/ExtremeROM/blob/fifteen/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/ExtremeXT/ExtremeROM?style=for-the-badge&logo=github"/></a>
-  <a href="https://github.com/ExtremeXT/ExtremeROM/commits/fifteen"><img loading="lazy" src="https://img.shields.io/github/last-commit/ExtremeXT/ExtremeROM/fifteen?style=for-the-badge"/></a>
-  <a href="https://github.com/ExtremeXT/ExtremeROM/stargazers"><img loading="lazy" src="https://img.shields.io/github/stars/ExtremeXT/ExtremeROM?style=for-the-badge"/></a>
-  <a href="https://github.com/ExtremeXT/ExtremeROM/graphs/contributors"><img loading="lazy" src="https://img.shields.io/github/contributors/ExtremeXT/ExtremeROM?style=for-the-badge"/></a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/blob/sixteen/LICENSE"><img loading="lazy" src="https://img.shields.io/github/license/ArtisanROM/ExtremeROM-Revived?style=for-the-badge&logo=github"/></a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/commits/sixteen"><img loading="lazy" src="https://img.shields.io/github/last-commit/ArtisanROM/ExtremeROM-Revived/sixteen?style=for-the-badge"/></a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/stargazers"><img loading="lazy" src="https://img.shields.io/github/stars/ArtisanROM/ExtremeROM-Revived?style=for-the-badge"/></a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/graphs/contributors"><img loading="lazy" src="https://img.shields.io/github/contributors/ArtisanROM/ExtremeROM-Revived?style=for-the-badge"/></a>
 </p>
 <p align="center">ExtremeROM Quant is a work-in-progress custom firmware for Samsung Galaxy devices.</p>
 
 <p align="center">
-  <a  href="https://github.com/ExtremeXT/ExtremeROM/wiki">📖 Wiki</a>
-  <a href="https://github.com/ExtremeXT/ExtremeROM/blob/fifteen/CHANGELOG.md">📝 Changelog</a>
-  <a href="https://github.com/ExtremeXT/ExtremeROM/blob/fifteen/MAINTAINERS">🧑‍💻 Maintainers</a>
+  <a  href="https://github.com/ArtisanROM/ExtremeROM-Revived/wiki">📖 Wiki</a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/blob/sixteen/CHANGELOG.md">📝 Changelog</a>
+  <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/blob/sixteen/MAINTAINERS">🧑‍💻 Maintainers</a>
 </p>
 
 # What is ExtremeROM Quant?
@@ -22,7 +22,7 @@ It's based on the latest and greatest iteration of Samsung's UX and it also incl
 
 It is based on the UN1CA build system which allows automatic downloading/extraction of the firmware, applying the required patches and generating a flashable zip package for the specified target device.
 
-ExtremeROM Nexus supports devices using the Exynos 990 and Exynos 2100 SoCs
+ExtremeROM Quant supports devices using the Exynos 990 and Exynos 2100 SoCs
 
 Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
 
@@ -56,7 +56,7 @@ Any form of contribution, suggestions, bug report or feature request for the pro
 - More that I can't remember right now and will have to be added in the future
 
 # Bugs
-See the <a href="https://github.com/ExtremeXT/ExtremeROM/issues">⚠ Issues</a> tab
+See the <a href="https://github.com/ArtisanROM/ExtremeROM-Revived/issues">⚠ Issues</a> tab
 
 # Licensing
 This project is licensed under the terms of the [GNU General Public License v3.0](LICENSE). External dependencies might be distributed under a different license, such as:
@@ -86,7 +86,12 @@ This project is licensed under the terms of the [GNU General Public License v3.0
 */
 ```
 
-# Credits
+# Credits:
+- **[salvogiangri](https://github.com/salvogiangri)** for the UN1CA build system, OneUI patches, and general help and support while developing
+- **[ExtremeXT](https://github.com/ExtremeXT)** for helping me fix bugs, supporting me and most importantly letting me keep his brand image.
+- More that I can't remember right now and will have to be added in the future
+
+Original ExtremeROM credits:
 A big thanks goes to the following for their invaluable contributions in no particular order (MORE INFO AND PEOPLE: TO BE WRITTEN)
 - **[salvogiangri](https://github.com/salvogiangri)** for the UN1CA build system, OneUI patches, and general help and support while developing
 - **[Ocin4Ever](https://github.com/Ocin4Ever)** for a lot of help especially on smali, advice and emotional support :D
@@ -140,4 +145,4 @@ Original UN1CA credits:
 - 2200 Device Tree Code (Maintainer: @dupazlasu): https://github.com/dupazlasu/android_device_samsung_s5e9925
 
 # Stargazers over time
-[![Stargazers over time](https://starchart.cc/ExtremeXT/ExtremeROM.svg)](https://starchart.cc/ExtremeXT/ExtremeROM)
+[![Stargazers over time](https://starchart.cc/ArtisanROM/ExtremeROM-Revived.svg)](https://starchart.cc/ArtisanROM/ExtremeROM-Revived)
