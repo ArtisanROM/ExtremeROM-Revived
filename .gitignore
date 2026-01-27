@@ -3,6 +3,9 @@ out/
 # MacOS files
 *.DS_Store
 
+# Windows files
+*.ini
+
 # WSL files
 *.Identifier
 
