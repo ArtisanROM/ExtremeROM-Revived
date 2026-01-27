@@ -584,7 +584,8 @@ PRINT_HEADER()
     echo -n 'ui_print("'
     echo -n "Welcome to ExtremeROM $ROM_CODENAME $ROM_VERSION for $TARGET_NAME!"
     echo    '");'
-    echo    'ui_print("ExtremeROM developed by ExtremeXT And Revived by Android-Artisan @XDAforums");'
+    echo    'ui_print("ExtremeROM Revived developed by Android-Artisan @XDAforums");'
+    echo    'ui_print("ExtremeROM developed by ExtremeXT @XDAforums");'
     echo    'ui_print("Initial UN1CA build system coded by salvo_giangri @XDAforums");'
     echo    'ui_print("Special thanks to all ExtremeROM Maintainers, Contribuitors and Testers");'
     echo    'ui_print("****************************************************");'
