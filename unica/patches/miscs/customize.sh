@@ -5,7 +5,7 @@ REGION=$(echo -n "$TARGET_FIRMWARE" | cut -d "/" -f 2)
 ROM_STATUS=""
 $ROM_IS_OFFICIAL || ROM_STATUS=" UNOFFICIAL"
 VALUE="$(GET_PROP "$WORK_DIR/system/system/build.prop" "ro.build.display.id")"
-SET_PROP "system" "ro.build.display.id" "ExtremeROM $ROM_CODENAME $ROM_VERSION - $TARGET_CODENAME"
+SET_PROP "system" "ro.build.display.id" "ExtremeROM $ROM_CODENAME $ROM_VERSION - $TARGET_CODENAME ($VALUE)"
 
 # Set ArtisanROM updater flags
 SET_PROP "system" "ro.artisanrom.version" "$ROM_VERSION"
