@@ -1,0 +1,4 @@
+id=biometrics
+name=Biometrics Fix
+author=Android-Artisan
+description=Backports BiometricSetting from Flip/Fold 7 to fix Biometrics registration.
