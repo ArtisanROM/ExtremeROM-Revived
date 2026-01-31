@@ -8,8 +8,6 @@
         <md5>PUT_MD5_CHECKSUM_BETA</md5>
         <size>5057282048</size>
     </rom>
-</roms>
-
 
     <rom channel="beta">
         <version>3.0.1</version>
