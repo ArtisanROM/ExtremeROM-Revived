@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <roms>
     <rom channel="stable">
-        <version>3.0.3</version>
+        <version>3.0.1</version>
         <date>2026-01-31</date>
         <filename>filename.zip</filename>
         <url>https://pixeldrain.com/api/file/ADsPcFdp?download</url>
