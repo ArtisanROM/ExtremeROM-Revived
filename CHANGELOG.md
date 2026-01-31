@@ -8,6 +8,7 @@
 - Fix Extra Brightness not doing anything
 - Add UN1CA patches to improve experience
 - Add ArtisanROM Updater (Allows OTA updates without needing a pc to sideload or doing it in TWRP [Requires the ROM to already be installed])
+- Add custom bootlogo
 
 # 2.6.1
 - Updated build system (thx @Ksawlii)
