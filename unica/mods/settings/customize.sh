@@ -24,3 +24,4 @@ LOG_STEP_OUT
 LOG_STEP_IN "- Disabling ASKS"
 sed -i "s/ro.build.official.release/ro.build.2ndbrand/g" "$APKTOOL_DIR/system/framework/services.jar/smali/com/android/server/asks/ASKSManagerService.smali"
 LOG_STEP_OUT
+
