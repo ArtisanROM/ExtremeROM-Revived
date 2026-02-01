@@ -25,8 +25,8 @@ SAFE_PULL_CHANGES()
     EVAL "git fetch origin"
 
     LOCAL=$(git rev-parse @)
-    REMOTE=$(git rev-parse origin/bpf111)
-    BASE=$(git merge-base @ origin/bpf111)
+    REMOTE=$(git rev-parse origin/main)
+    BASE=$(git merge-base @ origin/main)
 
     # Now we have three cases that we need to take care of.
     if [[ "$LOCAL" == "$REMOTE" ]]; then
