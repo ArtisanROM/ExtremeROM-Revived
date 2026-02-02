@@ -1,4 +1,4 @@
-# ExtremeROM Nexus changelog
+# ExtremeROM changelog
 
 # 3.0.0
 - Switch to S25FE base
