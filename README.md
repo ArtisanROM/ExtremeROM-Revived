@@ -22,7 +22,7 @@ It's based on the latest and greatest iteration of Samsung's UX and it also incl
 
 It is based on the UN1CA build system which allows automatic downloading/extraction of the firmware, applying the required patches and generating a flashable zip package for the specified target device.
 
-ExtremeROM Quant supports devices using the Exynos 990 and Exynos 2100 SoCs
+ExtremeROM Quant supports devices using the Exynos 990 SoC
 
 Any form of contribution, suggestions, bug report or feature request for the project will be welcome.
 
