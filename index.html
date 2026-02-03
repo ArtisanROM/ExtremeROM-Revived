@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExtremeROM Quant | Exynos Reborn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@100;300;400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030712;
+            --text: #f9fafb;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --accent: #0ea5e9;
+            --particle: rgba(14, 165, 233, 0.4);
+            --warning: #ef4444;
+        }
+
+        .light-mode {
+            --bg: #f3f4f6;
+            --text: #111827;
+            --glass: rgba(0, 0, 0, 0.03);
+            --border: rgba(0, 0, 0, 0.08);
+            --particle: rgba(14, 165, 233, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Outfit', sans-serif !important;
+        }
+
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .logo-container {
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: 0.25em;
+        }
+        
+        .logo-text {
+            font-weight: 300; 
+            font-size: 1.5rem;
+            color: var(--text);
+            text-transform: lowercase;
+        }
+
+        .logo-dot {
+            color: var(--accent);
+            font-weight: 700;
+            text-shadow: 0 0 12px rgba(14, 165, 233, 0.6);
+        }
+
+        .glass {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+        }
+
+        .device-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .device-card:hover {
+            border-color: rgba(14, 165, 233, 0.5);
+            box-shadow: 0 0 30px rgba(14, 165, 233, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #60a5fa, #a855f7, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .view {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .animate-heartbeat {
+            display: inline-block;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 5px rgba(239, 68, 68, 0.4));
+        }
+
+        .animate-blink {
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Wiki Specific Styles */
+        .wiki-step-title {
+            color: #22d3ee;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .wiki-warning {
+            border: 1px solid #78350f;
+            background: rgba(120, 53, 15, 0.1);
+            color: #fbbf24;
+            padding: 1.25rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .wiki-sub-heading {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .wiki-tip {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .twrp-frame {
+            background: #1e1e1e;
+            border: 8px solid #333;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 280px;
+            margin: 20px 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        .twrp-header {
+            background: #f39c12;
+            padding: 10px;
+            color: white;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .twrp-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 15px;
+            background: #2c2c2c;
+        }
+        .twrp-btn {
+            background: #555;
+            color: #ddd;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .twrp-btn.active {
+            border: 2px solid #e74c3c;
+        }
+        .req-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        .req-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: white;
+        }
+        .req-link {
+            color: #3b82f6;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+        .req-link:hover {
+            color: #60a5fa;
+        }
+        
+        /* Mobile Menu Animation */
+        #mobileMenu {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #mobileMenu.active {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* About Page Styles */
+        .github-stats-container {
+            background: #0d1117;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #30363d;
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .github-stats-container img {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
+        .about-section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500/30">
+
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- Global Navigation -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-5xl">
+        <div class="glass px-6 py-2 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('home')">
+                <div class="logo-container flex items-center">
+                    <span class="logo-text">quant<span class="logo-dot">.</span></span>
+                </div>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8 text-[11px] font-extrabold uppercase tracking-[0.25em] opacity-80">
+                <button onclick="switchView('home')" class="nav-link hover:opacity-100 hover:text-cyan-400 transition-all">Home</button>
+                <button onclick="switchView('wiki')" class="nav-link hover:opacity-100 hover:text-cyan-400 transition-all">Wiki</button>
+                <button onclick="switchView('about')" class="nav-link hover:opacity-100 hover:text-cyan-400 transition-all">About</button>
+                <a href="https://github.com/ArtisanROM/" target="_blank" class="hover:opacity-100 hover:text-cyan-400 transition-all">Source</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button id="themeToggle" class="p-2 hover:bg-white/10 rounded-full transition-colors">
+                    <i id="themeIcon" class="ph-bold ph-moon text-lg"></i>
+                </button>
+                <!-- Mobile Toggle -->
+                <button id="mobileMenuToggle" class="md:hidden p-2 hover:bg-white/10 rounded-full transition-colors">
+                    <i class="ph-bold ph-list text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="md:hidden mt-3 glass overflow-hidden">
+            <div class="flex flex-col p-4 gap-4 text-center text-[10px] font-extrabold uppercase tracking-[0.3em] opacity-80">
+                <button onclick="switchView('home'); toggleMobileMenu();" class="py-3 hover:text-cyan-400 transition-all border-b border-white/5">Home</button>
+                <button onclick="switchView('wiki'); toggleMobileMenu();" class="py-3 hover:text-cyan-400 transition-all border-b border-white/5">Wiki</button>
+                <button onclick="switchView('about'); toggleMobileMenu();" class="py-3 hover:text-cyan-400 transition-all border-b border-white/5">About</button>
+                <a href="https://github.com/ArtisanROM/" target="_blank" class="py-3 hover:text-cyan-400 transition-all">Source</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEW: LANDING PAGE -->
+    <main id="homeView" class="view active">
+        <header class="pt-48 pb-20 px-6 text-center">
+            <div class="reveal inline-flex items-center gap-2 px-4 py-1.5 glass rounded-full text-[10px] font-black uppercase tracking-widest text-cyan-400 mb-6 border-cyan-500/30 bg-cyan-500/5">
+                <i class="ph-bold ph-info text-sm animate-blink"></i>
+                Exynos Architecture Only
+            </div>
+            <h1 class="reveal text-5xl md:text-8xl font-extrabold tracking-tighter leading-none mb-6">
+                Performance <br> <span class="gradient-text">Quantified.</span>
+            </h1>
+            <p class="reveal text-lg md:text-xl opacity-60 max-w-2xl mx-auto font-medium mb-10">
+                A work-in-progress ROM based on OneUI aiming for simplicity and ease of use.
+            </p>
+            <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('fleet').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-auto px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-white font-bold rounded-2xl transition-all shadow-[0_0_30px_rgba(6,182,212,0.3)] flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-download-simple"></i>
+                    Download
+                </button>
+                <button onclick="switchView('wiki')" class="w-full sm:w-auto px-8 py-4 glass hover:bg-white/[0.08] text-sm font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-book-open text-lg"></i>
+                    Installation Wiki
+                </button>
+            </div>
+        </header>
+
+        <!-- Features Section -->
+        <section id="features" class="max-w-5xl mx-auto px-6 py-20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="reveal glass p-8 md:col-span-3 flex flex-col md:flex-row items-center gap-8 hover:bg-white/[0.05] transition-all group">
+                    <div class="w-20 h-20 shrink-0 rounded-3xl bg-blue-500/20 flex items-center justify-center text-4xl text-blue-400">
+                        <i class="ph-fill ph-cpu"></i>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-2xl font-bold mb-2">Kernel Tweaks</h3>
+                        <p class="opacity-60 leading-relaxed font-medium">Advanced CPU governor tuning and optimized scheduler logic for sustained peak performance.</p>
+                    </div>
+                </div>
+                <div class="reveal glass p-8 flex flex-col items-center text-center hover:bg-white/[0.05] transition-all group">
+                    <div class="w-16 h-16 rounded-2xl bg-purple-500/20 flex items-center justify-center text-3xl text-purple-400 mb-4">
+                        <i class="ph-fill ph-shield-check"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Deknoxed</h3>
+                    <p class="opacity-60 text-sm font-medium">Stripped of Samsung Knox and telemetry for absolute privacy.</p>
+                </div>
+                <div class="reveal glass p-8 flex flex-col items-center text-center hover:bg-white/[0.05] transition-all group border-cyan-500/20">
+                    <div class="w-16 h-16 rounded-2xl bg-orange-500/20 flex items-center justify-center text-3xl text-orange-400 mb-4">
+                        <i class="ph-fill ph-arrows-clockwise"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">OTA Updates</h3>
+                    <p class="opacity-60 text-sm font-medium">Seamless wireless updates via the ArtisanROM updater.</p>
+                </div>
+                <div class="reveal glass p-8 flex flex-col items-center text-center hover:bg-white/[0.05] transition-all group">
+                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-3xl text-cyan-400 mb-4">
+                        <i class="ph-fill ph-sparkle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Galaxy AI</h3>
+                    <p class="opacity-60 text-sm font-medium">Ported intelligent features to legacy Exynos hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fleet Section -->
+        <section id="fleet" class="max-w-6xl mx-auto px-6 py-20">
+            <h2 class="reveal text-center text-xs font-bold mb-12 opacity-50 uppercase tracking-[0.4em]">Supported Devices</h2>
+            
+            <h3 class="reveal text-sm font-bold opacity-30 mb-6 uppercase tracking-widest pl-4 text-center">Exynos Series</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Note 20 Ultra -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('Note 20 Ultra', 'SM-N986B', 'c2s', 'Exynos 990', '6.9&quot; WQHD+ 120Hz', 'https://pixeldrain.com/u/VHwfhp3g', 'https://pixeldrain.com/u/9mYQXS21')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">Note 20 Ultra</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-N986B <span class="opacity-40 font-mono text-[10px] ml-1">c2s</span></p>
+                </div>
+                <!-- Note 20 -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('Note 20', 'SM-N980F', 'c1s', 'Exynos 990', '6.7&quot; FHD+ 60Hz', 'https://pixeldrain.com/u/4sVKmz4r', 'https://pixeldrain.com/u/4zYLvJ96')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">Note 20</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-N980F <span class="opacity-40 font-mono text-[10px] ml-1">c1s</span></p>
+                </div>
+                <!-- S20 Ultra -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('S20 Ultra', 'SM-G988B', 'z3s', 'Exynos 990', '6.9&quot; WQHD+ 120Hz', 'https://pixeldrain.com/u/ZK2bP2Q7', 'https://pixeldrain.com/u/nwY247aj')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">S20 Ultra</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-G988B <span class="opacity-40 font-mono text-[10px] ml-1">z3s</span></p>
+                </div>
+                <!-- S20 Plus -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('S20 Plus', 'SM-G986B', 'y2s', 'Exynos 990', '6.7&quot; WQHD+ 120Hz', 'https://pixeldrain.com/u/19wvY7rm', 'https://pixeldrain.com/u/1cmgv1gN')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">S20+</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-G986B <span class="opacity-40 font-mono text-[10px] ml-1">y2s</span></p>
+                </div>
+                <!-- S20 -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('S20', 'SM-G981B', 'x1s', 'Exynos 990', '6.2&quot; WQHD+ 120Hz', 'https://pixeldrain.com/u/mmZdWy7r', 'https://pixeldrain.com/u/qEEMTgYB')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">S20</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-G981B <span class="opacity-40 font-mono text-[10px] ml-1">x1s</span></p>
+                </div>
+                <!-- S20 FE -->
+                <div class="reveal glass device-card p-8 text-center cursor-pointer group" onclick="openModal('S20 FE', 'SM-G780F', 'r8s', 'Exynos 990', '6.5&quot; FHD+ 120Hz', 'https://pixeldrain.com/u/uU1gbJem', 'https://pixeldrain.com/u/wcYg1ij1')">
+                    <h4 class="text-2xl font-bold mb-2 tracking-tight">S20 FE</h4>
+                    <p class="text-xs font-medium text-cyan-500/80 tracking-wide uppercase">SM-G780F <span class="opacity-40 font-mono text-[10px] ml-1">r8s</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- VIEW: WIKI PAGE -->
+    <main id="wikiView" class="view pt-40 pb-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-extrabold mb-12">Installation Guide</h1>
+
+            <div class="space-y-24">
+                <!-- Requirements -->
+                <section class="reveal">
+                    <h2 class="text-3xl font-bold mb-6">Requirements:</h2>
+                    <ul class="req-list opacity-90 text-sm">
+                        <li>A Computer with the required <a href="https://developer.samsung.com/android-usb-driver" target="_blank" class="req-link">Samsung USB Drivers</a></li>
+                        <li><a href="https://dl.extremerom.org/Odin3%20v3.14.1_3B_PatcheD.zip" target="_blank" class="req-link">Odin3</a></li>
+                        <li><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip" target="_blank" class="req-link">ADB Platform Tools</a></li>
+                        <li>The phone itself (duh)</li>
+                        <li>A USB C cable with data support</li>
+                        <li>A functional brain</li>
+                    </ul>
+                </section>
+
+                <!-- STEP 0: Bootloader Unlock -->
+                <section class="reveal">
+                    <h2 class="wiki-step-title">Guide on how to unlock the bootloader on your Samsung phone if you have not already</h2>
+                    
+                    <div class="wiki-warning">
+                        <i class="ph-bold ph-warning-circle text-2xl"></i>
+                        <div>
+                            <p class="font-bold">WARNING: YOU WILL LOOSE ALL OF YOUR DATA FROM DOING THIS.</p>
+                            <p class="opacity-80">IF YOU WOULD LIKE TO BACKUP ALL YOUR DATA USE <span class="text-cyan-400 font-bold">Samsung Smart Switch PC</span></p>
+                        </div>
+                    </div>
+
+                    <h3 class="wiki-sub-heading">Enable Developer Options</h3>
+                    <ul class="space-y-2 opacity-70 font-medium text-sm list-disc pl-5">
+                        <li>Firstly, Open settings</li>
+                        <li>Then, select About Phone, then hit the Software information tab.</li>
+                        <li>Next, tap on the Build Number 7 times to activate developer mode on your device.</li>
+                    </ul>
+
+                    <h3 class="wiki-sub-heading">Enable OEM Unlocking</h3>
+                    <ul class="space-y-2 opacity-70 font-medium text-sm list-disc pl-5">
+                        <li>Go back to the Settings screen, scroll down and tap on Developer Options.</li>
+                        <li>Now, find and turn on the switch beside Enable OEM unlocking.</li>
+                        <li>A confirmation prompt will come up, press Enable.</li>
+                    </ul>
+
+                    <h3 class="wiki-sub-heading">Unlocking the phone</h3>
+                    <div class="glass p-6 rounded-2xl space-y-4">
+                        <p class="text-sm opacity-80 leading-relaxed">
+                            Power off the phone, then hold down the <b>Volume Up + Volume Down</b> buttons simultaneously while connected to a PC via USB.
+                        </p>
+                        <p class="text-sm opacity-80 leading-relaxed">
+                            Once a blue screen appears, <b>hold volume up</b> for about 3 seconds.
+                        </p>
+                        <p class="text-sm opacity-80 leading-relaxed">
+                            Press volume up again to confirm and then you're done.
+                        </p>
+                    </div>
+                    <div class="wiki-tip">
+                        <i class="ph-bold ph-info"></i>
+                        <span>Your device should reset after this and boot back into stock.</span>
+                    </div>
+                </section>
+
+                <!-- STEP 1 -->
+                <section class="reveal">
+                    <h2 class="wiki-step-title">1. Restock your device</h2>
+                    <p class="opacity-70 leading-relaxed font-medium mb-4">
+                        Firstly, Please flash the latest stock Bootloader (BL) and Modem (CP) on your device with Odin3. If you are unsure as to where you can get your stock firmware from, we recommend <a href="https://samfw.com" target="_blank" class="text-cyan-400 underline decoration-cyan-400/30 underline-offset-4 hover:decoration-cyan-400 transition-all font-bold">Samfw</a>.
+                    </p>
+                    <div class="wiki-warning">
+                        <i class="ph-bold ph-warning"></i>
+                        <span>Be sure to flash the Odinpack for your device in the USERDATA slot</span>
+                    </div>
+                    <div class="bg-[#111] border border-white/10 rounded-2xl p-4 overflow-hidden">
+                        <div class="flex items-center gap-2 mb-4 border-b border-white/5 pb-2">
+                            <i class="ph-bold ph-monitor text-cyan-400"></i>
+                            <span class="text-[10px] uppercase font-bold tracking-widest opacity-50">Odin3 Interface Simulation</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 opacity-80">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 bg-white/5 p-2 rounded">
+                                    <div class="w-4 h-4 border border-cyan-400 flex items-center justify-center text-[10px] text-cyan-400">✓</div>
+                                    <span class="text-xs font-mono">BL</span>
+                                    <div class="flex-1 h-4 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white/5 p-2 rounded">
+                                    <div class="w-4 h-4 border border-white/20"></div>
+                                    <span class="text-xs font-mono">AP</span>
+                                    <div class="flex-1 h-4 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white/5 p-2 rounded">
+                                    <div class="w-4 h-4 border border-cyan-400 flex items-center justify-center text-[10px] text-cyan-400">✓</div>
+                                    <span class="text-xs font-mono">CP</span>
+                                    <div class="flex-1 h-4 bg-white/10 rounded"></div>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white/5 p-2 rounded border border-cyan-500/40">
+                                    <div class="w-4 h-4 border border-cyan-400 flex items-center justify-center text-[10px] text-cyan-400">✓</div>
+                                    <span class="text-xs font-mono">USERDATA</span>
+                                    <div class="flex-1 text-[8px] font-mono opacity-50 truncate">...ExtremeROM_OdinPack.tar</div>
+                                </div>
+                            </div>
+                            <div class="bg-black p-4 rounded text-[10px] font-mono text-green-400/70 overflow-hidden h-32">
+                                <p>&lt;ID:0/009&gt; Added!!</p>
+                                <p>&lt;OSM&gt; Enter CS for MD5..</p>
+                                <p>&lt;OSM&gt; Checking MD5 finished Successfully..</p>
+                                <p>&lt;OSM&gt; Leave CS..</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wiki-tip">
+                        <i class="ph-bold ph-lightbulb"></i>
+                        <span>Tip: to save time, turn off Auto Reboot in the options tab in Odin. Once Odin says Pass carry on to the next step.</span>
+                    </div>
+                </section>
+
+                <!-- STEP 2 -->
+                <section class="reveal">
+                    <h2 class="wiki-step-title">2. Reboot to TWRP</h2>
+                    <p class="opacity-70 leading-relaxed font-medium">
+                        While the phone is still connected to the computer (and on Download mode), hold the <b>Bixby + Power + Volume Down</b> buttons at the same time. After the screen goes black carry on holding Bixby and Power but instead of Volume Down hold <b>Volume Up</b> instead.
+                    </p>
+                </section>
+
+                <!-- STEP 3 -->
+                <section class="reveal">
+                    <h2 class="wiki-step-title">3. Prepare for flashing</h2>
+                    <p class="opacity-70 leading-relaxed font-medium mb-8">
+                        Now that you are in TWRP, navigate to the wipe button, then press format data.
+                    </p>
+                    
+                    <div class="flex flex-col md:flex-row items-center gap-12">
+                        <div class="twrp-frame">
+                            <div class="twrp-header">
+                                <span>CPU: 34°C</span>
+                                <span>2:24 PM</span>
+                                <span>Battery: 23%</span>
+                            </div>
+                            <div class="p-3 bg-[#2c2c2c] flex items-center gap-2 border-b border-white/5">
+                                <div class="w-6 h-6 bg-[#f39c12] rounded-full flex items-center justify-center text-[10px]">⚡</div>
+                                <div class="text-[10px] leading-tight">
+                                    <p class="font-bold">Team Win Recovery Project</p>
+                                    <p class="opacity-50">3.7.1_12-ExtremeXT_v3</p>
+                                </div>
+                            </div>
+                            <div class="twrp-grid">
+                                <div class="twrp-btn">Install</div>
+                                <div class="twrp-btn active">Wipe</div>
+                                <div class="twrp-btn">Backup</div>
+                                <div class="twrp-btn">Restore</div>
+                                <div class="twrp-btn">Mount</div>
+                                <div class="twrp-btn">Settings</div>
+                                <div class="twrp-btn">Advanced</div>
+                                <div class="twrp-btn">Reboot</div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm opacity-60 font-medium mb-4 italic">Follow sequence:</p>
+                            <div class="space-y-4">
+                                <div class="glass p-4 rounded-xl text-xs font-bold border-l-4 border-cyan-500">Press Format Data</div>
+                                <div class="glass p-4 rounded-xl text-xs font-bold opacity-60">Type 'yes' and confirm</div>
+                                <div class="glass p-4 rounded-xl text-xs font-bold opacity-60">Go back to Home &rarr; Wipe &rarr; Slide to Factory Reset</div>
+                                <div class="glass p-4 rounded-xl text-xs font-bold opacity-60">Reboot &rarr; Recovery</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STEP 4 -->
+                <section class="reveal">
+                    <h2 class="wiki-step-title">4. Installing the ROM</h2>
+                    <p class="opacity-70 leading-relaxed font-medium mb-6">
+                        Go to <b>Advanced &rarr; ADB Sideload</b>.
+                    </p>
+                    <div class="space-y-4">
+                        <p class="text-[10px] uppercase font-bold tracking-widest opacity-40">On PC Terminal:</p>
+                        <div class="bg-black/80 p-6 rounded-2xl border border-white/10 font-mono text-cyan-400 text-lg">
+                            adb sideload &lt;drag ROM zip here&gt;
+                        </div>
+                        <p class="opacity-70 leading-relaxed font-medium">Once finished, press "Reboot System".</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- VIEW: ABOUT PAGE (GitHub Profile) -->
+    <main id="aboutView" class="view pt-40 pb-20 px-6">
+        <div class="max-w-4xl mx-auto glass p-8 md:p-12 overflow-hidden bg-[#0d1117]/80">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-extrabold mb-4">Android-Artisan</h1>
+                <div class="inline-flex items-center gap-1 bg-[#1f6feb] text-white px-3 py-1 rounded text-[10px] font-bold uppercase">
+                    PROFILE VIEWS <span class="bg-black/20 ml-2 px-1 rounded">4,903</span>
+                </div>
+                <div class="w-full h-[1px] bg-white/10 mt-10"></div>
+            </div>
+
+            <section class="mb-12">
+                <div class="about-section-header">
+                    <i class="ph-bold ph-wrench text-cyan-400"></i>
+                    <span>About Me</span>
+                </div>
+                <p class="text-lg mb-6 leading-relaxed">
+                    Hi, I'm <strong>Android Artisan</strong> — a passionate Android ROM developer focused on:
+                </p>
+                <ul class="space-y-3 mb-8 ml-4">
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-wrench text-xl opacity-80 mt-1"></i>
+                        <span>Custom ROMs (One UI, Lineage etc.)</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-device-mobile text-xl opacity-80 mt-1"></i>
+                        <span>Legacy & Modern Samsung Devices</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-gear text-xl opacity-80 mt-1"></i>
+                        <span>Kernel Tweaks, TWRP Mods, and Flashing Utilities</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="ph-bold ph-paint-brush text-xl opacity-80 mt-1"></i>
+                        <span>One UI-style design.</span>
+                    </li>
+                </ul>
+                <p class="opacity-80 leading-relaxed italic border-l-4 border-cyan-500 pl-6 py-2 bg-white/5 rounded-r-lg">
+                    I build clean, optimized, and functional software for the Android community, with a heavy focus on Exynos-powered devices.
+                </p>
+                <div class="w-full h-[1px] bg-white/10 mt-12"></div>
+            </section>
+
+            <section class="mb-12">
+                <div class="about-section-header">
+                    <i class="ph-bold ph-chart-bar text-cyan-400"></i>
+                    <span>GitHub Stats</span>
+                </div>
+                <!-- STATS CARD -->
+                <div id="githubStatsCard" class="github-stats-container">
+                    <!-- The sources point to the 'output' branch as defined in your YML config -->
+                    <img id="snakeAnimation" src="https://raw.githubusercontent.com/Android-Artisan/Android-Artisan/output/github-contribution-grid-snake-dark.svg?palette=github-dark" alt="GitHub Snake Animation">
+                </div>
+                <div class="w-full h-[1px] bg-white/10 mt-12"></div>
+            </section>
+
+            <section>
+                <div class="about-section-header">
+                    <i class="ph-bold ph-broadcast text-cyan-400"></i>
+                    <span>Connect With Me</span>
+                </div>
+                <ul class="space-y-4 font-medium">
+                    <li class="flex items-center gap-3">
+                        <i class="ph-bold ph-globe"></i>
+                        XDA: <a href="https://xdaforums.com/m/android-artisan.13071848/" target="_blank" class="text-cyan-400 hover:underline">@Android-Artisan</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph-bold ph-discord-logo"></i>
+                        Discord: <a href="https://discord.com/users/1407033850336378880" target="_blank" class="text-cyan-400 hover:underline">@android_artisan</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="ph-bold ph-github-logo"></i>
+                        GitHub: <a href="https://github.com/Android-Artisan" target="_blank" class="text-cyan-400 hover:underline">@Android-Artisan</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="deviceModal" class="fixed inset-0 z-[200] hidden items-center justify-center p-6 bg-black/80 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div id="modalContent" class="glass max-w-lg w-full p-8 relative scale-95 transition-transform duration-300">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-xl opacity-40 hover:opacity-100">
+                <i class="ph ph-x"></i>
+            </button>
+            <div class="mb-8">
+                <h2 id="modalTitle" class="text-4xl font-extrabold mb-1 tracking-tighter">Device Name</h2>
+                <p id="modalSub" class="text-sm font-medium text-cyan-500 uppercase tracking-widest">Model Info</p>
+            </div>
+            <div class="grid grid-cols-2 gap-6 mb-10">
+                <div><p class="text-[10px] uppercase font-bold opacity-30 tracking-widest mb-1">Chipset</p><p id="modalChipset" class="font-bold">--</p></div>
+                <div><p class="text-[10px] uppercase font-bold opacity-30 tracking-widest mb-1">Display</p><p id="modalDisplay" class="font-bold">--</p></div>
+            </div>
+            <div class="space-y-3">
+                <a id="modalRomLink" href="#" target="_blank" class="w-full bg-cyan-500 hover:bg-cyan-400 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-download"></i> Download ROM
+                </a>
+                <a id="modalOdinLink" href="#" target="_blank" class="w-full bg-white/5 hover:bg-white/10 text-xs font-bold uppercase tracking-widest py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+                    <i class="ph-bold ph-archive"></i> Download Odin Pack
+                </a>
+                <button onclick="closeModal(); switchView('wiki');" class="w-full bg-transparent hover:bg-white/5 text-[10px] font-bold uppercase tracking-widest py-2 rounded-lg transition-all opacity-40 hover:opacity-100 mt-2">
+                    View Installation Steps
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Final Branding Footer -->
+    <footer class="py-24 px-6 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="text-[11px] font-extrabold uppercase tracking-[0.3em] opacity-40">
+                &copy; 2026 Project ArtisanROM - All rights reserved
+            </p>
+            <div class="flex items-center justify-center gap-6 mb-4">
+                <a href="https://github.com/ArtisanROM/" target="_blank" class="opacity-40 hover:opacity-100 transition-opacity"><i class="ph-bold ph-github-logo text-2xl"></i></a>
+            </div>
+            <p class="text-[13px] font-medium opacity-60">
+                Website Designed and Developed with <span class="text-red-500 animate-heartbeat">❤️</span> by Monux ツ
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // BACKGROUND CANVAS PARTICLES
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const particleColor = getComputedStyle(document.documentElement).getPropertyValue('--particle').trim();
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = particleColor; ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        // NAVIGATION LOGIC
+        function switchView(viewName) {
+            document.getElementById('homeView').classList.toggle('active', viewName === 'home');
+            document.getElementById('wikiView').classList.toggle('active', viewName === 'wiki');
+            document.getElementById('aboutView').classList.toggle('active', viewName === 'about');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            revealElements();
+        }
+
+        // MOBILE MENU LOGIC
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = mobileMenu.classList.contains('active') ? 'ph-bold ph-x text-lg' : 'ph-bold ph-list text-lg';
+        }
+
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+
+        // MODAL LOGIC
+        function openModal(name, model, code, chipset, display, romUrl, odinUrl) {
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalSub').innerText = `${model} (${code})`;
+            document.getElementById('modalChipset').innerText = chipset;
+            document.getElementById('modalDisplay').innerHTML = display;
+            
+            // Set download links
+            const romLink = document.getElementById('modalRomLink');
+            const odinLink = document.getElementById('modalOdinLink');
+            
+            romLink.href = romUrl || "#";
+            odinLink.href = odinUrl || "#";
+            
+            const modal = document.getElementById('deviceModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => { 
+                modal.style.opacity = '1'; 
+                document.getElementById('modalContent').style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('deviceModal');
+            modal.style.opacity = '0';
+            document.getElementById('modalContent').style.transform = 'scale(0.95)';
+            setTimeout(() => { 
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // THEME TOGGLE
+        const themeBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const snakeImg = document.getElementById('snakeAnimation');
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            themeIcon.className = isLight ? 'ph-bold ph-sun text-lg' : 'ph-bold ph-moon text-lg';
+            
+            // Update snake animation based on theme
+            if (snakeImg) {
+                if (isLight) {
+                    snakeImg.src = 'https://raw.githubusercontent.com/Android-Artisan/Android-Artisan/output/github-contribution-grid-snake.svg';
+                } else {
+                    snakeImg.src = 'https://raw.githubusercontent.com/Android-Artisan/Android-Artisan/output/github-contribution-grid-snake-dark.svg?palette=github-dark';
+                }
+            }
+        });
+
+        // REVEAL ANIMATIONS
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // INITIALIZATION
+        window.addEventListener('scroll', revealElements);
+        window.addEventListener('resize', initCanvas);
+        window.onload = () => {
+            initCanvas();
+            animate();
+            revealElements();
+        };
+
+        // Close elements on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('deviceModal');
+            if (event.target == modal) closeModal();
+            
+            if (!event.target.closest('nav') && mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        }
+    </script>
+</body>
+</html>
