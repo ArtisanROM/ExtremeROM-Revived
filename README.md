@@ -142,4 +142,4 @@ A big thanks goes to the following for their invaluable contributions in no part
 - 2100 Device Tree Code (Maintainer: @xfwdrev/@maximusXZ): https://github.com/Android-Artisan/android_device_samsung_exynos2100
 
 # Stargazers over time
-[![Stargazers over time](https://starchart.cc/ArtisanROM/ExtremeROM-Revived.svg)](https://starchart.cc/ArtisanROM/ExtremeROM-Revived)
+[![Stargazers over time](https://starchart.cc/ArtisanROM/ExtremeROM-Revived.svg?variant=adaptive)](https://starchart.cc/ArtisanROM/ExtremeROM-Revived)
