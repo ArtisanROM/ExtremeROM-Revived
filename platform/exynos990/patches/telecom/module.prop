@@ -1,0 +1,4 @@
+id=telecom
+name=Samsung Telecom Fix
+author=@GhasemzadehFard-Dev, @Android-Artisan
+description=Fixes reboot crash on hang up
