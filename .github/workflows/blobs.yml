@@ -37,7 +37,7 @@ jobs:
             path: "prebuilts/samsung/p3sxxx"
           - module: "Galaxy S23 FE (r11sxxx)"
             path: "prebuilts/samsung/r11sxxx"
-          - module: "Galaxy S21 FE (r11sxxx)"
+          - module: "Galaxy S21 FE (r9sxxx)"
             path: "prebuilts/samsung/r9sxxx"
 
     steps:
