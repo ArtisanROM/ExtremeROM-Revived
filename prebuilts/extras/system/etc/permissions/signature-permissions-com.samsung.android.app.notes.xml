@@ -3,5 +3,7 @@
     <signature-permissions package="com.samsung.android.app.notes">
         <permission name="android.permission.MANAGE_ACTIVITY_TASKS"/>
         <permission name="android.permission.MANAGE_ACTIVITY_STACKS"/>
+        <permission name="android.permission.INTERNAL_SYSTEM_WINDOW"/>
+        <permission name="android.permission.DEVICE_POWER"/>
     </signature-permissions>
 </permissions>
